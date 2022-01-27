@@ -22,14 +22,19 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 function HeaderBar(){
-  const Query = useMediaQuery('(max-width: 700px)')
-  const [isMobile, setIsMobile] = useState(false)
-  useEffect(()=>{setIsMobile(Query[0])}, []) // eslint-disable-line react-hooks/exhaustive-deps
+  // const Query = useMediaQuery('(max-width: 700px)')
+  // const [isMobile, setIsMobile] = useState(false)
+  // useEffect(()=>{setIsMobile(Query[0])}, []) // eslint-disable-line react-hooks/exhaustive-deps
+  const [isMobile ] = useMediaQuery('(max-width: 700px)')
 
   const { colorMode, toggleColorMode } = useColorMode()
   const NavbarFontColor = useColorModeValue('#000', '#fff')
   const IconColor = useColorModeValue('orange.600', 'purple.300')
   const BgColor = useColorModeValue('gray.100', 'black')
+
+  if (isMobile){
+    return <p>Mobile</p>
+  }
 
   return (
     <Flex bg={BgColor} w='100%' h='8vh' pt='3' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
