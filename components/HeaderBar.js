@@ -22,7 +22,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 function HeaderBar(){
-  const [isMobile] = useMediaQuery('(min-width: 700px)')
+  const [isMobile] = useMediaQuery('(max-width: 700px)')
 
   useEffect(()=>{console.log(isMobile)}, [isMobile])
 
