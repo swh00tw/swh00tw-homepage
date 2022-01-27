@@ -1,8 +1,15 @@
 import Head from 'next/head'
 import HeaderBar from '../components/HeaderBar.js'
 import Footer from '../components/Footer.js'
+import { motion } from 'framer-motion'
+import { Box, useColorModeValue } from '@chakra-ui/react'
 
 function Layout(props) {
+
+    const variants = {
+      hidden: { opacity: 0.5, scale: 0.7 },
+      visible: { opacity: 1, scale: 1 },
+    }
 
     return (
       <>
@@ -14,7 +21,16 @@ function Layout(props) {
         </Head>
 
         <HeaderBar />
-        {props.children}
+
+        <Box bg={useColorModeValue('gray.100', 'black')} maxW="screen-md" mx="auto" overflow="visible" p="64px">
+          <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={variants}>
+            {props.children}
+          </motion.div>
+        </Box>
+
         <Footer />
       </>
     )
