@@ -63,9 +63,9 @@ function HeaderBar(){
               <HamburgerIcon />
             </MenuButton>
             <MenuList>
-              <MenuItem><Link href='/projects'><a>Projects</a></Link></MenuItem>
-              <MenuItem><Link href='/posts'><a>Posts</a></Link></MenuItem>
-              <MenuItem><Link href='https://github.com/swh00tw'><a><HStack w='100px'><FaGithub color={NavbarFontColor}/><p>Github</p></HStack></a></Link></MenuItem>
+              <Link href='/projects'><a><MenuItem>Projects</MenuItem></a></Link>
+              <Link href='/posts'><a><MenuItem>Posts</MenuItem></a></Link>
+              <Link href='https://github.com/swh00tw'><a><MenuItem><HStack w='100px'><FaGithub color={NavbarFontColor}/><p>Github</p></HStack></MenuItem></a></Link>
             </MenuList>
           </Menu>
           :<></>}
