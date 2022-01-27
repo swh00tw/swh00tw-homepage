@@ -33,7 +33,7 @@ function HeaderBar(){
   const IconColor = useColorModeValue('orange.600', 'purple.300')
   const BgColor = useColorModeValue('gray.100', 'black')
 
-  if (!isMobile){
+  if (isMobile===null){
     return (
       <Skeleton startColor='pink.500' endColor='orange.500' height='8vh' />
     )
