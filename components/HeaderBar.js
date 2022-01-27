@@ -14,7 +14,9 @@ import { Flex,
   MenuItemOption,
   MenuGroup,
   MenuOptionGroup,
-  MenuDivider, } from '@chakra-ui/react'
+  MenuDivider,
+  Skeleton
+} from '@chakra-ui/react'
 import { MoonIcon, SunIcon, HamburgerIcon } from '@chakra-ui/icons'
 import { FaGithub } from "react-icons/fa";
 import Link from 'next/link' 
@@ -23,13 +25,19 @@ import { motion } from 'framer-motion'
 
 function HeaderBar(){
   const Query = useMediaQuery('(max-width: 700px)')
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(null)
   useEffect(()=>{setIsMobile(Query[0])}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const { colorMode, toggleColorMode } = useColorMode()
   const NavbarFontColor = useColorModeValue('#000', '#fff')
   const IconColor = useColorModeValue('orange.600', 'purple.300')
   const BgColor = useColorModeValue('gray.100', 'black')
+
+  if (!isMobile){
+    return (
+      <Skeleton startColor='pink.500' endColor='orange.500' height='8vh' />
+    )
+  }
 
   return (
     <Flex bg={BgColor} w='100%' h='8vh' pt='3' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
