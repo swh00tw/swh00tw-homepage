@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import HeaderBar from '../components/HeaderBar.js'
+import Footer from '../components/Footer.js'
 
 function Layout(props) {
 
@@ -14,6 +15,7 @@ function Layout(props) {
 
         <HeaderBar />
         {props.children}
+        <Footer />
       </>
     )
 }
