@@ -22,10 +22,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 function HeaderBar(){
-  // const Query = useMediaQuery('(max-width: 700px)')
-  // const [isMobile, setIsMobile] = useState(false)
-  // useEffect(()=>{setIsMobile(Query[0])}, []) // eslint-disable-line react-hooks/exhaustive-deps
-  const [isMobile ] = useMediaQuery('(max-width: 700px)')
+  const [ isMobile ] = useMediaQuery('(max-width: 700px)')
 
   const { colorMode, toggleColorMode } = useColorMode()
   const NavbarFontColor = useColorModeValue('#000', '#fff')
@@ -33,16 +30,42 @@ function HeaderBar(){
   const BgColor = useColorModeValue('gray.100', 'black')
 
   if (isMobile){
-    return <p>Mobile</p>
+    return (<Flex bg={BgColor} w='100%' h='8vh' pt='3' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
+    <Flex w='80%' alignItems='center' justifyContent="center">
+      <Link href='/'><a><HStack><Text mr='0%' fontSize='xl' color={NavbarFontColor} fontWeight={900} fontFamily='mono'> Shu-Wei Hsu </Text></HStack></a></Link>
+      
+      <Spacer/>
+      <Flex>
+        <Button bg='whiteAlpha.400' onClick={toggleColorMode}>
+          {colorMode==='dark'?
+          <MoonIcon color={IconColor}/>
+          :
+          <SunIcon color={IconColor}/>}
+        </Button>
+        <Box bg={BgColor} w='5px'/>
+        {isMobile?
+        <Menu>
+          <MenuButton as={Button} color={IconColor}>
+            <HamburgerIcon />
+          </MenuButton>
+          <MenuList>
+            <MenuItem><Link href='/projects'><a>Projects</a></Link></MenuItem>
+            <MenuItem><Link href='/posts'><a>Posts</a></Link></MenuItem>
+            <MenuItem><Link href='https://github.com/swh00tw'><a><HStack w='100px'><FaGithub color={NavbarFontColor}/><p>Github</p></HStack></a></Link></MenuItem>
+          </MenuList>
+        </Menu>
+        :<></>}
+      </Flex>
+
+    </Flex>
+  </Flex>)
   }
+  else {
+    return (
+      <Flex bg={BgColor} w='100%' h='8vh' pt='3' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
+        <Flex w='80%' alignItems='center' justifyContent="center">
+          <Link href='/'><a><HStack><Text mr='0%' fontSize='xl' color={NavbarFontColor} fontWeight={900} fontFamily='mono'> Shu-Wei Hsu </Text></HStack></a></Link>
 
-  return (
-    <Flex bg={BgColor} w='100%' h='8vh' pt='3' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
-      <Flex w='80%' alignItems='center' justifyContent="center">
-        <Link href='/'><a><HStack><Text mr='0%' fontSize='xl' color={NavbarFontColor} fontWeight={900} fontFamily='mono'> Shu-Wei Hsu </Text></HStack></a></Link>
-
-        {isMobile ? <></> :
-        <>
           <Spacer/>
           <Flex w={[null, '45%', '35%', null,'25%']}>
             <Link href='/projects'><a><Text fontSize='sm' color={NavbarFontColor} fontWeight={400} fontFamily='mono'>Projects</Text></a></Link>
@@ -51,34 +74,22 @@ function HeaderBar(){
             <Spacer/>
             <Link href='https://github.com/swh00tw'><a><HStack w='80px'><FaGithub color={NavbarFontColor}/><Text fontSize='sm' color={NavbarFontColor} fontWeight={400} fontFamily='mono'>Github</Text></HStack></a></Link>
           </Flex>
-        </>}
-        
-        <Spacer/>
-        <Flex>
-          <Button bg='whiteAlpha.400' onClick={toggleColorMode}>
-            {colorMode==='dark'?
-            <MoonIcon color={IconColor}/>
-            :
-            <SunIcon color={IconColor}/>}
-          </Button>
-          <Box bg={BgColor} w='5px'/>
-          {isMobile?
-          <Menu>
-            <MenuButton as={Button} color={IconColor}>
-              <HamburgerIcon />
-            </MenuButton>
-            <MenuList>
-              <MenuItem><Link href='/projects'><a>Projects</a></Link></MenuItem>
-              <MenuItem><Link href='/posts'><a>Posts</a></Link></MenuItem>
-              <MenuItem><Link href='https://github.com/swh00tw'><a><HStack w='100px'><FaGithub color={NavbarFontColor}/><p>Github</p></HStack></a></Link></MenuItem>
-            </MenuList>
-          </Menu>
-          :<></>}
-        </Flex>
+          
+          <Spacer/>
+          <Flex>
+            <Button bg='whiteAlpha.400' onClick={toggleColorMode}>
+              {colorMode==='dark'?
+              <MoonIcon color={IconColor}/>
+              :
+              <SunIcon color={IconColor}/>}
+            </Button>
+            <Box bg={BgColor} w='5px'/>
+          </Flex>
 
+        </Flex>
       </Flex>
-    </Flex>
-  )
+    )
+  }
 }
 
 export default HeaderBar;
