@@ -22,7 +22,9 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 function HeaderBar(){
-  const isMobile = useMediaQuery('(max-width: 700px)')
+  const [isMobile] = useMediaQuery('(min-width: 700px)')
+
+  useEffect(()=>{console.log(isMobile)}, [isMobile])
 
   const { colorMode, toggleColorMode } = useColorMode()
   const NavbarFontColor = useColorModeValue('#000', '#fff')
@@ -34,7 +36,7 @@ function HeaderBar(){
       <Flex w='80%' alignItems='center' justifyContent="center">
         <Link href='/'><a><HStack><Text mr='0%' fontSize='xl' color={NavbarFontColor} fontWeight={900} fontFamily='mono'> Shu-Wei Hsu </Text></HStack></a></Link>
 
-        {isMobile[0] ? <></> :
+        {isMobile ? <></> :
         <>
           <Spacer/>
           <Flex w={[null, '45%', '35%', null,'25%']}>
@@ -55,7 +57,7 @@ function HeaderBar(){
             <SunIcon color={IconColor}/>}
           </Button>
           <Box bg={BgColor} w='5px'/>
-          {isMobile[0]?
+          {isMobile?
           <Menu>
             <MenuButton as={Button} color={IconColor}>
               <HamburgerIcon />
