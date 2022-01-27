@@ -1,7 +1,13 @@
 import Layout from '../layout/layout.js'
 import { Flex, Heading, Box, useColorModeValue } from '@chakra-ui/react'
 
-export default function Home() {
+// This gets called on every request
+export async function getServerSideProps() {
+
+  return { props: { } }
+}
+
+export default function Home(props) {
   const normalFontColor = useColorModeValue('#000', '#fff')
 
   return (

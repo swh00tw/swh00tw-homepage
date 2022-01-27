@@ -22,10 +22,11 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 function HeaderBar(){
-  const Query = useMediaQuery('(max-width: 700px)')
-  const [isMobile, setIsMobile] = useState(false)
+  // const Query = useMediaQuery('(max-width: 700px)')
+  // const [isMobile, setIsMobile] = useState(false)
+  // useEffect(()=>{setIsMobile(Query[0])}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(()=>{setIsMobile(Query[0])}, []) // eslint-disable-line react-hooks/exhaustive-deps
+  const [isMobile] = useMediaQuery('(max-width: 700px)')
 
   const { colorMode, toggleColorMode } = useColorMode()
   const NavbarFontColor = useColorModeValue('#000', '#fff')
