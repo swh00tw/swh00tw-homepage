@@ -31,6 +31,10 @@ function HeaderBar(){
   const IconColor = useColorModeValue('orange.600', 'purple.300')
   const BgColor = useColorModeValue('gray.100', 'black')
 
+  if (isMobile){
+    return <p>mobile</p>
+  }
+
   return (
     <Flex bg={BgColor} w='100%' h='8vh' pt='3' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
       <Flex w='80%' alignItems='center' justifyContent="center">
