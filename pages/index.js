@@ -1,5 +1,3 @@
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import Layout from '../layout/layout.js'
 import { Flex, Heading, Box, useColorModeValue } from '@chakra-ui/react'
 

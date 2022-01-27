@@ -1,6 +1,5 @@
 import { Flex, Box, Spacer, Icon, Button, Text, HStack, useColorMode, useColorModeValue } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
-import { GiCoffeeCup } from "react-icons/gi";
 import { FaGithub } from "react-icons/fa";
 import Link from 'next/link' 
 import { useState } from 'react'
