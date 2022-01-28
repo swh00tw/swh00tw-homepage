@@ -17,7 +17,8 @@ import { Flex,
   MenuDivider,
   Stack
 } from '@chakra-ui/react'
-import { MoonIcon, SunIcon, HamburgerIcon } from '@chakra-ui/icons'
+import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import { ScaleFade, SlideFade } from '@chakra-ui/react'
 import { FaGithub } from "react-icons/fa";
 import Link from 'next/link' 
 import { useState, useEffect } from 'react'
@@ -64,14 +65,21 @@ function HeaderBar(){
           <Box bg={BgColor} w='5px'/>
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Menu isLazy autoSelect={false}>
-              <MenuButton as={Button} color={IconColor}>
-                <HamburgerIcon />
-              </MenuButton>
-              <MenuList>
-                <Link href='/projects'><a><MenuItem>Projects</MenuItem></a></Link>
-                <Link href='/posts'><a><MenuItem>Posts</MenuItem></a></Link>
-                <Link href='https://github.com/swh00tw'><a><MenuItem><HStack w='100px'><FaGithub color={NavbarFontColor}/><p>Github</p></HStack></MenuItem></a></Link>
-              </MenuList>
+              {({ isOpen }) => (
+                <>                
+                  <MenuButton as={Button} color={IconColor}>
+                      <SlideFade offsetY={-10} in={isOpen} unmountOnExit reverse={true}><CloseIcon /></SlideFade>  
+                      <SlideFade offsetY={10} in={!isOpen} unmountOnExit reverse={true}><HamburgerIcon/></SlideFade>
+                  </MenuButton>
+                  <MenuList>
+                    <motion.div animate={isOpen?{opacity: 1, y: 0}:{opacity: 0.5, y: "-30%"}}>
+                      <Link href='/projects'><a><MenuItem>Projects</MenuItem></a></Link>
+                      <Link href='/posts'><a><MenuItem>Posts</MenuItem></a></Link>
+                      <Link href='https://github.com/swh00tw'><a><MenuItem><HStack w='100px'><FaGithub color={NavbarFontColor}/><p>Github</p></HStack></MenuItem></a></Link>
+                    </motion.div>
+                  </MenuList>
+                </>
+              )}
             </Menu>
           </Box>
         </Flex>
