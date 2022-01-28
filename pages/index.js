@@ -1,6 +1,8 @@
 import PageMotionContainer from '../components/PageMotionContainer'
 import { Flex, Heading, Box, useColorModeValue } from '@chakra-ui/react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import memojiStyle from '../styles/memoji.module.css'
 
 export default function Home(props) {
   const normalFontColor = useColorModeValue('#000', '#fff')
@@ -14,8 +16,10 @@ export default function Home(props) {
             <Heading as="h2" size="xl" fontWeight="bold" color={normalFontColor} mb={4}>A web developer in Taiwan.</Heading>
             <Heading as="h2" size="lg" fontWeight="bold" color={normalFontColor} mb={4}>Welcome to my website !</Heading>
         </Flex>
-        <Flex w={{base: '100%', md: '35%'}}>
-            <Image priority src='/Images/homepage.png' alt='hello' height='1000' width='1000' />
+        <Flex w={{base: '100%', md: '30%'}}>
+          <motion.div whileTap={{scale: 0.9}} whileHover={{scale: 1.1}} className={memojiStyle.borderCircle}>
+            <Image priority src='/Images/homepage.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
+          </motion.div>
         </Flex>
       </Flex>
     </PageMotionContainer>
