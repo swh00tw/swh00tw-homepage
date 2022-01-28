@@ -23,6 +23,7 @@ import { FaGithub } from "react-icons/fa";
 import Link from 'next/link' 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/router'
 
 function NavBarItem (props){
   const bgColor = useColorModeValue('gray.100', 'black')
@@ -35,6 +36,7 @@ function NavBarItem (props){
 }
 
 function HeaderBar(){
+  const {pathname} = useRouter();
 
   const { colorMode, toggleColorMode } = useColorMode()
   const NavbarFontColor = useColorModeValue('#000', '#fff')
@@ -46,8 +48,6 @@ function HeaderBar(){
       <Flex w='80%' alignItems='center' justifyContent="center">
         <Link href='/'><a><HStack><Text mr='0%' fontSize='xl' color={NavbarFontColor} fontWeight={900} fontFamily='mono'> Shu-Wei Hsu </Text></HStack></a></Link>
 
-
-
         <Spacer/>
         <Stack
           direction={{ base: 'column', md: 'row' }}
@@ -58,11 +58,11 @@ function HeaderBar(){
           mt={{ base: 4, md: 0 }}
         >
           <NavBarItem href='/projects'>
-            <Text fontSize='sm' color={NavbarFontColor} fontWeight={400} fontFamily='mono'>Projects</Text>
+            <Text fontSize='sm' color={pathname==='/projects'?IconColor:NavbarFontColor} fontWeight={400} fontFamily='mono'>Projects</Text>
           </NavBarItem>
           <Spacer/>
           <NavBarItem href='/posts'>
-            <Text fontSize='sm' color={NavbarFontColor} fontWeight={400} fontFamily='mono'>Posts</Text>
+            <Text fontSize='sm' color={pathname==='/posts'?IconColor:NavbarFontColor} fontWeight={400} fontFamily='mono'>Posts</Text>
           </NavBarItem>
           <Spacer/>
           <NavBarItem href='https://github.com/swh00tw'>
