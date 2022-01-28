@@ -15,7 +15,7 @@ export default function Home(props) {
             <Heading as="h2" size="lg" fontWeight="bold" color={normalFontColor} mb={4}>Welcome to my website !</Heading>
         </Flex>
         <Flex w={{base: '100%', md: '35%'}}>
-            <Image src='/images/homepage.png' alt='hello' height='1000' width='1000' />
+            <Image priority src='/images/homepage.png' alt='hello' height='1000' width='1000' />
         </Flex>
       </Flex>
     </PageMotionContainer>
