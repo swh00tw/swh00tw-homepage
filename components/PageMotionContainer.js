@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 function PageMotionContainer(props){
 
     const variants = {
-        hidden: { opacity: 0.5, scale: 0.0 },
-        visible: { opacity: 1, scale: 1 },
+        hidden: { opacity: 0.05, y: '60%' },
+        visible: { opacity: 1, y: '0' },
     }
 
     return (
@@ -12,6 +12,7 @@ function PageMotionContainer(props){
           initial="hidden"
           animate="visible"
           variants={variants}
+          transition={{ duration: 0.75,  ease: 'easeInOut' }}
         >
             {props.children}
         </motion.div>
