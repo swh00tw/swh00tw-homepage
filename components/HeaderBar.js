@@ -15,7 +15,7 @@ import { Flex,
   MenuGroup,
   MenuOptionGroup,
   MenuDivider,
-  Stack
+  Stack,
 } from '@chakra-ui/react'
 import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { ScaleFade, SlideFade } from '@chakra-ui/react'
@@ -23,6 +23,16 @@ import { FaGithub } from "react-icons/fa";
 import Link from 'next/link' 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+
+function NavBarItem (props){
+  const bgColor = useColorModeValue('gray.100', 'black')
+
+  return (
+    <Link href={props.href}><a><motion.div whileHover={{scale: 1.2}} whileTap={{scale: 0.8}}><Button bg={bgColor}>
+        {props.children}
+    </Button></motion.div></a></Link>
+  )
+}
 
 function HeaderBar(){
 
@@ -47,11 +57,17 @@ function HeaderBar(){
           flexGrow={1}
           mt={{ base: 4, md: 0 }}
         >
-          <Link href='/projects'><a><Text fontSize='sm' color={NavbarFontColor} fontWeight={400} fontFamily='mono'>Projects</Text></a></Link>
+          <NavBarItem href='/projects'>
+            <Text fontSize='sm' color={NavbarFontColor} fontWeight={400} fontFamily='mono'>Projects</Text>
+          </NavBarItem>
           <Spacer/>
-          <Link href='/posts'><a><Text fontSize='sm' color={NavbarFontColor} fontWeight={400} fontFamily='mono'>Posts</Text></a></Link>
+          <NavBarItem href='/posts'>
+            <Text fontSize='sm' color={NavbarFontColor} fontWeight={400} fontFamily='mono'>Posts</Text>
+          </NavBarItem>
           <Spacer/>
-          <Link href='https://github.com/swh00tw'><a><HStack w='80px'><FaGithub color={NavbarFontColor}/><Text fontSize='sm' color={NavbarFontColor} fontWeight={400} fontFamily='mono'>Github</Text></HStack></a></Link>
+          <NavBarItem href='https://github.com/swh00tw'>
+            <HStack w='80px'><FaGithub color={NavbarFontColor}/><Text fontSize='sm' color={NavbarFontColor} fontWeight={400} fontFamily='mono'>Github</Text></HStack>
+          </NavBarItem>
         </Stack>
         
         <Spacer/>
