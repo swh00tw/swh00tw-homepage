@@ -17,7 +17,7 @@ function Layout(props) {
 
         <HeaderBar />
 
-        <Box bg={useColorModeValue('gray.100', 'black')} flexDirection='column' maxW="screen-md" mx="auto" overflow="visible" p="64px">
+        <Box bg={useColorModeValue('gray.100', 'black')} align="center" flexDirection='column' maxW="screen-md" mx="auto" overflow="visible" p="64px">
             {props.children}
         </Box>
 
