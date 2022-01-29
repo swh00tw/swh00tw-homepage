@@ -1,5 +1,5 @@
 import PageMotionContainer from '../components/PageMotionContainer'
-import { Flex, Heading, Box, useColorModeValue, Text, HStack } from '@chakra-ui/react'
+import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider } from '@chakra-ui/react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import memojiStyle from '../styles/memoji.module.css'
@@ -64,7 +64,7 @@ export default function Home(props) {
               dispatch(doFistBump())}
             }
           }>
-            <Image priority src='/Images/homepage.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
+            <Image quality="100" priority src='/Images/homepage.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
           </motion.div>
           {isFistBumped && !isFistBumpAnimationCompleted?
           <Box h='3vh' position='relative' style={{marginTop: '70%', right: '75%'}}>
@@ -101,17 +101,28 @@ export default function Home(props) {
       </Flex>
       <Flex py={{lg: '8vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
           <Box borderRadius='2xl' h='50%' w={{base: '100%', lg: '90%'}} bg={BoxColor} p={10}>
-            <Flex flexDirection={{base: 'column',lg: 'row'}} justifyContent='center'>
-              <Flex flexDirection='column' w={{base: '100%', lg: '60%'}} alignItems={{base: 'center', lg: 'start'}} justifyContent='center'>
+            <Flex flexDirection={{base: 'column',lg: 'row'}} justifyContent='center' w='85%'>
+              <Flex flexDirection='column' w={{base: '100%', lg: '75%'}} alignItems={{base: 'center', lg: 'start'}} justifyContent='center'>
                 <Heading fontFamily='mono' fontSize={['2xl', '4xl']} fontWeight="bold" color={normalFontColor} mb={4}>Shu-Wei Hsu</Heading>
                 <Heading fontFamily='mono' fontSize={['sm', 'lg']} color={normalFontColor}> Student <CloseIcon boxSize='0.6em'/> Developer </Heading>
               </Flex>
-              <Flex flexDirection='column' w={{base: '90%', lg: '25%'}} my={{base: '4vh', lg: '0vh'}}>
-                <Image priority src='/Images/me.jpg' alt='me' height='300' width='300' className={useColorModeValue(profileStyle.light, profileStyle.dark)}/>
+              <Flex flexDirection='column' w={{base: '100%', lg: '25%'}} my={{base: '4vh', lg: '0vh'}}>
+                <Image quality="100" priority src='/Images/me.jpg' alt='me' height='400' width='400' className={useColorModeValue(profileStyle.light, profileStyle.dark)}/>
               </Flex>
             </Flex>
-            <Flex w='85%'>
-              About Me
+            <Flex py={2} w='95%' flexDirection='column'>
+              <Divider size='5px'/>
+              <Flex justifyContent='start'  flexDirection={{base: 'column', lg: 'row'}}>
+                <Heading w={{base: '100%', lg: '20%'}} py={3} fontFamily='mono' fontSize={['md', '2xl']} color={themeColor}> About Me </Heading>
+                <Flex flexDirection='column' w={{base: '100%', lg: '80%'}} py={3} px={{base: 0, lg: 5}}>
+                  <Text align='start' fontFamily='Montserrat' fontWeight={500} mb={2}>
+                    Hey! I am Shu-Wei Hsu. You can call me Frank. I was born in Kaohsiung City of Taiwan, but study in Taipei. Currently, I am a senior student in the Department of Electrical Engineering at the Nation Taiwan University.
+                  </Text>
+                  <Text align='start' fontFamily='Montserrat' fontWeight={500}>
+                    I am also a developer who loves to create things. I am currently working on improving my skills in the field of web programming.
+                  </Text>
+                </Flex>
+              </Flex>
             </Flex>
           </Box>
       </Flex>
