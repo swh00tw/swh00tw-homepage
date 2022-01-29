@@ -25,7 +25,7 @@ export default function Home(props) {
             <Heading fontSize={['4xl', '5xl']} fontWeight="bold" color={themeColor} mb={4}>Hello, I am Frank.</Heading>
             <Heading fontSize="xl" fontWeight="bold" color={normalFontColor} mb={1}>A web developer in Taiwan.</Heading>
             <Heading fontSize="xl" fontWeight="bold" color={normalFontColor}>Welcome to my website !</Heading>
-            <Box as='text' fontFamily='mono' bg={useColorModeValue('gray.300','whiteAlpha.400')} borderRadius='lg' h={{base: '14', md: '7'}} py={1} px={5} mx='auto' mt={5} textAlign="center">
+            <Box fontFamily='mono' bg={useColorModeValue('gray.300','whiteAlpha.400')} borderRadius='lg' h={{base: '14', md: '7'}} py={1} px={5} mx='auto' mt={5} textAlign="center">
               {isFistBumped? 
               <HStack>
               <Text>Nice 2 meet u! Scroll down to see more.</Text>
