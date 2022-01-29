@@ -4,25 +4,32 @@ import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import memojiStyle from '../styles/memoji.module.css'
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
-import { StarIcon } from '@chakra-ui/icons'
+import { StarIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import {useState, useEffect} from 'react'
 
 export default function Home(props) {
   const [isFistBumped, setIsFistBumped ] = useState(false);
+  const [fistBumpAnimationCompleted, setFistBumpAnimationCompleted] = useState(false);
 
   const normalFontColor = useColorModeValue('#000', '#fff')
   const themeColor = useColorModeValue('orange.600', 'purple.300')
   const bgColor = useColorModeValue('gray.100', 'black')
-  const chatBoxColor = useColorModeValue('gray.300','whiteAlpha.400')
+  const BoxColor = useColorModeValue('gray.300','whiteAlpha.400')
   const starColor = useColorModeValue("yellow.400","yellow.200")
 
   useEffect(() => {
     console.log(isFistBumped);
   },[isFistBumped])
 
+  // force to scroll to top when reload the page
+  // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual'
+  }, []);
+
   return (
     <PageMotionContainer>
-      <Box bg={bgColor} h={{base: '8vh', md: '8vh'}} display={{base: 'block',lg: 'none'}}/>
+      <Box bg={bgColor} h={{base: '5vh', md: '8vh'}} display={{base: 'block',lg: 'none'}}/>
       <Flex py={{lg: '8vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
         <Flex flexDirection='column' w={{base: '100%', lg: '65%'}}>
             <Heading fontSize={['4xl', '5xl']} fontWeight="bold" color={themeColor} mb={4}>Hello, I am Frank.</Heading>
@@ -31,7 +38,7 @@ export default function Home(props) {
             <AnimatePresence exitBeforeEnter>
               {!isFistBumped?
               <motion.div key="NotFistBumpedYet" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0.75}} style={{margin: "auto"}}>
-                <Box fontFamily='mono' bg={chatBoxColor} borderRadius='lg' h={{base: '14', md: '7'}} py={1} px={5} mx='auto' mt={5} textAlign="center">
+                <Box fontFamily='mono' bg={BoxColor} borderRadius='lg' h={{base: '14', md: '7'}} py={1} px={5} mx='auto' mt={5} textAlign="center">
                   <HStack>
                   <Text>Click me for a fist bump. </Text>
                   <Flex display={{base: 'inline-block', lg: 'none'}}><BsFillCaretDownFill /></Flex>
@@ -41,7 +48,7 @@ export default function Home(props) {
               </motion.div>
               :
               <motion.div key="AlreadfyFistBumped" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0.75}} style={{margin: "auto"}}>
-                <Box fontFamily='mono' bg={chatBoxColor} borderRadius='lg' h={{base: '14', md: '7'}} py={1} px={5} mx='auto' mt={5} textAlign="center">
+                <Box fontFamily='mono' bg={BoxColor} borderRadius='lg' h={{base: '14', md: '7'}} py={1} px={5} mx='auto' mt={5} textAlign="center">
                   <HStack>
                   <Text>Nice 2 meet u! Scroll down to see more. 🔥</Text>
                   </HStack> 
@@ -54,7 +61,7 @@ export default function Home(props) {
           <motion.div whileTap={{scale: 1.2}} whileHover={{scale: 0.95}} className={memojiStyle.borderCircle} onClick={()=>setIsFistBumped(true)}>
             <Image priority src='/Images/homepage.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
           </motion.div>
-          {isFistBumped?
+          {isFistBumped && !fistBumpAnimationCompleted?
           <Box h='3vh' position='relative' style={{marginTop: '70%', right: '75%'}}>
             <motion.div 
             style={{transformOrigin: 'center'}}
@@ -71,6 +78,7 @@ export default function Home(props) {
                 }
               }
             }
+            onAnimationComplete={()=>setFistBumpAnimationCompleted(true)}
             >
             <StarIcon color={starColor}/>
             </motion.div>
@@ -78,6 +86,18 @@ export default function Home(props) {
           :<></>
           }
         </Flex>
+      </Flex>
+      <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+          <Flex flexDirection='column' color={themeColor} mt='7vh'>
+            <motion.div animate={{opacity: [0.5, 1, 0.5, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
+            <motion.div animate={{opacity: [0.5, 0.5, 1, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
+            <motion.div animate={{opacity: [0.5, 0.5, 0.5, 1, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
+          </Flex>
+      </Flex>
+      <Flex py={{lg: '8vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+          <Box borderRadius='lg' h='50%' w='90%' bg={BoxColor}>
+            hello, I am placeholder of the main bio content.
+          </Box>
       </Flex>
     </PageMotionContainer>
   )
