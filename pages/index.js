@@ -6,9 +6,13 @@ import memojiStyle from '../styles/memoji.module.css'
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
 import { StarIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import {useState, useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { doFistBump } from '../actions'
 
 export default function Home(props) {
-  const [isFistBumped, setIsFistBumped ] = useState(false);
+  const dispatch = useDispatch();
+
+  const isFistBumped = useSelector(state => state.isFistBumped);
   const [fistBumpAnimationCompleted, setFistBumpAnimationCompleted] = useState(false);
 
   const normalFontColor = useColorModeValue('#000', '#fff')
@@ -16,10 +20,6 @@ export default function Home(props) {
   const bgColor = useColorModeValue('gray.100', 'black')
   const BoxColor = useColorModeValue('gray.300','whiteAlpha.400')
   const starColor = useColorModeValue("yellow.400","yellow.200")
-
-  useEffect(() => {
-    console.log(isFistBumped);
-  },[isFistBumped])
 
   // force to scroll to top when reload the page
   // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
@@ -58,7 +58,11 @@ export default function Home(props) {
             </AnimatePresence>
         </Flex>
         <Flex w={{base: '100%', lg: '30%'}}>
-          <motion.div whileTap={{scale: 1.2}} whileHover={{scale: 0.95}} className={memojiStyle.borderCircle} onClick={()=>setIsFistBumped(true)}>
+          <motion.div whileTap={{scale: 1.2}} whileHover={{scale: 0.95}} className={memojiStyle.borderCircle} onClick={()=>{
+            if (!isFistBumped) {
+              dispatch(doFistBump())}
+            }
+          }>
             <Image priority src='/Images/homepage.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
           </motion.div>
           {isFistBumped && !fistBumpAnimationCompleted?
