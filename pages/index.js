@@ -12,6 +12,7 @@ import { doFistBump, doneFistBumpAnimation } from '../actions'
 
 export default function Home(props) {
   const dispatch = useDispatch();
+  const [hobbyIdx, setHobbyIdx] = useState(0);
 
   const isFistBumped = useSelector(state => state.isFistBumped);
   const isFistBumpAnimationCompleted = useSelector(state => state.isFistBumpedAnimationCompleted);
@@ -28,6 +29,17 @@ export default function Home(props) {
     {year: 'Feb, 2022 - Present', content: 'Working as a Engineer Intern at Kinetik'},
     {year: 'June, 2022', content: 'Graduated from National Taiwan University'},
   ];
+
+  const hobbyList=[
+    {icon: '🏀', content: 'playing basketball'}, 
+    {icon: '📖', content: 'reading'},
+    {icon: '🎧', content: 'listening to music'},
+    {icon: '🍺', content: 'drinking 😆'},
+    {icon: '☕', content: 'coffee'},
+    {icon: '🏋️🏃‍♂️🛹', content: 'any sports'},
+    {icon: '🗼', content: 'traveling'},
+    {icon: '🍜🍕🍣', content: 'eating 😋'},
+  ]
 
   // force to scroll to top when reload the page
   // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
@@ -99,6 +111,7 @@ export default function Home(props) {
           }
         </Flex>
       </Flex>
+
       <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
           <Flex flexDirection='column' color={themeColor} mt='7vh'>
             <motion.div animate={{opacity: [0.5, 1, 0.5, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
@@ -106,6 +119,7 @@ export default function Home(props) {
             <motion.div animate={{opacity: [0.5, 0.5, 0.5, 1, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
           </Flex>
       </Flex>
+
       <Flex py={{lg: '8vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
           <Box borderRadius='2xl' h='50%' w={{base: '100%', lg: '90%'}} bg={BoxColor} p={10}>
             <Flex w='85%' flexDirection={{base: 'column',lg: 'row'}} justifyContent='center' >
@@ -153,6 +167,47 @@ export default function Home(props) {
             </Flex>
           </Box>
       </Flex>
+
+      <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+          <Flex flexDirection='column' color={themeColor} mt='7vh'>
+            <motion.div animate={{opacity: [0.5, 1, 0.5, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
+            <motion.div animate={{opacity: [0.5, 0.5, 1, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
+            <motion.div animate={{opacity: [0.5, 0.5, 0.5, 1, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
+          </Flex>
+      </Flex>
+
+      {/* auto animation gallery */}
+      <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection='column' alignItems="center"> 
+            <Heading fontSize={{base: '3xl', lg: '5xl'}}>Aside from coding, I also enjoy...</Heading>
+            <AnimatePresence exitBeforeEnter initial={true}>
+              {hobbyList.map((item, index)=>{
+                return (index === hobbyIdx && (
+                  <div key={index}>
+                    <motion.div 
+                      key={item.icon}
+                      initial={{x: 100, opacity: 0}} 
+                      animate={{x: 0, opacity: 1}} 
+                      exit={{x: -100, opacity: 0}} 
+                      transition={{duration: 2}}
+                      onAnimationComplete={()=>{setHobbyIdx((hobbyIdx+1)%hobbyList.length)}}
+                    >
+                      <Box mt={3} fontSize={{base: '5xl', md: '8xl'}}>{item.icon}</Box>
+                    </motion.div>
+                    <motion.div 
+                      key={item.content}
+                      initial={{opacity: 0}} 
+                      animate={{opacity: 1}} 
+                      exit={{opacity: 0}} 
+                      transition={{duration: 2}}
+                    >
+                      <Heading fontSize={{base: 'lg', md: '3xl', lg: '4xl'}}>{item.content}</Heading>
+                    </motion.div>
+                  </div>
+                  )
+              )})}
+            </AnimatePresence>
+      </Flex>
+
     </PageMotionContainer>
   )
 }
