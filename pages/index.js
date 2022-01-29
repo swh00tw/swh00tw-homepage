@@ -1,11 +1,11 @@
 import PageMotionContainer from '../components/PageMotionContainer'
-import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider } from '@chakra-ui/react'
+import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider, List, ListItem, ListIcon, Tag } from '@chakra-ui/react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import memojiStyle from '../styles/memoji.module.css'
 import profileStyle from '../styles/profile.module.css'
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
-import { StarIcon, ChevronDownIcon, CloseIcon } from '@chakra-ui/icons'
+import { StarIcon, ChevronDownIcon, CloseIcon, CircleIcon } from '@chakra-ui/icons'
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { doFistBump, doneFistBumpAnimation } from '../actions'
@@ -21,6 +21,13 @@ export default function Home(props) {
   const bgColor = useColorModeValue('gray.100', 'black')
   const BoxColor = useColorModeValue('gray.300','whiteAlpha.400')
   const starColor = useColorModeValue("yellow.400","yellow.200")
+  const tagColor = useColorModeValue('orange','purple')
+
+  const bioList=[
+    {year: 'June, 2000', content: 'Born in Kaohsiung, Taiwan'},
+    {year: 'Feb, 2022 - Present', content: 'Working as a Engineer Intern at Kinetik'},
+    {year: 'June, 2022', content: 'Graduated from National Taiwan University'},
+  ];
 
   // force to scroll to top when reload the page
   // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
@@ -101,7 +108,7 @@ export default function Home(props) {
       </Flex>
       <Flex py={{lg: '8vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
           <Box borderRadius='2xl' h='50%' w={{base: '100%', lg: '90%'}} bg={BoxColor} p={10}>
-            <Flex flexDirection={{base: 'column',lg: 'row'}} justifyContent='center' w='85%'>
+            <Flex w='85%' flexDirection={{base: 'column',lg: 'row'}} justifyContent='center' >
               <Flex flexDirection='column' w={{base: '100%', lg: '75%'}} alignItems={{base: 'center', lg: 'start'}} justifyContent='center'>
                 <Heading fontFamily='mono' fontSize={['2xl', '4xl']} fontWeight="bold" color={normalFontColor} mb={4}>Shu-Wei Hsu</Heading>
                 <Heading fontFamily='mono' fontSize={['sm', 'lg']} color={normalFontColor}> Student <CloseIcon boxSize='0.6em'/> Developer </Heading>
@@ -110,10 +117,11 @@ export default function Home(props) {
                 <Image quality="100" priority src='/Images/me.jpg' alt='me' height='400' width='400' className={useColorModeValue(profileStyle.light, profileStyle.dark)}/>
               </Flex>
             </Flex>
-            <Flex py={2} w='95%' flexDirection='column'>
+            <Flex py={2} w='90%' flexDirection='column'>
+              {/* About Me */}
               <Divider size='5px'/>
               <Flex justifyContent='start'  flexDirection={{base: 'column', lg: 'row'}}>
-                <Heading w={{base: '100%', lg: '20%'}} py={3} fontFamily='mono' fontSize={['md', '2xl']} color={themeColor}> About Me </Heading>
+                <Heading align='start' w={{base: '100%', lg: '20%'}} py={3} fontFamily='mono' fontSize={['md', '2xl']} color={themeColor}> About Me </Heading>
                 <Flex flexDirection='column' w={{base: '100%', lg: '80%'}} py={3} px={{base: 0, lg: 5}}>
                   <Text align='start' fontFamily='Montserrat' fontWeight={500} mb={2}>
                     Hey! I am Shu-Wei Hsu. You can call me Frank. I was born in Kaohsiung City of Taiwan, but study in Taipei. Currently, I am a senior student in the Department of Electrical Engineering at the Nation Taiwan University.
@@ -121,6 +129,25 @@ export default function Home(props) {
                   <Text align='start' fontFamily='Montserrat' fontWeight={500}>
                     I am also a developer who loves to create things. I am currently working on improving my skills in the field of web programming.
                   </Text>
+                </Flex>
+              </Flex>
+              {/* Bio */}
+              <Divider size='5px'/>
+              <Flex justifyContent='start'  flexDirection={{base: 'column', lg: 'row'}}>
+                <Heading align='start' w={{base: '100%', lg: '20%'}} py={3} fontFamily='mono' fontSize={['md', '2xl']} color={themeColor}> Bio </Heading>
+                <Flex flexDirection='column' w={{base: '100%', lg: '80%'}} py={3} px={{base: 0, lg: 5}}>
+                <List spacing={3} align='start' fontFamily='Montserrat'>
+                  {bioList.map((item)=>{
+                    return (
+                      <ListItem key={item.year}>
+                        <Box>
+                          <Tag size='md' colorScheme={tagColor} variant='outline' mb={1}>{item.year}</Tag>
+                          <Text>{item.content}</Text>
+                        </Box>
+                      </ListItem>
+                    )
+                  })}
+                </List>
                 </Flex>
               </Flex>
             </Flex>
