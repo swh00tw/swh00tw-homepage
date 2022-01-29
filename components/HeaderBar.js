@@ -21,8 +21,8 @@ import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { ScaleFade, SlideFade } from '@chakra-ui/react'
 import { FaGithub } from "react-icons/fa";
 import Link from 'next/link' 
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import ThemeToggleButton from './ThemeToggleButton';
+import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 
 function NavBarItem (props){
@@ -72,20 +72,25 @@ function HeaderBar(){
         
         <Spacer/>
         <Flex>
-          <Button bg='whiteAlpha.400' onClick={toggleColorMode}>
-            {colorMode==='dark'?
-            <MoonIcon color={IconColor}/>
-            :
-            <SunIcon color={IconColor}/>}
-          </Button>
+          <ThemeToggleButton/>
           <Box bg={BgColor} w='5px'/>
           <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Menu isLazy autoSelect={false}>
               {({ isOpen }) => (
                 <>                
                   <MenuButton as={Button} color={IconColor}>
-                      <SlideFade offsetY={-10} in={isOpen} unmountOnExit reverse={true}><CloseIcon /></SlideFade>  
-                      <SlideFade offsetY={10} in={!isOpen} unmountOnExit reverse={true}><HamburgerIcon/></SlideFade>
+                    <AnimatePresence exitBeforeEnter initial={false}>
+                      <motion.div
+                        style={{ display: 'inline-block' }}
+                        key={isOpen?'open':'closed'}
+                        initial={{ y: 0, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {isOpen?<CloseIcon/>:<HamburgerIcon/>}
+                      </motion.div>
+                    </AnimatePresence>
                   </MenuButton>
                   <MenuList>
                     <motion.div animate={isOpen?{opacity: 1, y: 0}:{opacity: 0.5, y: "-30%"}}>
