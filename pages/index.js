@@ -19,16 +19,16 @@ export default function Home(props) {
 
   return (
     <PageMotionContainer>
-      <Box bg={bgColor} h={{base: '3vh', md: '6vh'}} display={{base: 'block',lg: 'none'}}/>
-      <Flex h='90vh' w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+      <Box bg={bgColor} h={{base: '8vh', md: '8vh'}} display={{base: 'block',lg: 'none'}}/>
+      <Flex  w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
         <Flex flexDirection='column' w={{base: '100%', lg: '65%'}}>
-            <Heading size='3xl' fontWeight="bold" color={themeColor} mb={4}>Hello, I am Frank.</Heading>
-            <Heading as="h2" size="lg" fontWeight="bold" color={normalFontColor} mb={1}>A web developer in Taiwan.</Heading>
-            <Heading as="h2" size="lg" fontWeight="bold" color={normalFontColor}>Welcome to my website !</Heading>
+            <Heading fontSize={['4xl', '5xl']} fontWeight="bold" color={themeColor} mb={4}>Hello, I am Frank.</Heading>
+            <Heading fontSize="xl" fontWeight="bold" color={normalFontColor} mb={1}>A web developer in Taiwan.</Heading>
+            <Heading fontSize="xl" fontWeight="bold" color={normalFontColor}>Welcome to my website !</Heading>
             <Box as='text' fontFamily='mono' bg={useColorModeValue('gray.300','whiteAlpha.400')} borderRadius='lg' h={{base: '14', md: '7'}} py={1} px={5} mx='auto' mt={5} textAlign="center">
               {isFistBumped? 
               <HStack>
-              <Text>Nice 2 meet u ! </Text>
+              <Text>Nice 2 meet u! Scroll down to see more.</Text>
               </HStack>
               :
               <HStack>
