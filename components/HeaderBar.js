@@ -29,7 +29,7 @@ function NavBarItem (props){
   const bgColor = useColorModeValue('gray.100', 'black')
 
   return (
-    <Link href={props.href}><a><motion.div whileHover={{scale: 1.2}} whileTap={{scale: 0.8}}><Button bg={bgColor}>
+    <Link href={props.href}><a><motion.div whileHover={{scale: 1.2}} whileTap={{scale: 0.8}}><Button bg={bgColor} h='6vh'>
         {props.children}
     </Button></motion.div></a></Link>
   )
@@ -44,7 +44,7 @@ function HeaderBar(){
   const BgColor = useColorModeValue('gray.100', 'black')
 
   return (
-    <Flex bg={BgColor} w='100%' h='8vh' pt='3' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
+    <Flex bg={BgColor} w='100%' h='10vh' pt='3' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
       <Flex w='80%' alignItems='center' justifyContent="center">
         <Link href='/'><a><HStack><Text mr='0%' fontSize='xl' color={NavbarFontColor} fontWeight={900} fontFamily='mono'> Shu-Wei Hsu </Text></HStack></a></Link>
 
