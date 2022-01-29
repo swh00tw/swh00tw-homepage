@@ -3,8 +3,9 @@ import { Flex, Heading, Box, useColorModeValue, Text, HStack } from '@chakra-ui/
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import memojiStyle from '../styles/memoji.module.css'
+import profileStyle from '../styles/profile.module.css'
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
-import { StarIcon, ChevronDownIcon } from '@chakra-ui/icons'
+import { StarIcon, ChevronDownIcon, CloseIcon } from '@chakra-ui/icons'
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { doFistBump, doneFistBumpAnimation } from '../actions'
@@ -99,8 +100,19 @@ export default function Home(props) {
           </Flex>
       </Flex>
       <Flex py={{lg: '8vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
-          <Box borderRadius='lg' h='50%' w='90%' bg={BoxColor}>
-            hello, I am placeholder of the main bio content.
+          <Box borderRadius='2xl' h='50%' w={{base: '100%', lg: '90%'}} bg={BoxColor} p={10}>
+            <Flex flexDirection={{base: 'column',lg: 'row'}} justifyContent='center'>
+              <Flex flexDirection='column' w={{base: '100%', lg: '60%'}} alignItems={{base: 'center', lg: 'start'}} justifyContent='center'>
+                <Heading fontFamily='mono' fontSize={['2xl', '4xl']} fontWeight="bold" color={normalFontColor} mb={4}>Shu-Wei Hsu</Heading>
+                <Heading fontFamily='mono' fontSize={['sm', 'lg']} color={normalFontColor}> Student <CloseIcon boxSize='0.6em'/> Developer </Heading>
+              </Flex>
+              <Flex flexDirection='column' w={{base: '90%', lg: '25%'}} my={{base: '4vh', lg: '0vh'}}>
+                <Image priority src='/Images/me.jpg' alt='me' height='300' width='300' className={useColorModeValue(profileStyle.light, profileStyle.dark)}/>
+              </Flex>
+            </Flex>
+            <Flex w='85%'>
+              About Me
+            </Flex>
           </Box>
       </Flex>
     </PageMotionContainer>
