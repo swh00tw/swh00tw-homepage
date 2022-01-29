@@ -7,13 +7,13 @@ import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
 import { StarIcon, ChevronDownIcon } from '@chakra-ui/icons'
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { doFistBump } from '../actions'
+import { doFistBump, doneFistBumpAnimation } from '../actions'
 
 export default function Home(props) {
   const dispatch = useDispatch();
 
   const isFistBumped = useSelector(state => state.isFistBumped);
-  const [fistBumpAnimationCompleted, setFistBumpAnimationCompleted] = useState(false);
+  const isFistBumpAnimationCompleted = useSelector(state => state.isFistBumpedAnimationCompleted);
 
   const normalFontColor = useColorModeValue('#000', '#fff')
   const themeColor = useColorModeValue('orange.600', 'purple.300')
@@ -65,7 +65,7 @@ export default function Home(props) {
           }>
             <Image priority src='/Images/homepage.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
           </motion.div>
-          {isFistBumped && !fistBumpAnimationCompleted?
+          {isFistBumped && !isFistBumpAnimationCompleted?
           <Box h='3vh' position='relative' style={{marginTop: '70%', right: '75%'}}>
             <motion.div 
             style={{transformOrigin: 'center'}}
@@ -82,7 +82,7 @@ export default function Home(props) {
                 }
               }
             }
-            onAnimationComplete={()=>setFistBumpAnimationCompleted(true)}
+            onAnimationComplete={()=>dispatch(doneFistBumpAnimation())}
             >
             <StarIcon color={starColor}/>
             </motion.div>

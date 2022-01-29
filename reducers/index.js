@@ -1,7 +1,8 @@
-import { FIST_BUMP } from "../constants/action-types"
+import { FIST_BUMP, FIST_BUMP_ANIMATION } from "../constants/action-types"
 
 const initState = {
-    isFistBumped: false
+    isFistBumped: false,
+    isFistBumpedAnimationCompleted: false
 }
 
 const reducer = (state = initState, action) => {
@@ -9,6 +10,8 @@ const reducer = (state = initState, action) => {
     switch (action.type){
         case FIST_BUMP:
             return {...state, isFistBumped: true}
+        case FIST_BUMP_ANIMATION:
+            return {...state, isFistBumpedAnimationCompleted: true}
         default:
             return state 
     }
