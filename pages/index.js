@@ -1,5 +1,5 @@
 import PageMotionContainer from '../components/PageMotionContainer'
-import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider, List, ListItem, Tag, Button } from '@chakra-ui/react'
+import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider, List, ListItem, Tag, Button, useToast } from '@chakra-ui/react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import memojiStyle from '../styles/memoji.module.css'
@@ -18,11 +18,15 @@ import useAllColorModeValues from '../data/color'
 import AnimatedScrollDownPrompt from '../components/AnimatedScrollDownPrompt'
 
 export default function Home(props) {
+  const toast = useToast();
   const dispatch = useDispatch();
   const [hobbyIdx, setHobbyIdx] = useState(0);
 
   const isFistBumped = useSelector(state => state.isFistBumped);
   const isFistBumpAnimationCompleted = useSelector(state => state.isFistBumpedAnimationCompleted);
+  const fistBumpCount = useSelector(state => state.fistBumpCount);
+
+  const fistBumpThreshold = 10;
 
   const {
     normalFontColor, 
@@ -87,13 +91,33 @@ export default function Home(props) {
             </AnimatePresence>
         </Flex>
         <Flex w={{base: '100%', lg: '30%'}}>
+
           <motion.div whileTap={{scale: 1.2}} whileHover={{scale: 0.95}} className={memojiStyle.borderCircle} onClick={()=>{
-            if (!isFistBumped) {
-              dispatch(doFistBump())}
+            dispatch(doFistBump())
+            if (fistBumpCount >= fistBumpThreshold) {
+              toast({
+                title: `Ok. You've already clicked ${fistBumpCount} times.`,
+                description: `That's too much. My fist is tired.\n It's time to scroll down.`,
+                position: 'top',
+                isClosable: true,
+                status: 'warning',
+              })
             }
+          }
           }>
-            <Image quality="100" priority src='/Images/homepage.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
+            <AnimatePresence exitBeforeEnter initial={true}>
+              {fistBumpCount > fistBumpThreshold?
+                <motion.div key='hello' initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+                  <Image quality="100" priority src='/Images/stopit.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
+                </motion.div>  
+                :
+                <motion.div key='tooMuch' initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+                  <Image quality="100" priority src='/Images/homepage.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
+                </motion.div>  
+              }
+            </AnimatePresence>
           </motion.div>
+
           {isFistBumped && !isFistBumpAnimationCompleted?
           <Box h='3vh' position='relative' style={{marginTop: '70%', right: '75%'}}>
             <motion.div 
