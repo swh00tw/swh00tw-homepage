@@ -17,6 +17,7 @@ import { Flex,
   MenuDivider,
   Stack,
 } from '@chakra-ui/react'
+import Image from 'next/image'
 import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { ScaleFade, SlideFade } from '@chakra-ui/react'
 import { FaGithub } from "react-icons/fa";
@@ -46,7 +47,13 @@ function HeaderBar(){
   return (
     <Flex bg={BgColor} w='100%' h='10vh' pt='3' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
       <Flex w='80%' alignItems='center' justifyContent="center">
-        <Link href='/'><a><HStack><Text mr='0%' fontSize='xl' color={NavbarFontColor} fontWeight={900} fontFamily='mono'> Shu-Wei Hsu </Text></HStack></a></Link>
+        <Link href='/'><a>
+          <HStack h='100%'>
+            <Image priority src="/Images/laptop_parrot.gif" alt="parrot" height='30%' width='30%' />
+            <Box display={{base: 'none', md: 'block'}} w='1px'/>
+            <Text mr='0%' fontSize='xl' color={NavbarFontColor} fontWeight={900} fontFamily='mono'> Shu-Wei Hsu </Text>
+          </HStack>
+        </a></Link>
 
         <Spacer/>
         <Stack
