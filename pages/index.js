@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import memojiStyle from '../styles/memoji.module.css'
 import profileStyle from '../styles/profile.module.css'
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
-import { StarIcon, ChevronDownIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons'
+import { StarIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md"; 
 import {useState, useEffect} from 'react'
