@@ -1,16 +1,17 @@
 import PageMotionContainer from '../components/PageMotionContainer'
-import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider, List, ListItem, ListIcon, Tag } from '@chakra-ui/react'
+import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider, List, ListItem, ListIcon, Tag, Button } from '@chakra-ui/react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import memojiStyle from '../styles/memoji.module.css'
 import profileStyle from '../styles/profile.module.css'
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
-import { StarIcon, ChevronDownIcon, CloseIcon, CircleIcon } from '@chakra-ui/icons'
+import { StarIcon, ChevronDownIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md"; 
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { doFistBump, doneFistBumpAnimation } from '../actions'
+import Link from 'next/link'
 
 export default function Home(props) {
   const dispatch = useDispatch();
@@ -240,21 +241,41 @@ export default function Home(props) {
       {/* Links */}
       <motion.div initial="offscreen" whileInView="onscreen" viewport={{ once: true, amount: 0.0 }} variants={cardVariants}>
         <Flex my={20} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection='column' alignItems="center"> 
-          <Heading fontSize={{base: '4xl', lg: '6xl'}}>Find me on web</Heading>
-          <Flex w={{base: '70%', md: "40%", lg: "30%"}} justify='space-between' flexDirection='row' color={themeColor} mt='7vh' fontSize={{base: '4xl', lg: '5xl'}} spacing={3}>
-              <motion.button animate={{opacity: 0.6}} whileHover={{scale: 1.2, opacity: 1}} transition={{ease: 'easeInOut'}}>
-                <FaGithub onClick={()=>{window.open("https://github.com/swh00tw", "_blank")}}/>
-              </motion.button>
-              <motion.button animate={{opacity: 0.6}} whileHover={{scale: 1.2, opacity: 1}} transition={{ease: 'easeInOut'}}>
-                <FaLinkedin onClick={()=>{window.open("https://www.linkedin.com/in/%E6%9B%B8%E7%B6%AD-%E8%A8%B1-109621210/", "_blank")}}/>
-              </motion.button>
-              <motion.button animate={{opacity: 0.6}} whileHover={{scale: 1.2, opacity: 1}} transition={{ease: 'easeInOut'}}>
-                <FaFacebook onClick={()=>{window.open("https://www.facebook.com/profile.php?id=100009809101984", "_blank")}}/>
-              </motion.button>
-              <motion.button animate={{opacity: 0.6}} whileHover={{scale: 1.2, opacity: 1}} transition={{ease: 'easeInOut'}}>
-                <a href="mailto: a6140000@gmail.com"><MdEmail/></a>
-              </motion.button>
-          </Flex>
+          <Box borderRadius='xl' bg={BoxColor} w={{base: '90%', lg: '60%'}} py={10} px={5}>
+            <Heading fontSize={{base: '4xl', lg: '6xl'}}>Learn more 🦦</Heading>
+            <Flex flexDirection={{base: 'column', md: 'row'}} w={{base: '90%', md: '60%'}} justify='space-between' py={5}>
+                <Link href="/projects" passHref={true}>
+                  <Button size='lg' my={2} colorScheme={tagColor} rightIcon={<ChevronRightIcon/>}>
+                    <motion.a whileHover={{scale: 1.1}}>
+                      My portfolio
+                    </motion.a>
+                  </Button>
+                </Link>
+                <Link href="/posts" passHref={true}>
+                  <Button size='lg' my={2} color={themeColor} rightIcon={<ChevronRightIcon/>}>
+                    <motion.a whileHover={{scale: 1.1}}>
+                      My posts
+                    </motion.a>
+                  </Button>
+                </Link>
+            </Flex>
+            <Divider my={2}/>
+            <Heading fontSize={{base: '4xl', lg: '6xl'}}>Find me on...</Heading>
+            <Flex w={{base: '80%', md: "40%", lg: "45%"}} justify='space-between' flexDirection='row' color={themeColor} mt='7vh' fontSize={{base: '4xl', lg: '5xl'}} spacing={3}>
+                <motion.button animate={{opacity: 0.6}} whileHover={{scale: 1.2, opacity: 1}} transition={{ease: 'easeInOut'}}>
+                  <FaGithub onClick={()=>{window.open("https://github.com/swh00tw", "_blank")}}/>
+                </motion.button>
+                <motion.button animate={{opacity: 0.6}} whileHover={{scale: 1.2, opacity: 1}} transition={{ease: 'easeInOut'}}>
+                  <FaLinkedin onClick={()=>{window.open("https://www.linkedin.com/in/%E6%9B%B8%E7%B6%AD-%E8%A8%B1-109621210/", "_blank")}}/>
+                </motion.button>
+                <motion.button animate={{opacity: 0.6}} whileHover={{scale: 1.2, opacity: 1}} transition={{ease: 'easeInOut'}}>
+                  <FaFacebook onClick={()=>{window.open("https://www.facebook.com/profile.php?id=100009809101984", "_blank")}}/>
+                </motion.button>
+                <motion.button animate={{opacity: 0.6}} whileHover={{scale: 1.2, opacity: 1}} transition={{ease: 'easeInOut'}}>
+                  <a href="mailto: a6140000@gmail.com"><MdEmail/></a>
+                </motion.button>
+            </Flex>
+          </Box>
         </Flex>
       </motion.div>
 
