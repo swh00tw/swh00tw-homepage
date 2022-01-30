@@ -168,7 +168,7 @@ export default function Home(props) {
                   <Heading align='start' w={{base: '100%', lg: '20%'}} py={3} fontFamily='mono' fontSize={['md', '2xl']} color={themeColor}> About Me </Heading>
                   <Flex flexDirection='column' w={{base: '100%', lg: '80%'}} py={3} px={{base: 0, lg: 5}}>
                     <Text align='start' fontFamily='Montserrat' fontWeight={500} mb={2}>
-                      Hey! I am Shu-Wei Hsu. You can call me Frank. I was born in Kaohsiung City of Taiwan, but study in Taipei. Currently, I am a senior student in the Department of Electrical Engineering at the Nation Taiwan University.
+                      Hey! I am Shu-Wei Hsu. You can call me Frank. I was born in Kaohsiung City of Taiwan, and study in Taipei now. Currently, I am a senior student in the Department of Electrical Engineering at the Nation Taiwan University.
                     </Text>
                     <Text align='start' fontFamily='Montserrat' fontWeight={500}>
                       I am also a developer who loves to create things. I am currently working on improving my skills in the field of web programming.

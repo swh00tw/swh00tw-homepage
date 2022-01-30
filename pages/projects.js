@@ -12,6 +12,9 @@ import useAllColorModeValues from '../data/color'
 import AnimatedScrollDownPrompt from '../components/AnimatedScrollDownPrompt'
 import SkillModal from '../components/SkillModal'
 import mySkills from '../data/skills'
+import projectStyle from '../styles/project.module.css'
+import projects from '../data/projects'
+import ProjectCard from '../components/ProjectCard'
 
 export default function Projects() {
   const dragRef = useRef(null);
@@ -24,6 +27,12 @@ export default function Projects() {
     starColor, 
     tagColor
   } = useAllColorModeValues();
+
+  // force to scroll to top when reload the page
+  // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual'
+  }, []);
 
   return (
     <PageMotionContainer>
@@ -50,7 +59,7 @@ export default function Projects() {
 
       </Flex>
 
-      <Flex mt={-10} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+      <Flex mt={{base: -10, lg: -20}} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
           <motion.div ref={dragRef} style={{width: "100%"}} dragElastic={0.0}>
             <Box bg={bgColor} borderRadius='3xl' w='100%' h={{base: '60vh', md: '30vh', lg: '25vh'}} align='center' justify='center'>
                 {/* <SkillModal dragRef={dragRef} infoObject={mySkills[2]}/> */}
@@ -63,10 +72,16 @@ export default function Projects() {
           </motion.div>
       </Flex>
 
-      <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+      <Flex mt={0} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
           <AnimatedScrollDownPrompt color={themeColor}/>
       </Flex>
 
+      {projects.map((project, index) => (
+        <Flex mt={4} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center" key={index}> 
+          <ProjectCard project={project}/>
+        </Flex>
+      ))}
+      
     </PageMotionContainer>
   )
 }
