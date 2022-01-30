@@ -28,6 +28,12 @@ export default function Projects() {
     tagColor
   } = useAllColorModeValues();
 
+  // force to scroll to top when reload the page
+  // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual'
+  }, []);
+
   return (
     <PageMotionContainer>
       <Box bg={bgColor} h={{base: '5vh', md: '8vh'}} display={{base: 'block',lg: 'none'}}/>
