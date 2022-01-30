@@ -1,5 +1,5 @@
 import PageMotionContainer from '../components/PageMotionContainer'
-import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider, List, ListItem, ListIcon, Tag, Button } from '@chakra-ui/react'
+import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider, List, ListItem, Tag, Button } from '@chakra-ui/react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import memojiStyle from '../styles/memoji.module.css'
@@ -12,6 +12,9 @@ import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { doFistBump, doneFistBumpAnimation } from '../actions'
 import Link from 'next/link'
+import bioList from '../data/bioList'
+import hobbyList from '../data/hobbyList'
+import useAllColorModeValues from '../data/color'
 
 export default function Home(props) {
   const dispatch = useDispatch();
@@ -20,12 +23,7 @@ export default function Home(props) {
   const isFistBumped = useSelector(state => state.isFistBumped);
   const isFistBumpAnimationCompleted = useSelector(state => state.isFistBumpedAnimationCompleted);
 
-  const normalFontColor = useColorModeValue('#000', '#fff')
-  const themeColor = useColorModeValue('orange.600', 'purple.300')
-  const bgColor = useColorModeValue('gray.100', 'black')
-  const BoxColor = useColorModeValue('gray.300','whiteAlpha.400')
-  const starColor = useColorModeValue("yellow.400","yellow.200")
-  const tagColor = useColorModeValue('orange','purple')
+  const {normalFontColor, themeColor, bgColor, BoxColor, starColor, tagColor} = useAllColorModeValues();
 
   // main card animation
   const cardVariants = {
@@ -43,23 +41,6 @@ export default function Home(props) {
       }
     }
   };
-
-  const bioList=[
-    {year: 'June, 2000', content: 'Born in Kaohsiung, Taiwan'},
-    {year: 'Feb, 2022 - Present', content: 'Working as a Engineer Intern at Kinetik'},
-    {year: 'June, 2022', content: 'Graduated from National Taiwan University'},
-  ];
-
-  const hobbyList=[
-    {icon: '🏀', content: 'playing basketball'}, 
-    {icon: '📖', content: 'reading'},
-    {icon: '🎧', content: 'listening to music'},
-    {icon: '🍺', content: 'drinking 😆'},
-    {icon: '☕', content: 'coffee'},
-    {icon: '🏋️🏃‍♂️🛹', content: 'any sports'},
-    {icon: '🗼', content: 'traveling'},
-    {icon: '🍜🍕🍣', content: 'eating 😋'},
-  ]
 
   // force to scroll to top when reload the page
   // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
