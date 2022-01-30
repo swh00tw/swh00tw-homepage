@@ -1,31 +1,41 @@
 import PageMotionContainer from '../components/PageMotionContainer'
-import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider, List, ListItem, ListIcon, Tag, Button } from '@chakra-ui/react'
+import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider, List, ListItem, Tag, Button, useToast } from '@chakra-ui/react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import memojiStyle from '../styles/memoji.module.css'
 import profileStyle from '../styles/profile.module.css'
 import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
-import { StarIcon, ChevronDownIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons'
+import { StarIcon, CloseIcon, ChevronRightIcon } from '@chakra-ui/icons'
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md"; 
 import {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { doFistBump, doneFistBumpAnimation } from '../actions'
 import Link from 'next/link'
+import bioList from '../data/bioList'
+import hobbyList from '../data/hobbyList'
+import useAllColorModeValues from '../data/color'
+import AnimatedScrollDownPrompt from '../components/AnimatedScrollDownPrompt'
 
 export default function Home(props) {
+  const toast = useToast();
   const dispatch = useDispatch();
   const [hobbyIdx, setHobbyIdx] = useState(0);
 
   const isFistBumped = useSelector(state => state.isFistBumped);
   const isFistBumpAnimationCompleted = useSelector(state => state.isFistBumpedAnimationCompleted);
+  const fistBumpCount = useSelector(state => state.fistBumpCount);
 
-  const normalFontColor = useColorModeValue('#000', '#fff')
-  const themeColor = useColorModeValue('orange.600', 'purple.300')
-  const bgColor = useColorModeValue('gray.100', 'black')
-  const BoxColor = useColorModeValue('gray.300','whiteAlpha.400')
-  const starColor = useColorModeValue("yellow.400","yellow.200")
-  const tagColor = useColorModeValue('orange','purple')
+  const fistBumpThreshold = 10;
+
+  const {
+    normalFontColor, 
+    themeColor, 
+    bgColor, 
+    BoxColor, 
+    starColor, 
+    tagColor
+  } = useAllColorModeValues();
 
   // main card animation
   const cardVariants = {
@@ -43,23 +53,6 @@ export default function Home(props) {
       }
     }
   };
-
-  const bioList=[
-    {year: 'June, 2000', content: 'Born in Kaohsiung, Taiwan'},
-    {year: 'Feb, 2022 - Present', content: 'Working as a Engineer Intern at Kinetik'},
-    {year: 'June, 2022', content: 'Graduated from National Taiwan University'},
-  ];
-
-  const hobbyList=[
-    {icon: '🏀', content: 'playing basketball'}, 
-    {icon: '📖', content: 'reading'},
-    {icon: '🎧', content: 'listening to music'},
-    {icon: '🍺', content: 'drinking 😆'},
-    {icon: '☕', content: 'coffee'},
-    {icon: '🏋️🏃‍♂️🛹', content: 'any sports'},
-    {icon: '🗼', content: 'traveling'},
-    {icon: '🍜🍕🍣', content: 'eating 😋'},
-  ]
 
   // force to scroll to top when reload the page
   // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
@@ -98,13 +91,33 @@ export default function Home(props) {
             </AnimatePresence>
         </Flex>
         <Flex w={{base: '100%', lg: '30%'}}>
+
           <motion.div whileTap={{scale: 1.2}} whileHover={{scale: 0.95}} className={memojiStyle.borderCircle} onClick={()=>{
-            if (!isFistBumped) {
-              dispatch(doFistBump())}
+            dispatch(doFistBump())
+            if (fistBumpCount >= fistBumpThreshold) {
+              toast({
+                title: `Ok. You've already clicked ${fistBumpCount} times.`,
+                description: `That's too much. My fist is tired.\n It's time to scroll down.`,
+                position: 'top',
+                isClosable: true,
+                status: 'warning',
+              })
             }
+          }
           }>
-            <Image quality="100" priority src='/Images/homepage.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
+            <AnimatePresence exitBeforeEnter initial={true}>
+              {fistBumpCount > fistBumpThreshold?
+                <motion.div key='hello' initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+                  <Image quality="100" priority src='/Images/stopit.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
+                </motion.div>  
+                :
+                <motion.div key='tooMuch' initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
+                  <Image quality="100" priority src='/Images/homepage.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
+                </motion.div>  
+              }
+            </AnimatePresence>
           </motion.div>
+
           {isFistBumped && !isFistBumpAnimationCompleted?
           <Box h='3vh' position='relative' style={{marginTop: '70%', right: '75%'}}>
             <motion.div 
@@ -133,11 +146,7 @@ export default function Home(props) {
       </Flex>
 
       <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
-          <Flex flexDirection='column' color={themeColor} mt='7vh'>
-            <motion.div animate={{opacity: [0.5, 1, 0.5, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 1, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 0.5, 1, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-          </Flex>
+          <AnimatedScrollDownPrompt color={themeColor}/>
       </Flex>
 
       <motion.div initial="offscreen" whileInView="onscreen" viewport={{ once: true, amount: 0.1 }} variants={cardVariants}>
@@ -191,11 +200,7 @@ export default function Home(props) {
       </motion.div>
 
       <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
-          <Flex flexDirection='column' color={themeColor} mt='7vh'>
-            <motion.div animate={{opacity: [0.5, 1, 0.5, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 1, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 0.5, 1, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-          </Flex>
+        <AnimatedScrollDownPrompt color={themeColor}/>
       </Flex>
 
       {/* auto animation gallery */}
@@ -231,11 +236,7 @@ export default function Home(props) {
       </Flex>
 
       <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
-          <Flex flexDirection='column' color={themeColor} mt='7vh'>
-            <motion.div animate={{opacity: [0.5, 1, 0.5, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 1, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 0.5, 1, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-          </Flex>
+        <AnimatedScrollDownPrompt color={themeColor}/>
       </Flex>
       
       {/* Links */}
