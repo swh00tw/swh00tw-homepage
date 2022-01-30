@@ -1,4 +1,4 @@
-import { Flex, Heading, Box, Text,Button } from '@chakra-ui/react'
+import { Flex, Heading, Box, Text, Button, Tag, useColorModeValue } from '@chakra-ui/react'
 import useAllColorModeValues from '../data/color';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -31,6 +31,7 @@ function ProjectCard ({project}){
                 <Flex py={10} flexDirection={{base: 'column',lg: 'row' }} w='100%' justifyContent="center" alignItems="center">
                     <Flex w={{base: '80%', lg: '50%'}} justifyContent="center" alignItems="start" flexDirection='column'>
                         <Heading fontFamily='Montserrat' pb={2}>{project.name}</Heading>
+                        <Tag borderRadius='full' mt={1} mb={3} variant='solid' size='sm' colorScheme={useColorModeValue('yellow','teal')}>{project.time}</Tag>
                         {project.description.map((description, index) => (
                             <Text align="start" w={{base: '80%', lg: '70%'}} fontFamily='mono' key={index}>{description}</Text>
                         ))}
