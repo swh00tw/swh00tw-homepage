@@ -15,6 +15,7 @@ import Link from 'next/link'
 import bioList from '../data/bioList'
 import hobbyList from '../data/hobbyList'
 import useAllColorModeValues from '../data/color'
+import AnimatedScrollDownPrompt from '../components/AnimatedScrollDownPrompt'
 
 export default function Home(props) {
   const dispatch = useDispatch();
@@ -23,7 +24,14 @@ export default function Home(props) {
   const isFistBumped = useSelector(state => state.isFistBumped);
   const isFistBumpAnimationCompleted = useSelector(state => state.isFistBumpedAnimationCompleted);
 
-  const {normalFontColor, themeColor, bgColor, BoxColor, starColor, tagColor} = useAllColorModeValues();
+  const {
+    normalFontColor, 
+    themeColor, 
+    bgColor, 
+    BoxColor, 
+    starColor, 
+    tagColor
+  } = useAllColorModeValues();
 
   // main card animation
   const cardVariants = {
@@ -114,11 +122,7 @@ export default function Home(props) {
       </Flex>
 
       <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
-          <Flex flexDirection='column' color={themeColor} mt='7vh'>
-            <motion.div animate={{opacity: [0.5, 1, 0.5, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 1, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 0.5, 1, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-          </Flex>
+          <AnimatedScrollDownPrompt color={themeColor}/>
       </Flex>
 
       <motion.div initial="offscreen" whileInView="onscreen" viewport={{ once: true, amount: 0.1 }} variants={cardVariants}>
@@ -172,11 +176,7 @@ export default function Home(props) {
       </motion.div>
 
       <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
-          <Flex flexDirection='column' color={themeColor} mt='7vh'>
-            <motion.div animate={{opacity: [0.5, 1, 0.5, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 1, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 0.5, 1, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-          </Flex>
+        <AnimatedScrollDownPrompt color={themeColor}/>
       </Flex>
 
       {/* auto animation gallery */}
@@ -212,11 +212,7 @@ export default function Home(props) {
       </Flex>
 
       <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
-          <Flex flexDirection='column' color={themeColor} mt='7vh'>
-            <motion.div animate={{opacity: [0.5, 1, 0.5, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 1, 0.5, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-            <motion.div animate={{opacity: [0.5, 0.5, 0.5, 1, 0.5]}} transition={{duration: 3, repeat: Infinity, ease: 'easeInOut'}}><ChevronDownIcon boxSize={'10vh'} mt='-7vh'/></motion.div>
-          </Flex>
+        <AnimatedScrollDownPrompt color={themeColor}/>
       </Flex>
       
       {/* Links */}
