@@ -29,9 +29,9 @@ import {useState, useEffect} from 'react';
 function SkillTag({dragRef, infoObject, whileClick, color, index}) {
   // console.log(dragRef);
   const tagSizeMappingTable = {
-    "beginner": "sm",
-    "intermediate": "md",
-    "experienced": "lg",
+    "Beginner": "sm",
+    "Intermediate": "md",
+    "Experienced": "lg",
   }
   const tagSize = tagSizeMappingTable[infoObject.level]
 
@@ -60,6 +60,7 @@ function SkillTag({dragRef, infoObject, whileClick, color, index}) {
       <motion.div 
         drag 
         dragConstraints={dragRef} 
+        dragMomentum={false}
         style={{display: 'inline-block'}}
         variants={variants}
         initial="initial_state"
