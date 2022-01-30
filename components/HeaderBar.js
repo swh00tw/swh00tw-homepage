@@ -45,7 +45,7 @@ function HeaderBar(){
   const BgColor = useColorModeValue('gray.100', 'black')
 
   return (
-    <Flex bg={BgColor} w='100%' h='10vh' pt='3' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
+    <Flex bg={BgColor} w='100%' h='10vh' pt='0' position='fixed' flexDirection="row" justifyContent="center" alignItems="center" zIndex="1000">
       <Flex w='80%' alignItems='center' justifyContent="center">
         <Link href='/'><a>
           <HStack h='100%'>
