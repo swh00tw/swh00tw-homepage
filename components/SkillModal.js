@@ -26,8 +26,7 @@ import { hash_to_color_hex } from '../utils/colorAgent';
 import useAllColorModeValues from '../data/color';
 import {useState, useEffect} from 'react';
 
-function SkillTag({dragRef, infoObject, whileClick, color, index}) {
-  // console.log(dragRef);
+function SkillTag({dragRef, infoObject, whileClick, color}) {
   const tagSizeMappingTable = {
     "Beginner": "sm",
     "Intermediate": "md",
