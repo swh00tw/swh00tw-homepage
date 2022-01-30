@@ -50,7 +50,7 @@ export default function Projects() {
 
       </Flex>
 
-      <Flex mt={-10} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+      <Flex mt={-15} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
           <motion.div ref={dragRef} style={{width: "100%"}} dragElastic={0.0}>
             <Box bg={bgColor} borderRadius='3xl' w='100%' h={{base: '60vh', md: '30vh', lg: '25vh'}} align='center' justify='center'>
                 {/* <SkillModal dragRef={dragRef} infoObject={mySkills[2]}/> */}
@@ -63,7 +63,7 @@ export default function Projects() {
           </motion.div>
       </Flex>
 
-      <Flex my={5} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+      <Flex my={0} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
           <AnimatedScrollDownPrompt color={themeColor}/>
       </Flex>
 
