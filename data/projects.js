@@ -26,7 +26,7 @@ const projects = [
             'I want to build a personal website after inspired by a Japanese youtuber & full-stack Developer (@devaslife). He use NextJS, ChakraUI, ThreeJS & FramerMotion to build a cute personal website. And I decide to make my own one!',
             'Why choosing NextJS rather than Create-React-App which I am more familiar with?',
             'I heard of server-side rendering in web programming course before, but the teacher didn\'t tell me the detail about it. So I using Create-React-App in previous project, which is client-side rendering. However, I want to master this popular framework and I always want to have a personal website. So, I decided to make a website with NextJS.',
-            'I also learned a lot about deployment using Vercel by making this website. Strongly recommend to beginner of website deployment. Checkout Vercel\'s NextJS tutorial to learn more!',
+            'I also learned a lot about deployment using Vercel by making this website. Strongly recommend to beginner of website deployment. Check out Vercel\'s NextJS tutorial to learn more!',
         ]
     },
     {   
