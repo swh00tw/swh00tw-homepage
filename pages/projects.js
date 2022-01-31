@@ -61,7 +61,7 @@ export default function Projects() {
 
       <Flex mt={{base: -10, lg: -20}} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
           <motion.div ref={dragRef} style={{width: "100%"}} dragElastic={0.0}>
-            <Box bg={bgColor} borderRadius='3xl' w='100%' h={{base: '60vh', md: '30vh', lg: '25vh'}} align='center' justify='center'>
+            <Box bg={bgColor} borderRadius='3xl' w='100%' h={{base: '500px', md: '360px', lg: '25vh'}} align='center' justify='center'>
                 {/* <SkillModal dragRef={dragRef} infoObject={mySkills[2]}/> */}
                 {mySkills.map((skill, index) => {
                   return (
