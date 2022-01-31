@@ -26,7 +26,7 @@ function ProjectCard ({project, fullContent, githubInfo}){
     return (
         <Box borderRadius='2xl' w='100%' bg={BoxColor}>
             <Flex py={10} flexDirection={{base: 'column',lg: 'row' }} w='100%' justifyContent="center" alignItems="center">
-                <Flex w={{base: '80%', lg: '50%'}} justifyContent="center" alignItems="start" flexDirection='column'>
+                <Flex w={{base: '80%', lg: '50%'}} justifyContent="center" alignItems={{base: 'center',md: 'start'}} flexDirection='column'>
                     <Heading fontFamily='Montserrat' pb={2}>{project.name}</Heading>
                     <Tag borderRadius='full' mt={1} mb={3} variant='solid' size='sm' colorScheme={useColorModeValue('yellow','teal')}>{project.time}</Tag>
                     {project.description.map((description, index) => (
