@@ -5,7 +5,7 @@ export default function Posts() {
   const normalFontColor = useColorModeValue('#000', '#fff')
 
   return (
-    <PageMotionContainer>
+    <PageMotionContainer duration={0.75}>
       <Flex h='90vh' justifyContent="center" grow="1" flexDirection="row" alignItems="center"> 
           <Heading as="h1" size="4xl" fontWeight="bold" color={normalFontColor} mb={4}>Posts.</Heading>
       </Flex>
