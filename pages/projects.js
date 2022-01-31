@@ -95,7 +95,7 @@ export default function Projects() {
       {projects.map((project, index) => (
         <Flex mt={4} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center" key={index}> 
           <motion.div initial="offscreen" whileInView="onscreen" viewport={{ once: true, amount: 0.0 }} variants={cardVariants}>
-            <ProjectCard project={project}/>
+            <ProjectCard project={project} fullContent={false}/>
           </motion.div>
         </Flex>
       ))}
