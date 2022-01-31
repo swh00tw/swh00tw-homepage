@@ -19,7 +19,7 @@ function Layout(props) {
           <meta property="og:type" content="website" />
           <meta property="og:title" content="Frank Hsu - homepage"/>
           <meta property="og:description" content="Welcome to my cool website 👾"/>
-          <meta property="og:image" content="/OG.jpg"/>
+          <meta property="og:image" content="/public/OG.jpg"/>
 
           {/* <!-- Twitter Meta Tags --> */}
           <meta name="twitter:card" content="summary_large_image"/>
@@ -27,7 +27,7 @@ function Layout(props) {
           <meta property="twitter:url" content="https://swh00tw.vercel.app/"/>
           <meta name="twitter:title" content="Frank Hsu - homepage"/>
           <meta name="twitter:description" content="Welcome to my cool website 👾"/>
-          <meta name="twitter:image" content="/OG.jpg" />
+          <meta name="twitter:image" content="/public/OG.jpg" />
         </Head>
 
         <HeaderBar />
