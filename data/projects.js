@@ -32,7 +32,7 @@ const projects = [
         detail: '/projects/ntuCourseNeo',
         img_path: '/Images/project-ntucourse-neo.png',
         type: 'Team project',
-        achievements: ['1000+ users  8 hours after published', '2000+ users in the 1st week', 'First full-stack app'],
+        achievements: ['1000+ users in 8 hours', '2000+ users in the 1st week', 'First full-stack app'],
         collaborators: [{name: 'jc-hiroto', github: 'https://github.com/jc-hiroto'}, {name: 'Wil0408', github: 'https://github.com/Wil0408'}],
         role: ['Front-end developer'],
         framework: ['React', 'Redux', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Auth0', 'ChakraUI', 'BeautifulSoup', 'Azure'],
