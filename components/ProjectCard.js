@@ -7,14 +7,17 @@ import {
     Tag, 
     useColorModeValue,
     Divider,
+    TagLabel,
+    Avatar,
 } from '@chakra-ui/react'
 import useAllColorModeValues from '../data/color';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import projectStyle from '../styles/project.module.css';
+import FrameworkTag from './FrameworkTag';
 
-function ProjectCard ({project, fullContent}){
+function ProjectCard ({project, fullContent, githubInfo}){
 
     const {normalFontColor, themeColor, bgColor, BoxColor, starColor, tagColor} = useAllColorModeValues();
 
@@ -47,7 +50,64 @@ function ProjectCard ({project, fullContent}){
             </Flex>
             {fullContent?
                 <>
-                    <Divider borderWidth={1} w='80%' mb={10} borderStyle='solid' />
+                    <Divider borderWidth={1} w='80%' borderStyle='solid' mb={{lg: 10}} />
+                    {/* collaboraters */}
+                    {githubInfo.length > 0?
+                        <Flex fontFamily='Montserrat' pb={{base: 3, lg: 5}} w={{base: '80%', lg: '90%'}} justify='space-between' align='center' flexDirection={{base: 'column', lg: 'row'}}>
+                            <Flex pl={3} w={{base: '100%', lg: '20%'}} my={{base: 5,lg: 0}}>
+                                <Text fontSize='lg' fontFamily='mono' fontWeight={600} color={themeColor}>Collaborators</Text>
+                            </Flex>
+                            <Flex pl={3} w={{base: '100%', lg: '70%'}} flexDirection={{base: 'column', md: 'row'}}>
+                                {githubInfo.map((member)=>{
+                                    return (
+                                        <motion.div key={member.name} whileHover={{scale: 1.1}}>
+                                            <Tag key={member.name} size='lg' m={1} colorScheme={tagColor} borderRadius='full'>
+                                                <Avatar
+                                                    src={member.info? member.info.avatar_url : ""}
+                                                    size='xs'
+                                                    ml={-1}
+                                                    mr={2}
+                                                    />
+                                                <TagLabel>
+                                                    <a href={member.info? member.info.html_url: 'https://github.com/swh00tw'}>
+                                                        {member.name}
+                                                    </a>
+                                                </TagLabel>
+                                            </Tag>
+                                        </motion.div>
+                                    )
+                                })}
+                            </Flex>
+                        </Flex>
+                        :
+                        <></>
+                    }
+                    {/* my role */}
+                    {project.role?
+                        <Flex fontFamily='Montserrat' pb={{base: 3, lg: 5}} w={{base: '80%', lg: '90%'}} justify='space-between' align='center' flexDirection={{base: 'column', lg: 'row'}}>
+                            <Flex pl={3} w={{base: '100%', lg: '20%'}} my={{base: 5,lg: 0}}>
+                                <Text fontSize='lg' fontFamily='mono' fontWeight={600} color={themeColor}>Role</Text>
+                            </Flex>
+                            <Flex pl={3} w={{base: '100%', lg: '70%'}} flexDirection={{base: 'column', md: 'row'}}>
+                                <Text pl={1} fontSize='lg' fontWeight={400} color={normalFontColor}>{project.role}</Text>
+                            </Flex>
+                        </Flex>
+                        :
+                        <></>
+                    }   
+                    {/* frameworks */}
+                    <Flex fontFamily='Montserrat' pb={{base: 3, lg: 5}} w={{base: '80%', lg: '90%'}} justify='space-between' align='center' flexDirection={{base: 'column', lg: 'row'}}>
+                        <Flex pl={3} w={{base: '100%', lg: '20%'}} my={{base: 5,lg: 0}}>
+                            <Text fontSize='lg' fontFamily='mono' fontWeight={600} color={themeColor}>Frameworks</Text>
+                        </Flex>
+                        <Flex pl={3} w={{base: '100%', lg: '70%'}} flexDirection={{base: 'column', md: 'row'}}>
+                            <Box align='start'>
+                            {project.framework.map((framework_name)=>{
+                                return (<FrameworkTag key={framework_name} name={framework_name}/>)
+                            })}
+                            </Box>
+                        </Flex>
+                    </Flex>
                 </>
                 :
                 <></>
