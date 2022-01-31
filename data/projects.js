@@ -35,7 +35,7 @@ const projects = [
         milestones: ['1000+ users  8 hours after published', '2000+ users in the 1st week', 'First full-stack app'],
         collaborators: [{name: 'jc-hiroto', github: 'https://github.com/jc-hiroto'}, {name: 'Wil0408', github: 'https://github.com/Wil0408'}],
         role: ['Front-end developer'],
-        framework: ['React', 'Redux', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Auth0', 'Chakra-UI', 'BeautifulSoup', 'Azure'],
+        framework: ['React', 'Redux', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Auth0', 'ChakraUI', 'BeautifulSoup', 'Azure'],
         content: [
             'NTUCourse was made to be an alternative to the old NTU course information website. We provide not only better user interface, but also some useful and brand new features for finding course, searching for course information and managing courses',
             'I worked as frontend developer in our team. My job is using React to build the frontend of the website, and Redux to manage the complex states of the website. I also took part in building backend API, enacting data schema and data preprocessing,',
