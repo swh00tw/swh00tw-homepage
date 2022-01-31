@@ -86,9 +86,9 @@ function Project({project}){
             </AnimatePresence>
             {/* content */}
             <Flex mt={{base: 0, lg: -20}} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
-                <ProjectCard project={project}/>
+                <ProjectCard project={project} fullContent={true}/>
             </Flex>
-    </PageMotionContainer>
+        </PageMotionContainer>
     )
 }
 

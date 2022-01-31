@@ -1,11 +1,20 @@
-import { Flex, Heading, Box, Text, Button, Tag, useColorModeValue } from '@chakra-ui/react'
+import { 
+    Flex, 
+    Heading, 
+    Box, 
+    Text, 
+    Button, 
+    Tag, 
+    useColorModeValue,
+    Divider,
+} from '@chakra-ui/react'
 import useAllColorModeValues from '../data/color';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import projectStyle from '../styles/project.module.css';
 
-function ProjectCard ({project}){
+function ProjectCard ({project, fullContent}){
 
     const {normalFontColor, themeColor, bgColor, BoxColor, starColor, tagColor} = useAllColorModeValues();
 
@@ -36,6 +45,13 @@ function ProjectCard ({project}){
                     </motion.div>
                 </Flex>
             </Flex>
+            {fullContent?
+                <>
+                    <Divider borderWidth={1} w='80%' my={10} borderStyle='solid' />
+                </>
+                :
+                <></>
+            }   
         </Box>
     )
 }
