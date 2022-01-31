@@ -28,6 +28,22 @@ export default function Projects() {
     tagColor
   } = useAllColorModeValues();
 
+  const cardVariants = {
+    offscreen: {
+      y: 300,
+      opacity: 0,
+    },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.5,
+        duration: 0.8
+      }
+    }
+  };
+
   // force to scroll to top when reload the page
   // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
   useEffect(() => {
@@ -78,7 +94,9 @@ export default function Projects() {
 
       {projects.map((project, index) => (
         <Flex mt={4} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center" key={index}> 
-          <ProjectCard project={project}/>
+          <motion.div initial="offscreen" whileInView="onscreen" viewport={{ once: true, amount: 0.0 }} variants={cardVariants}>
+            <ProjectCard project={project}/>
+          </motion.div>
         </Flex>
       ))}
       
