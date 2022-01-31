@@ -11,6 +11,7 @@ import AnimatedScrollDownPrompt from "../../components/AnimatedScrollDownPrompt"
 import { ChevronLeftIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
 import ProjectCard from "../../components/ProjectCard"
+import getGithubInfo from "../../utils/getGithubInfo";
 
 export async function getStaticPaths() {
     const paths = [
@@ -33,14 +34,38 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
     // Fetch necessary data for the blog post using params.id
     const project = await getProjectData('/projects/'+params.id, projects);
+
+    if (project.collaborators){
+        let githubInfo = []
+        for (let i = 0; i < project.collaborators.length; i++){
+            let info = await getGithubInfo(project.collaborators[i].name)
+            if (info){
+                githubInfo.push({name: project.collaborators[i].name, info: info});
+            } else {
+                githubInfo.push({name: project.collaborators[i].name, info: null});
+            }
+        }
+        return {
+            props: {
+                project,
+                githubInfo
+            },
+            // Next.js will attempt to re-generate the page:
+            // When a request comes in with the same params,
+            // Incremental Static Regeneration (ISR)
+            revalidate: 1,
+        }
+    }
+
     return {
         props: {
-            project
+            project,
+            githubInfo: null
         }
     }
 }
 
-function Project({project}){
+function Project({project, githubInfo}){
 
     const {
         normalFontColor, 
@@ -61,7 +86,7 @@ function Project({project}){
                         
                         <Flex flexDirection='column' w={{base: '100%', lg: '65%'}}>
                             <Heading fontSize={['4xl', '5xl']} fontWeight="bold" color={themeColor} mb={4}>{project.name}</Heading>
-                            <motion.button whileHover={{scale: 1.1}}>
+                            <motion.div whileHover={{scale: 1.1}}>
                                 <Link href="/projects">
                                     <a>
                                     <Box as="button" fontFamily='mono' bg={BoxColor} borderRadius='lg' h={{base: '14', md: '14'}} py={2} px={5} mx='auto' mt={5} textAlign="center">
@@ -72,7 +97,7 @@ function Project({project}){
                                     </Box>
                                     </a>
                                 </Link>
-                            </motion.button>
+                            </motion.div>
                         </Flex>
 
                         <Flex w={{base: '100%', lg: '30%'}}>
