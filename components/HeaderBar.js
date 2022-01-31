@@ -65,7 +65,7 @@ function HeaderBar(){
           mt={{ base: 4, md: 0 }}
         >
           <NavBarItem href='/projects'>
-            <Text fontSize='sm' color={pathname==='/projects'?IconColor:NavbarFontColor} fontWeight={400} fontFamily='mono'>Projects</Text>
+            <Text fontSize='sm' color={pathname.includes('/projects')?IconColor:NavbarFontColor} fontWeight={400} fontFamily='mono'>Projects</Text>
           </NavBarItem>
           <Spacer/>
           <NavBarItem href='/posts'>
