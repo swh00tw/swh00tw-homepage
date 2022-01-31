@@ -28,6 +28,22 @@ export default function Projects() {
     tagColor
   } = useAllColorModeValues();
 
+  const cardVariants = {
+    offscreen: {
+      y: 300,
+      opacity: 0,
+    },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.5,
+        duration: 0.8
+      }
+    }
+  };
+
   // force to scroll to top when reload the page
   // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
   useEffect(() => {
@@ -35,7 +51,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <PageMotionContainer>
+    <PageMotionContainer duration={0.75}>
       <Box bg={bgColor} h={{base: '5vh', md: '8vh'}} display={{base: 'block',lg: 'none'}}/>
       <Flex py={{lg: '8vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
         
@@ -61,7 +77,7 @@ export default function Projects() {
 
       <Flex mt={{base: -10, lg: -20}} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
           <motion.div ref={dragRef} style={{width: "100%"}} dragElastic={0.0}>
-            <Box bg={bgColor} borderRadius='3xl' w='100%' h={{base: '60vh', md: '30vh', lg: '25vh'}} align='center' justify='center'>
+            <Box bg={bgColor} borderRadius='3xl' w='100%' h={{base: '500px', md: '360px', lg: '25vh'}} align='center' justify='center'>
                 {/* <SkillModal dragRef={dragRef} infoObject={mySkills[2]}/> */}
                 {mySkills.map((skill, index) => {
                   return (
@@ -78,7 +94,9 @@ export default function Projects() {
 
       {projects.map((project, index) => (
         <Flex mt={4} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center" key={index}> 
-          <ProjectCard project={project}/>
+          <motion.div initial="offscreen" whileInView="onscreen" viewport={{ once: true, amount: 0.0 }} variants={cardVariants}>
+            <ProjectCard project={project} fullContent={false}/>
+          </motion.div>
         </Flex>
       ))}
       
