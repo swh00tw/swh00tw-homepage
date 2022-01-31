@@ -40,7 +40,9 @@ function ProjectCard ({project, fullContent, githubInfo}){
                             :
                             <></>
                         }
-                        <Link href={project.detail}><a><Button px={5} mr={{md: 2}} mt={3} size='md' variant='outline' colorScheme={tagColor}>Profile</Button></a></Link>
+                        {fullContent?<></>:
+                            <Link href={project.detail}><a><Button px={5} mr={{md: 2}} mt={3} size='md' variant='outline' colorScheme={tagColor}>Profile</Button></a></Link>
+                        }
                         <Button px={5} mr={{md: 2}} mt={3} size='md' variant='outline' colorScheme={tagColor} onClick={()=>{window.open(project.github, "_blank")}}>Github</Button>
                     </Flex>
                 </Flex>
@@ -128,6 +130,19 @@ function ProjectCard ({project, fullContent, githubInfo}){
                             <Box align='start'>
                                 {project.achievements.map((item)=>{
                                     return (<Badge key={item} variant='solid' colorScheme={badgeColor} mx={1}>{item}</Badge>)
+                                })}
+                            </Box>
+                        </Flex>
+                    </Flex>
+                    {/* Content */}
+                    <Flex fontFamily='Montserrat' pb={10} w={{base: '80%', lg: '90%'}} justify='space-between' align='start' flexDirection={{base: 'column', lg: 'row'}}>
+                        <Flex pl={3} w={{base: '100%', lg: '20%'}} my={{base: 5,lg: 0}} pt={1}>
+                            <Text fontSize='lg' fontFamily='mono' fontWeight={600} color={themeColor}>Introduction</Text>
+                        </Flex>
+                        <Flex pl={3} w={{base: '100%', lg: '70%'}} flexDirection={{base: 'column', md: 'row'}}>
+                            <Box align='start'>
+                                {project.content.map((item)=>{
+                                    return (<Text key={item} mb={5}>{item}</Text>)
                                 })}
                             </Box>
                         </Flex>
