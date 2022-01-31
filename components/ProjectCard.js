@@ -9,6 +9,7 @@ import {
     Divider,
     TagLabel,
     Avatar,
+    Badge
 } from '@chakra-ui/react'
 import useAllColorModeValues from '../data/color';
 import { motion } from 'framer-motion';
@@ -20,6 +21,7 @@ import FrameworkTag from './FrameworkTag';
 function ProjectCard ({project, fullContent, githubInfo}){
 
     const {normalFontColor, themeColor, bgColor, BoxColor, starColor, tagColor} = useAllColorModeValues();
+    const badgeColor = useColorModeValue('yellow','teal')
 
     return (
         <Box borderRadius='2xl' w='100%' bg={BoxColor}>
@@ -111,9 +113,22 @@ function ProjectCard ({project, fullContent, githubInfo}){
                         </Flex>
                         <Flex pl={3} w={{base: '100%', lg: '70%'}} flexDirection={{base: 'column', md: 'row'}}>
                             <Box align='start'>
-                            {project.framework.map((framework_name)=>{
-                                return (<FrameworkTag key={framework_name} name={framework_name}/>)
-                            })}
+                                {project.framework.map((framework_name)=>{
+                                    return (<FrameworkTag key={framework_name} name={framework_name}/>)
+                                })}
+                            </Box>
+                        </Flex>
+                    </Flex>
+                    {/* Achievements */}
+                    <Flex fontFamily='Montserrat' pb={{base: 3, lg: 5}} w={{base: '80%', lg: '90%'}} justify='space-between' align='center' flexDirection={{base: 'column', lg: 'row'}}>
+                        <Flex pl={3} w={{base: '100%', lg: '20%'}} my={{base: 5,lg: 0}}>
+                            <Text fontSize='lg' fontFamily='mono' fontWeight={600} color={themeColor}>Achievements</Text>
+                        </Flex>
+                        <Flex pl={3} w={{base: '100%', lg: '70%'}} flexDirection={{base: 'column', md: 'row'}}>
+                            <Box align='start'>
+                                {project.achievements.map((item)=>{
+                                    return (<Badge key={item} variant='solid' colorScheme={badgeColor} mx={1}>{item}</Badge>)
+                                })}
                             </Box>
                         </Flex>
                     </Flex>
