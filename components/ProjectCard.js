@@ -51,6 +51,15 @@ function ProjectCard ({project, fullContent, githubInfo}){
             {fullContent?
                 <>
                     <Divider borderWidth={1} w='80%' borderStyle='solid' mb={{lg: 10}} />
+                    {/* Type */}
+                    <Flex fontFamily='Montserrat' pb={{base: 3, lg: 5}} w={{base: '80%', lg: '90%'}} justify='space-between' align='center' flexDirection={{base: 'column', lg: 'row'}}>
+                        <Flex pl={3} w={{base: '100%', lg: '20%'}} my={{base: 5,lg: 0}}>
+                            <Text fontSize='lg' fontFamily='mono' fontWeight={600} color={themeColor}>Type</Text>
+                        </Flex>
+                        <Flex pl={3} w={{base: '100%', lg: '70%'}} flexDirection={{base: 'column', md: 'row'}}>
+                            <Text pl={1} fontSize='lg' fontWeight={400} color={normalFontColor}>{project.type}</Text>
+                        </Flex>
+                    </Flex>
                     {/* collaboraters */}
                     {githubInfo.length > 0?
                         <Flex fontFamily='Montserrat' pb={{base: 3, lg: 5}} w={{base: '80%', lg: '90%'}} justify='space-between' align='center' flexDirection={{base: 'column', lg: 'row'}}>
