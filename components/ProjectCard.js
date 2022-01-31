@@ -137,7 +137,7 @@ function ProjectCard ({project, fullContent, githubInfo}){
                     {/* Content */}
                     <Flex fontFamily='Montserrat' pb={10} w={{base: '80%', lg: '90%'}} justify='space-between' align='start' flexDirection={{base: 'column', lg: 'row'}}>
                         <Flex pl={3} w={{base: '100%', lg: '20%'}} my={{base: 5,lg: 0}} pt={1}>
-                            <Text fontSize='lg' fontFamily='mono' fontWeight={600} color={themeColor}>Introduction</Text>
+                            <Text fontSize='lg' fontFamily='mono' fontWeight={600} color={themeColor}>Experience</Text>
                         </Flex>
                         <Flex pl={3} w={{base: '100%', lg: '70%'}} flexDirection={{base: 'column', md: 'row'}}>
                             <Box align='start'>
