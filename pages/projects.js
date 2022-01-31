@@ -35,7 +35,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <PageMotionContainer>
+    <PageMotionContainer duration={0.75}>
       <Box bg={bgColor} h={{base: '5vh', md: '8vh'}} display={{base: 'block',lg: 'none'}}/>
       <Flex py={{lg: '8vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
         
