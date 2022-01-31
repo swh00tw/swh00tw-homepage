@@ -60,7 +60,7 @@ export async function getStaticProps({ params }) {
     return {
         props: {
             project,
-            githubInfo: null
+            githubInfo: []
         }
     }
 }
