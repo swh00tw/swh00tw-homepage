@@ -47,7 +47,7 @@ function ProjectCard ({project, fullContent}){
             </Flex>
             {fullContent?
                 <>
-                    <Divider borderWidth={1} w='80%' my={10} borderStyle='solid' />
+                    <Divider borderWidth={1} w='80%' mb={10} borderStyle='solid' />
                 </>
                 :
                 <></>

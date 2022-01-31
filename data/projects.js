@@ -16,6 +16,12 @@ const projects = [
         github: 'https://github.com/swh00tw/swh00tw-homepage',
         detail: '/projects/myHomepage',
         img_path: '/Images/project-myhomepage.png',
+        type: 'Personal side project',
+        milestones: ['My first website!', 'First NextJS App', 'Made in only 1 week ⚡'],
+        collaborators: null,
+        role: null,
+        framework: [],
+        content: []
     },
     {   
         name: 'NTUCourse Neo',
@@ -25,6 +31,17 @@ const projects = [
         github: 'https://github.com/NTUCourse-Neo',
         detail: '/projects/ntuCourseNeo',
         img_path: '/Images/project-ntucourse-neo.png',
+        type: 'Team project',
+        milestones: ['1000+ users  8 hours after published', '2000+ users in the 1st week', 'First full-stack app'],
+        collaborators: [{name: 'jc-hiroto', github: 'https://github.com/jc-hiroto'}, {name: 'Wil0408', github: 'https://github.com/Wil0408'}],
+        role: ['Front-end developer'],
+        framework: ['React', 'Redux', 'Node.js', 'Express', 'MongoDB', 'Mongoose', 'Auth0', 'Chakra-UI', 'BeautifulSoup', 'Azure'],
+        content: [
+            'NTUCourse was made to be an alternative to the old NTU course information website. We provide not only better user interface, but also some useful and brand new features for finding course, searching for course information and managing courses',
+            'I worked as frontend developer in our team. My job is using React to build the frontend of the website, and Redux to manage the complex states of the website. I also took part in building backend API, enacting data schema and data preprocessing,',
+            'It was the biggest project I have ever worked on. It took us nearly 2 months to finish the service in our first senior semester. We spent lots of time on it. Although the task is tough, I learned a lot from it. Aside from learning React, I also gained lots of knowledge about user authentication, deployment, etc. It was definitely a great experience and a boost to my confidence & interest on web development.',
+            'Our team is going to release new features in the near future, so stay tuned!'
+        ],
     },
     {   
         name: 'DS Tutor',
