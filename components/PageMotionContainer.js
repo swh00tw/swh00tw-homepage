@@ -13,7 +13,7 @@ function PageMotionContainer(props){
           animate="visible"
           exit="hidden"
           variants={variants}
-          transition={{ duration: 0.75,  ease: 'easeInOut' }}
+          transition={{ duration: props.duration,  ease: 'easeInOut' }}
         >
             {props.children}
         </motion.div>
