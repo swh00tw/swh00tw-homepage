@@ -12,7 +12,7 @@ import PostCard from '../components/PostCard';
 
 export async function getServerSideProps() {
   const postItems = await getMediumPosts();
-  console.log(postItems);
+  //console.log(postItems);
   return {
     props: {
       posts: postItems,
@@ -53,7 +53,7 @@ export default function Posts({ posts }) {
     }
   };
 
-  if (!posts){
+  if (!posts || posts.length === 0) {
     return (
       <PageMotionContainer duration={0.75}>
         <Flex h='90vh' justifyContent="center" grow="1" flexDirection="row" alignItems="center"> 
