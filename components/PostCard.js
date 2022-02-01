@@ -11,8 +11,6 @@ function PostCard ({post}){
         starColor, 
         tagColor
       } = useAllColorModeValues();
-    
-    const postcardColor = useColorModeValue("orange.100","purple.300");
 
     const postDate = post.pubDate.split(" ")[0];
 
@@ -22,11 +20,11 @@ function PostCard ({post}){
                 <Flex w={{base: '100%', md: '70%'}} flexDirection='column' justify='center' >
                     <Heading fontSize={{base: 'sm', md: 'md'}} align='start' isTruncated>{post.title}</Heading>
                     <Flex justifyContent={{base: 'center', md: 'start'}} pt={2}>
-                        <Tag borderRadius='full' mt={2} variant='solid' size='sm' colorScheme={tagColor}>{postDate}</Tag>
+                        <Tag borderRadius='full' mt={2} variant='solid' size='sm' colorScheme={useColorModeValue('yellow', 'teal')}>{postDate}</Tag>
                     </Flex>
                 </Flex>
                 <Flex w={{base: '100%', md: '30%'}} justify={{base: 'center', md: 'end'}} py={4}>
-                    <Button size='lg' onClick={()=>{window.open(post.link,"_blank")}}>Read</Button>
+                    <Button size='lg' onClick={()=>{window.open(post.link,"_blank")}} w={{base: '100%', md: '60%'}}>Read</Button>
                 </Flex>
             </Flex>
             <Divider w='90%' mt={5}/>

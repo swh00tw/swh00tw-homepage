@@ -69,7 +69,7 @@ export default function Posts({ posts }) {
           <Box bg={bgColor} h={{base: '5vh', md: '8vh'}} display={{base: 'block',lg: 'none'}}/>
           <Flex py={{lg: '8vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
             
-            <Flex flexDirection='column' w={{base: '100%', lg: '55%'}}>
+            <Flex flexDirection='column' w={{base: '100%', md: '65%', lg: '55%'}}>
                 <Heading align='start' w={{base: '60%', md: '75%'}} fontSize={['3xl', '5xl']} mx='auto' fontWeight="bold" color={themeColor} mb={2}>Some </Heading>
                 <Heading align='start' w={{base: '60%', md: '75%'}} fontSize={['3xl', '5xl']} mx='auto' fontWeight="bold" color={themeColor} mb={2}>Random</Heading>
                 <Heading align='start' w={{base: '60%', md: '75%'}} fontSize={['3xl', '5xl']} mx='auto' fontWeight="bold" color={themeColor} mb={2}>Thoughts?</Heading>
