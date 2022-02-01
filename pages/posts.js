@@ -12,6 +12,7 @@ import PostCard from '../components/PostCard';
 
 export async function getServerSideProps() {
   const postItems = await getMediumPosts();
+  console.log(postItems);
   return {
     props: {
       posts: postItems,
@@ -195,9 +196,11 @@ export default function Posts({ posts }) {
 
           <motion.div initial="offscreen" whileInView="onscreen" viewport={{ once: true, amount: 0.1 }} variants={cardVariants}>
             <Flex mt={0} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
-              {posts.map((post, index) => (
-                  <PostCard key={post.title} post={post}/>
-              ))}
+              <Box px={3} py={10} borderRadius='3xl' bg={BoxColor} w={{base: '100%', md: '80%'}}>
+                {posts.map((post, index) => (
+                    <PostCard key={post.title} post={post}/>
+                ))}
+              </Box>
             </Flex>
           </motion.div>
 
