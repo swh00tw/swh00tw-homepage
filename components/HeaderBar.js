@@ -1,25 +1,19 @@
 import { Flex, 
   Box, 
   Spacer, 
-  Icon, 
   Button, 
   Text, 
   HStack, 
   useColorMode, 
   useColorModeValue, 
-  useMediaQuery,Menu,
+  Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
   Stack,
 } from '@chakra-ui/react'
 import Image from 'next/image'
-import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
-import { ScaleFade, SlideFade } from '@chakra-ui/react'
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { FaGithub } from "react-icons/fa";
 import Link from 'next/link' 
 import ThemeToggleButton from './ThemeToggleButton';

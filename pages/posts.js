@@ -1,8 +1,7 @@
 import PageMotionContainer from '../components/PageMotionContainer'
-import { Flex, Heading, Box, useColorModeValue, HStack, Text, AspectRatio, Button, Tag, Divider } from '@chakra-ui/react'
+import { Flex, Heading, Box, useColorModeValue, Text } from '@chakra-ui/react'
 import useAllColorModeValues from '../data/color';
 import { AnimatePresence, motion } from 'framer-motion';
-import Link from 'next/link';
 import Image from 'next/image';
 import memojiStyle from '../styles/memoji.module.css';
 import getMediumPosts from '../utils/getMediumPosts'
