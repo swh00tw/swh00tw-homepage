@@ -1,11 +1,13 @@
 import PageMotionContainer from '../components/PageMotionContainer'
 import { Flex, Heading, Box, useColorModeValue, HStack, Text, AspectRatio } from '@chakra-ui/react'
 import useAllColorModeValues from '../data/color';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import memojiStyle from '../styles/memoji.module.css';
 import getMediumPosts from '../utils/getMediumPosts'
+import { useState } from 'react'
+import AnimatedScrollDownPrompt from '../components/AnimatedScrollDownPrompt';
 
 export async function getServerSideProps() {
   const postItems = await getMediumPosts();
@@ -18,6 +20,8 @@ export async function getServerSideProps() {
 
 
 export default function Posts({ posts }) {
+
+  const [ shit, setShit ] = useState(false);
 
   const {
     normalFontColor, 
@@ -51,68 +55,122 @@ export default function Posts({ posts }) {
                 <Heading align='start' w={{base: '60%', md: '50%'}} fontSize={['3xl', '5xl']} mx='auto' fontWeight="bold" color={themeColor} mb={2}>Thoughts?</Heading>
             </Flex>
 
+            {shit?
+              <Flex w={{base: '100%', lg: '30%'}}>
+                  <motion.div 
+                    whileHover={{scale: 1.3}}
+                    whileTap={{scale: 0.9}}
+                    className={memojiStyle.borderCircle} 
+                    onClick={()=>{setShit(!shit)}}
+                  >
+                    <Image quality="100" priority src='/Images/shit.png' alt='hello' height='1000' width='1000' className={memojiStyle.borderCircle}/>
+                  </motion.div>
+                  <Box h='3vh' position='relative' style={{marginTop: '0%', right: '30%'}}>
+                    <motion.div style={{transformOrigin: 'center'}}animate={{ opacity: 0} }>
+                      <Text fontFamily='Montserrat' fontWeight='600' fontSize='4xl'>?</Text>
+                    </motion.div>
+                  </Box>
+                  <Box h='3vh' position='relative' style={{marginTop: '3%', right: '28%'}}>
+                    <motion.div style={{transformOrigin: 'center'}}animate={{ opacity: 0} }>
+                      <Text fontFamily='Montserrat' fontWeight='600' fontSize='4xl'>?</Text>
+                    </motion.div>
+                  </Box>
+                  <Box h='3vh' position='relative' style={{marginTop: '7%', right: '27%'}}>
+                    <motion.div style={{transformOrigin: 'center'}}animate={{ opacity: 0} }>
+                      <Text fontFamily='Montserrat' fontWeight='600' fontSize='4xl'>?</Text>
+                    </motion.div>
+                  </Box>
+              </Flex>
+            :
             <Flex w={{base: '100%', lg: '30%'}}>
-              <motion.div whileTap={{scale: 1.2}} whileHover={{scale: 1.1}} className={memojiStyle.borderCircle}>
-                <Image quality="100" priority src='/Images/posts.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
-              </motion.div>
-
-              <Box h='3vh' position='relative' style={{marginTop: '0%', right: '30%'}}>
                 <motion.div 
-                style={{transformOrigin: 'center'}}
-                animate={
-                  {
-                    opacity: [0, 1, 0],
-                    transition: {
-                      duration: 3,
-                      repeat: Infinity,
-                    },
-                    rotate: [10, 10, 10]
-                  }
-                }
+                    whileHover={{scale: 1.3}}
+                    whileTap={{scale: 0.9}}
+                    className={memojiStyle.borderCircle} 
+                    onClick={()=>{setShit(!shit)}}
                 >
-                  <Text fontFamily='Montserrat' fontWeight='600' fontSize='4xl'>?</Text>
+                  <Image quality="100" priority src='/Images/posts.png' alt='hello' height='1000' width='1000'  className={memojiStyle.borderCircle}/>
                 </motion.div>
-              </Box>
-
-              <Box h='3vh' position='relative' style={{marginTop: '3%', right: '28%'}}>
-                <motion.div 
-                style={{transformOrigin: 'center'}}
-                animate={
-                  {
-                    opacity: [0, 1, 0],
-                    transition: {
-                      duration: 3,
-                      repeat: Infinity,
-                      delay: 0.8
-                    },
-                    rotate: [25, 25, 25]
+                {/* ??? */}
+                <Box h='3vh' position='relative' style={{marginTop: '0%', right: '30%'}}>
+                  <motion.div 
+                  style={{transformOrigin: 'center'}}
+                  animate={
+                    {
+                      opacity: [0, 1, 0],
+                      transition: {
+                        duration: 3,
+                        repeat: Infinity,
+                      },
+                      rotate: [10, 10, 10]
+                    }
                   }
-                }
-                >
-                  <Text fontFamily='Montserrat' fontWeight='600' fontSize='4xl'>?</Text>
-                </motion.div>
-              </Box>
-
-              <Box h='3vh' position='relative' style={{marginTop: '7%', right: '27%'}}>
-                <motion.div 
-                style={{transformOrigin: 'center'}}
-                animate={
-                  {
-                    opacity: [0,1, 0],
-                    transition: {
-                      duration: 3,
-                      repeat: Infinity,
-                      delay: 1.5
-                    },
-                    rotate: [40, 40, 40]
+                  >
+                    <Text fontFamily='Montserrat' fontWeight='600' fontSize='4xl'>?</Text>
+                  </motion.div>
+                </Box>
+                <Box h='3vh' position='relative' style={{marginTop: '3%', right: '28%'}}>
+                  <motion.div 
+                  style={{transformOrigin: 'center'}}
+                  animate={
+                    {
+                      opacity: [0, 1, 0],
+                      transition: {
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: 0.8
+                      },
+                      rotate: [25, 25, 25]
+                    }
                   }
-                }
-                >
-                  <Text fontFamily='Montserrat' fontWeight='600' fontSize='4xl'>?</Text>
-                </motion.div>
-              </Box>
-            </Flex>
+                  >
+                    <Text fontFamily='Montserrat' fontWeight='600' fontSize='4xl'>?</Text>
+                  </motion.div>
+                </Box>
+                <Box h='3vh' position='relative' style={{marginTop: '7%', right: '27%'}}>
+                  <motion.div 
+                  style={{transformOrigin: 'center'}}
+                  animate={
+                    {
+                      opacity: [0,1, 0],
+                      transition: {
+                        duration: 3,
+                        repeat: Infinity,
+                        delay: 1.5
+                      },
+                      rotate: [40, 40, 40]
+                    }
+                  }
+                  >
+                    <Text fontFamily='Montserrat' fontWeight='600' fontSize='4xl'>?</Text>
+                  </motion.div>
+                </Box>
+              </Flex>
+            }
+          </Flex>
+          
+          <AnimatePresence exitBeforeEnter initial={true}>
+            {shit?
+            <motion.div key="shit" initial={{ y: -20, opacity: 0}} animate={{ y: 0, opacity: 1}} exit={{ y: 20, opacity: 0}} transition={{duration: 0.3}}>
+              <Flex mt={{lg: -5}} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+                  <Flex w='100%' borderRadius='lg' justifyContent='center'>
+                    <Box bg={BoxColor} px={5} py={3} borderRadius='lg' fontFamily='mono'>Post something to make people feel I am smart.</Box>
+                  </Flex>
+              </Flex>
+            </motion.div>
+            :
+            <motion.div key="noShit" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0.3}}>
+              <Flex mt={{lg: -5}} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+                  <Flex w='100%' borderRadius='lg' justifyContent='center'>
+                    <Box bg={bgColor} px={5} py={3} borderRadius='lg' fontFamily='mono' color={bgColor}>Post something to make people feel I am smart.</Box>
+                  </Flex>
+              </Flex>
+            </motion.div>
+            }
+          </AnimatePresence>
 
+          <Flex mt={0} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+              <AnimatedScrollDownPrompt color={themeColor}/>
           </Flex>
       </PageMotionContainer>
     )
