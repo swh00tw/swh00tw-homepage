@@ -18,7 +18,9 @@ function PostCard ({post}){
         <>
             <Flex w={{base: '80%', md: '90%'}} borderRadius='xl' justify='center' flexDirection={{base: 'column', md: 'row'}}>
                 <Flex w={{base: '100%', md: '70%'}} flexDirection='column' justify='center' >
-                    <Heading fontSize={{base: 'sm', md: 'md'}} align='start' isTruncated>{post.title}</Heading>
+                    <Flex justifyContent={{base: 'center', md: 'start'}}>
+                        <Heading fontSize={{base: 'sm', md: 'md'}} isTruncated>{post.title}</Heading>
+                    </Flex>
                     <Flex justifyContent={{base: 'center', md: 'start'}} pt={2}>
                         <Tag borderRadius='full' mt={2} variant='solid' size='sm' colorScheme={useColorModeValue('yellow', 'teal')}>{postDate}</Tag>
                     </Flex>
