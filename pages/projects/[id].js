@@ -1,13 +1,11 @@
 import projects from "../../data/projects"
 import getProjectData from "../../utils/getProjectData"
 import PageMotionContainer from "../../components/PageMotionContainer"
-import { Text, Button, Flex, Box, Heading, HStack} from '@chakra-ui/react'
+import { Text, Flex, Box, Heading, HStack} from '@chakra-ui/react'
 import { motion, AnimatePresence } from 'framer-motion';
-import { BsFillCaretDownFill } from 'react-icons/bs'
 import Image from 'next/image'
 import useAllColorModeValues from "../../data/color";
 import memojiStyle from '../../styles/memoji.module.css'
-import AnimatedScrollDownPrompt from "../../components/AnimatedScrollDownPrompt";
 import { ChevronLeftIcon } from '@chakra-ui/icons'
 import Link from 'next/link'
 import ProjectCard from "../../components/ProjectCard"

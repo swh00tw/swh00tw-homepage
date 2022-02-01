@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import HeaderBar from '../components/HeaderBar.js'
 import Footer from '../components/Footer.js'
-import { motion } from 'framer-motion'
 import { Box, useColorModeValue } from '@chakra-ui/react'
 
 function Layout(props) {

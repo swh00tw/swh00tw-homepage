@@ -1,17 +1,7 @@
 import { Box, Flex, Tag, Button, Heading, useColorModeValue, Divider } from '@chakra-ui/react'
-import useAllColorModeValues from '../data/color';
 import { ChevronRightIcon } from '@chakra-ui/icons'
 
 function PostCard ({post}){
-
-    const {
-        normalFontColor, 
-        themeColor, 
-        bgColor, 
-        BoxColor, 
-        starColor, 
-        tagColor
-      } = useAllColorModeValues();
 
     const { id, url, createdAt, title, description} = post;
 
