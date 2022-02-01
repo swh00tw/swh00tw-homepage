@@ -1,18 +1,14 @@
 import PageMotionContainer from '../components/PageMotionContainer'
-import { Flex, Heading, Box, useColorModeValue, Text, HStack, Divider, List, ListItem, Tag, Button, useToast } from '@chakra-ui/react'
+import { Flex, Heading, Box, Text, HStack } from '@chakra-ui/react'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import memojiStyle from '../styles/memoji.module.css'
-import profileStyle from '../styles/profile.module.css'
-import { BsFillCaretRightFill, BsFillCaretDownFill } from "react-icons/bs";
-import {useState, useEffect, useRef} from 'react'
-import { doFistBump, doneFistBumpAnimation } from '../actions'
-import Link from 'next/link'
+import { BsFillCaretDownFill } from "react-icons/bs";
+import { useEffect, useRef} from 'react'
 import useAllColorModeValues from '../data/color'
 import AnimatedScrollDownPrompt from '../components/AnimatedScrollDownPrompt'
 import SkillModal from '../components/SkillModal'
 import mySkills from '../data/skills'
-import projectStyle from '../styles/project.module.css'
 import projects from '../data/projects'
 import ProjectCard from '../components/ProjectCard'
 
