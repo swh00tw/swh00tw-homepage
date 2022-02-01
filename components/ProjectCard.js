@@ -17,6 +17,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import projectStyle from '../styles/project.module.css';
 import FrameworkTag from './FrameworkTag';
+import { FaGithub } from "react-icons/fa";
 
 function ProjectCard ({project, fullContent, githubInfo}){
 
@@ -43,7 +44,7 @@ function ProjectCard ({project, fullContent, githubInfo}){
                         {fullContent?<></>:
                             <Link href={project.detail}><a><Button px={5} mr={{md: 2}} mt={3} size='md' variant='outline' colorScheme={tagColor}>Profile</Button></a></Link>
                         }
-                        <Button px={5} mr={{md: 2}} mt={3} size='md' variant='outline' colorScheme={tagColor} onClick={()=>{window.open(project.github, "_blank")}}>Github</Button>
+                        <Button px={5} mr={{md: 2}} mt={3} size='md' variant='outline' colorScheme={tagColor} leftIcon={<FaGithub />} onClick={()=>{window.open(project.github, "_blank")}}>Github</Button>
                     </Flex>
                 </Flex>
                 <Flex w={{base: '80%', lg: '40%'}} pt={{base: 8, lg: 0}} justifyContent="center" alignItems="center">
