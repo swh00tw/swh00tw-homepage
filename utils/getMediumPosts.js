@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 // ref: https://github.com/alekrumkamp/medium-feed-json
+// ref: https://stackoverflow.com/a/60859107/17420003
 const my_medium_posts_worker = axios.create({baseURL: `${process.env.my_medium_posts_worker}`});
 
 const getMediumPosts = async () => {
