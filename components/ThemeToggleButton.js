@@ -13,8 +13,8 @@ const ThemeToggleButton = () => {
         key={useColorModeValue('light', 'dark')}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0, rotateY: 270 }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        exit={{ opacity: 0, rotateY: 200 }}
+        transition={{ duration: 0.4, ease: 'easeInOut' }}
       >
         <Button
           aria-label="Toggle theme"
