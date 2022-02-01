@@ -3,7 +3,6 @@ import {
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalFooter,
     ModalBody,
     ModalCloseButton,
     Button,
@@ -12,13 +11,10 @@ import {
     StatLabel,
     StatNumber,
     StatHelpText,
-    StatArrow,
-    StatGroup,
     useColorModeValue,
     Text,
     Flex,
     Heading,
-    Divider,
   } from '@chakra-ui/react'
 import { motion } from 'framer-motion';
 import { InfoIcon } from '@chakra-ui/icons'
