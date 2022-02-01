@@ -30,7 +30,7 @@ function NavBarItem (props){
   const bgColor = useColorModeValue('gray.100', 'black')
 
   return (
-    <Link href={props.href}><a><motion.div whileHover={{scale: 1.2}} whileTap={{scale: 0.8}}><Button bg={bgColor} h='6vh'>
+    <Link href={props.href}><a><motion.div whileHover={{scale: 1.2}} whileTap={{scale: 0.8}}><Button bg={bgColor} h='6vh' _focus={{ border: 'none' }}>
         {props.children}
     </Button></motion.div></a></Link>
   )
