@@ -1,5 +1,5 @@
 import PageMotionContainer from '../components/PageMotionContainer'
-import { Flex, Heading, Box, useColorModeValue, HStack, Text, AspectRatio } from '@chakra-ui/react'
+import { Flex, Heading, Box, useColorModeValue, HStack, Text, AspectRatio, Button, Tag, Divider } from '@chakra-ui/react'
 import useAllColorModeValues from '../data/color';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
@@ -8,6 +8,7 @@ import memojiStyle from '../styles/memoji.module.css';
 import getMediumPosts from '../utils/getMediumPosts'
 import { useState } from 'react'
 import AnimatedScrollDownPrompt from '../components/AnimatedScrollDownPrompt';
+import PostCard from '../components/PostCard';
 
 export async function getServerSideProps() {
   const postItems = await getMediumPosts();
@@ -32,6 +33,25 @@ export default function Posts({ posts }) {
     tagColor
   } = useAllColorModeValues();
 
+  const postcardColor = useColorModeValue("orange.100","purple.300");
+
+  // main card animation
+  const cardVariants = {
+    offscreen: {
+      y: 100,
+      opacity: 0,
+    },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        bounce: 0.5,
+        duration: 0.8
+      }
+    }
+  };
+
   if (!posts){
     return (
       <PageMotionContainer duration={0.75}>
@@ -49,10 +69,10 @@ export default function Posts({ posts }) {
           <Box bg={bgColor} h={{base: '5vh', md: '8vh'}} display={{base: 'block',lg: 'none'}}/>
           <Flex py={{lg: '8vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
             
-            <Flex flexDirection='column' w={{base: '100%', lg: '65%'}}>
-                <Heading align='start' w={{base: '60%', md: '50%'}} fontSize={['3xl', '5xl']} mx='auto' fontWeight="bold" color={themeColor} mb={2}>Some </Heading>
-                <Heading align='start' w={{base: '60%', md: '50%'}} fontSize={['3xl', '5xl']} mx='auto' fontWeight="bold" color={themeColor} mb={2}>Random</Heading>
-                <Heading align='start' w={{base: '60%', md: '50%'}} fontSize={['3xl', '5xl']} mx='auto' fontWeight="bold" color={themeColor} mb={2}>Thoughts?</Heading>
+            <Flex flexDirection='column' w={{base: '100%', lg: '55%'}}>
+                <Heading align='start' w={{base: '60%', md: '75%'}} fontSize={['3xl', '5xl']} mx='auto' fontWeight="bold" color={themeColor} mb={2}>Some </Heading>
+                <Heading align='start' w={{base: '60%', md: '75%'}} fontSize={['3xl', '5xl']} mx='auto' fontWeight="bold" color={themeColor} mb={2}>Random</Heading>
+                <Heading align='start' w={{base: '60%', md: '75%'}} fontSize={['3xl', '5xl']} mx='auto' fontWeight="bold" color={themeColor} mb={2}>Thoughts?</Heading>
             </Flex>
 
             {shit?
@@ -152,7 +172,7 @@ export default function Posts({ posts }) {
           <AnimatePresence exitBeforeEnter initial={true}>
             {shit?
             <motion.div key="shit" initial={{ y: -20, opacity: 0}} animate={{ y: 0, opacity: 1}} exit={{ y: 20, opacity: 0}} transition={{duration: 0.3}}>
-              <Flex mt={{lg: -5}} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+              <Flex mt={{lg: -55}} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
                   <Flex w='100%' borderRadius='lg' justifyContent='center'>
                     <Box bg={BoxColor} px={5} py={3} borderRadius='lg' fontFamily='mono'>Post something to make people feel I am smart.</Box>
                   </Flex>
@@ -160,7 +180,7 @@ export default function Posts({ posts }) {
             </motion.div>
             :
             <motion.div key="noShit" initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} transition={{duration: 0.3}}>
-              <Flex mt={{lg: -5}} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+              <Flex mt={{lg: -55}} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
                   <Flex w='100%' borderRadius='lg' justifyContent='center'>
                     <Box bg={bgColor} px={5} py={3} borderRadius='lg' fontFamily='mono' color={bgColor}>Post something to make people feel I am smart.</Box>
                   </Flex>
@@ -172,6 +192,15 @@ export default function Posts({ posts }) {
           <Flex mt={0} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
               <AnimatedScrollDownPrompt color={themeColor}/>
           </Flex>
+
+          <motion.div initial="offscreen" whileInView="onscreen" viewport={{ once: true, amount: 0.1 }} variants={cardVariants}>
+            <Flex mt={0} py={{lg: '4vh'}} w='70vw' justifyContent="center" grow="1" flexDirection={{base: 'column', lg: 'row'}} alignItems="center"> 
+              {posts.map((post, index) => (
+                  <PostCard key={post.title} post={post}/>
+              ))}
+            </Flex>
+          </motion.div>
+
       </PageMotionContainer>
     )
   }
