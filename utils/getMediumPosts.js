@@ -1,14 +1,28 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
-// ref: https://stackoverflow.com/a/39646796/17420003
-// rss-to-json-converter ref: https://rss2json.com/#rss_url=https%3A%2F%2Fgithub.com%2Flaravel%2Flaravel%2Freleases.atom
-const medium_instance = axios.create({baseURL: `https://api.rss2json.com/v1`});
+// ref: https://github.com/alekrumkamp/medium-feed-json
+const my_medium_posts_worker = axios.create({baseURL: `${process.env.my_medium_posts_worker}`});
 
 const getMediumPosts = async () => {
     try {
-        let res = await medium_instance.get(`/api.json?rss_url=https%3A%2F%2Fmedium.com%2Ffeed%2F%40swh00tw`);
-        // console.log('res: ',res.data.items);
-        return res.data.items;
+        let {data: res} = await my_medium_posts_worker.get(`/`);
+        //console.log(res);
+        const posts = res.data.posts;
+        let next = res.next;
+
+        while (next!==null){
+            const {data: subsequent_res} = await my_medium_posts_worker.get('/', {params: {next: next}});
+            posts.push(...subsequent_res.data.posts);
+            if (subsequent_res.hasOwnProperty('next')){
+                next = subsequent_res.next;
+            } else {
+                next = null;
+            }
+        }
+
+        return posts.reverse();
     } catch (e){
         return null
     }
