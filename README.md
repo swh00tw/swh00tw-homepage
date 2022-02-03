@@ -4,7 +4,7 @@
 
 ## 👾 Experience and some technical details
 
----
+
 
 Check out my Medium post!
 
@@ -12,7 +12,7 @@ Check out my Medium post!
 
 ## **🛠** Stack
 
----
+
 
 - Next.js — A minimalistic framework for server-rendered React applications.
 - ChakraUI — A React UI library for building web applications.
@@ -21,7 +21,7 @@ Check out my Medium post!
 
 ## 🧬 Project structure
 
----
+
 
 ```jsx
 $PROJECT_ROOT
