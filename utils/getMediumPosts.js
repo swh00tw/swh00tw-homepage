@@ -10,12 +10,12 @@ const getMediumPosts = async () => {
     try {
         let {data: res} = await my_medium_posts_worker.get(`/`);
         //console.log(res);
-        const posts = res.data.posts;
+        const posts = res.data.posts.reverse();
         let next = res.next;
 
         while (next!==null){
             const {data: subsequent_res} = await my_medium_posts_worker.get('/', {params: {next: next}});
-            posts.push(...subsequent_res.data.posts);
+            posts.push(...subsequent_res.data.posts.reverse());
             if (subsequent_res.hasOwnProperty('next')){
                 next = subsequent_res.next;
             } else {
@@ -23,7 +23,7 @@ const getMediumPosts = async () => {
             }
         }
 
-        return posts.reverse();
+        return posts;
     } catch (e){
         return null
     }
