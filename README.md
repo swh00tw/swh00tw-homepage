@@ -25,20 +25,20 @@ Check out my Medium post!
 
 ```jsx
 $PROJECT_ROOT
-│   # Page files
+│   // Page files
 ├── pages
-│   # React component files
+│   // React component files
 ├── components
-│   # Layout wrapper of website
+│   // Layout wrapper of website
 ├── layout
-│   # Some helper function and API
+│   // Some helper function and API
 ├── utils
-│   # Static files for data and information
+│   // Static files for data and information
 ├── data
-│   # Reuseable CSS files
+│   // Reuseable CSS files
 ├── styles
-│   # For redux state management
+│   // For redux state management
 ├── store / reducers / actions / constants
-│   # Static files for images
+│   // Static files for images
 └── public
 ```
