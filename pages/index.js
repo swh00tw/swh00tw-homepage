@@ -532,7 +532,7 @@ export default function Home(props) {
             <Flex
               flexDirection={{ base: "column", md: "row" }}
               w={{ base: "90%", md: "60%" }}
-              justify="space-between"
+              justify="center"
               py={5}
             >
               <Link href="/projects" passHref={true}>
