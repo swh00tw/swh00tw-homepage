@@ -404,7 +404,7 @@ export default function Home(props) {
                   px={{ base: 0, lg: 5 }}
                 >
                   <List spacing={3} align="start" fontFamily="Montserrat">
-                    {bioList.map((item) => {
+                    {[...bioList].reverse().map((item) => {
                       return (
                         <ListItem key={item.year}>
                           <Box>
