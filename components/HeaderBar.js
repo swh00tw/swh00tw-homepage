@@ -91,6 +91,8 @@ function HeaderBar() {
           alignItems="center"
           flexGrow={1}
           mt={{ base: 4, md: 0 }}
+          justifyContent="center"
+          gap={10}
         >
           <NavBarItem href="/projects">
             <Text
@@ -104,7 +106,6 @@ function HeaderBar() {
               Projects
             </Text>
           </NavBarItem>
-          <Spacer />
           <NavBarItem href="https://github.com/swh00tw">
             <HStack w="80px">
               <FaGithub color={NavbarFontColor} />
