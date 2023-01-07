@@ -5,6 +5,12 @@ const config = {
   useSystemColorMode: false,
 };
 
-const theme = extendTheme({ config });
+const theme = extendTheme({
+  config,
+  fonts: {
+    heading: `Montserrat`,
+    body: `Montserrat`,
+  },
+});
 
 export default theme;
