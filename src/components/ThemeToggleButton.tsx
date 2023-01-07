@@ -7,7 +7,7 @@ const ThemeToggleButton = () => {
   const IconColor = useColorModeValue("orange.600", "purple.300");
 
   return (
-    <AnimatePresence exitBeforeEnter initial={false}>
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         style={{ display: "inline-block" }}
         key={useColorModeValue("light", "dark")}
