@@ -1,6 +1,6 @@
 import PageMotionContainer from "@/components/PageMotionContainer";
 import PageHeaderWrapper from "@/components/PageTitleWrapper";
-import { Flex, HStack, Stack, Text, TextProps } from "@chakra-ui/react";
+import { Flex, HStack, Stack, Text, TextProps, Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import memojiStyle from "@/styles/memoji.module.css";
@@ -180,7 +180,7 @@ export default function Home() {
               <CustomButton link="https://github.com/swh00tw">
                 <HStack>
                   <FaGithub color={"white"} />
-                  <Text color={"white"}>@swh00tw</Text>
+                  <Text color={"white"}>swh00tw</Text>
                 </HStack>
               </CustomButton>
             </HStack>
@@ -204,6 +204,9 @@ export default function Home() {
             />
           </motion.div>
         </Flex>
+        <Box h="100vh" w="80%" mx="auto">
+          placeholder section 2
+        </Box>
       </PageMotionContainer>
     </PageHeaderWrapper>
   );
