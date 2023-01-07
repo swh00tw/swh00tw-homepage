@@ -38,3 +38,5 @@ test.http
 
 # ts
 *.tsbuildinfo
+
+.eslintcache
