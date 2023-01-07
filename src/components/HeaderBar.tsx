@@ -45,8 +45,9 @@ function NavBarItem(props: NavBarProps) {
   );
 }
 
-function HeaderBar() {
+function HeaderBar(props: { readonly isScrolled: boolean }) {
   const { pathname } = useRouter();
+  const { isScrolled } = props;
 
   const NavbarFontColor = useColorModeValue("#000", "#fff");
   const IconColor = useColorModeValue("orange.600", "purple.300");
@@ -61,6 +62,26 @@ function HeaderBar() {
         flexDirection="row"
         justifyContent="center"
         alignItems="center"
+        position="fixed"
+        sx={{
+          backdropFilter: "blur(10px)",
+          bg: "#00000050",
+          borderBottom: `0.2px solid ${
+            isScrolled ? "#ffffff50" : "transparent"
+          }`,
+          transition: "all 0.3s ease-in-out",
+          ":before": {
+            position: "absolute",
+            display: "block",
+            content: '""',
+            top: "-50%",
+            left: "-50%",
+            right: "-50%",
+            bottom: "-50%",
+            borderBottom: "1px solid #000",
+            transform: "scale(0.5)",
+          },
+        }}
       >
         <Flex w="80%" alignItems="center" justifyContent="center">
           <Link href="/">
