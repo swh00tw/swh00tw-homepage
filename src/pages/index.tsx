@@ -1,5 +1,6 @@
 import PageMotionContainer from "@/components/PageMotionContainer";
 import { useEffect } from "react";
+import PageHeaderWrapper from "@/components/PageTitleWrapper";
 
 export default function Home() {
   // main card animation
@@ -25,5 +26,9 @@ export default function Home() {
     window.history.scrollRestoration = "manual";
   }, []);
 
-  return <PageMotionContainer duration={0.75}>123</PageMotionContainer>;
+  return (
+    <PageHeaderWrapper>
+      <PageMotionContainer duration={0.75}>123</PageMotionContainer>
+    </PageHeaderWrapper>
+  );
 }
