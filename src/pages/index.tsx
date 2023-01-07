@@ -138,19 +138,20 @@ export default function Home() {
                 🇹🇼
               </Text>
             </Flex>
-            <HStack
+            <Flex
               sx={{
                 fontWeight: 600,
               }}
+              wrap="wrap"
             >
               <AnimatedColorText endColor="#4FD1C5" duration={10}>
                 {"Engineering Student"}
               </AnimatedColorText>
-              <Text>/</Text>
+              <Text mx={2}>/</Text>
               <AnimatedColorText endColor="#F687B3" isReversed duration={10}>
                 {"Web Developer"}
               </AnimatedColorText>
-            </HStack>
+            </Flex>
             <Stack
               pt={4}
               w="90%"
