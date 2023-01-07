@@ -17,7 +17,7 @@ import Image from "next/image";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
-import ThemeToggleButton from "@/components/ThemeToggleButton";
+// import ThemeToggleButton from "@/components/ThemeToggleButton";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 
@@ -90,7 +90,6 @@ function HeaderBar() {
               </HStack>
             </a>
           </Link>
-
           <Spacer />
           <Stack
             direction={{ base: "column", md: "row" }}
@@ -128,10 +127,9 @@ function HeaderBar() {
               </HStack>
             </NavBarItem>
           </Stack>
-
           <Spacer />
           <Flex>
-            <ThemeToggleButton />
+            {/* <ThemeToggleButton /> */}
             <Box bg={BgColor} w="5px" />
             <Box ml={2} display={{ base: "inline-block", md: "none" }}>
               <Menu isLazy autoSelect={false}>
