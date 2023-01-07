@@ -5,7 +5,6 @@ import {
   Button,
   Text,
   HStack,
-  useColorMode,
   useColorModeValue,
   Menu,
   MenuButton,
