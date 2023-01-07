@@ -1,5 +1,5 @@
 import { ChakraProvider, Box } from "@chakra-ui/react";
-import theme from "@/style/theme";
+import theme from "@/styles/theme";
 import { AnimatePresence } from "framer-motion";
 import { AppProps } from "next/app";
 import HeaderBar from "@/components/HeaderBar";
