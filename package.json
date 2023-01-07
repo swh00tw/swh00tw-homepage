@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint-fix": "next lint . --cache --fix"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
