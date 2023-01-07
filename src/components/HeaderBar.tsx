@@ -133,7 +133,7 @@ function HeaderBar() {
                 {({ isOpen }) => (
                   <>
                     <MenuButton as={Button} color={IconColor}>
-                      <AnimatePresence exitBeforeEnter initial={false}>
+                      <AnimatePresence mode="wait" initial={false}>
                         <motion.div
                           style={{ display: "inline-block" }}
                           key={isOpen ? "open" : "closed"}
