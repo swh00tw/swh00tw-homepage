@@ -5,7 +5,7 @@ import { Box, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 
 // move to _document.tsx
-function Layout(props: React.PropsWithChildren<{}>) {
+function Layout(props: React.PropsWithChildren<unknown>) {
   const { children } = props;
   return (
     <>

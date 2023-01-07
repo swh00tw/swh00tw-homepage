@@ -1,4 +1,4 @@
-import PageMotionContainer from "../components/PageMotionContainer";
+import PageMotionContainer from "@/components/PageMotionContainer";
 import { useEffect } from "react";
 
 export default function Home() {

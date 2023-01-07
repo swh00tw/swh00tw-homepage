@@ -17,7 +17,7 @@ import Image from "next/image";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
-import ThemeToggleButton from "./ThemeToggleButton";
+import ThemeToggleButton from "@/components/ThemeToggleButton";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 

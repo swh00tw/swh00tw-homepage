@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 
-interface PageMotionContainerProps extends React.PropsWithChildren<{}> {
-  duration: number;
-}
-function PageMotionContainer(props: PageMotionContainerProps) {
+function PageMotionContainer(
+  props: React.PropsWithChildren<{
+    duration: number;
+  }>
+) {
   const { duration, children } = props;
   const variants = {
     hidden: { opacity: 0.05, y: "60%" },
