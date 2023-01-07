@@ -1,6 +1,6 @@
 import Head from "next/head";
-import HeaderBar from "../components/HeaderBar";
-import Footer from "../components/Footer";
+import HeaderBar from "@/components/HeaderBar";
+import Footer from "@/components/Footer";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
 
