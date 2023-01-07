@@ -77,27 +77,32 @@ function AnimatedColorText(props: AnimatedColorTextProps) {
 
 function CustomButton(props: {
   readonly children?: React.ReactNode;
-  readonly link: string;
+  readonly link?: string;
 }) {
   const { children, link } = props;
-  return (
+  const body = (
+    <Flex
+      sx={{
+        fontSize: "1rem",
+        cursor: "pointer",
+        borderRadius: "4px",
+        px: 3,
+        py: 2,
+        transition: "all 0.3s ease-in-out",
+        _hover: {
+          bg: "#ffffff20",
+        },
+      }}
+    >
+      {children}
+    </Flex>
+  );
+  return link ? (
     <Link passHref href={link}>
-      <Flex
-        sx={{
-          fontSize: "1rem",
-          cursor: "pointer",
-          borderRadius: "4px",
-          px: 3,
-          py: 2,
-          transition: "all 0.3s ease-in-out",
-          _hover: {
-            bg: "#ffffff20",
-          },
-        }}
-      >
-        {children}
-      </Flex>
+      {body}
     </Link>
+  ) : (
+    body
   );
 }
 
@@ -163,11 +168,13 @@ export default function Home() {
               </Text>
             </Stack>
             <HStack>
-              <CustomButton link="https://github.com/swh00tw">
-                <HStack>
-                  <FaDownload color={"white"} />
-                  <Text color={"white"}>Resume</Text>
-                </HStack>
+              <CustomButton>
+                <a href="/Frank_resume.pdf" download="Frank_resume.pdf">
+                  <HStack>
+                    <FaDownload color={"white"} />
+                    <Text color={"white"}>Resume</Text>
+                  </HStack>
+                </a>
               </CustomButton>
               <CustomButton link="https://github.com/swh00tw">
                 <HStack>
