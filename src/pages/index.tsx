@@ -1,5 +1,4 @@
 import PageMotionContainer from "@/components/PageMotionContainer";
-import { useEffect } from "react";
 import PageHeaderWrapper from "@/components/PageTitleWrapper";
 
 export default function Home() {
@@ -19,12 +18,6 @@ export default function Home() {
       },
     },
   };
-
-  // force to scroll to top when reload the page
-  // ref: https://github.com/vercel/next.js/discussions/15337#discussioncomment-315401
-  useEffect(() => {
-    window.history.scrollRestoration = "manual";
-  }, []);
 
   return (
     <PageHeaderWrapper>
