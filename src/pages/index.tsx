@@ -4,6 +4,8 @@ import { Flex, HStack, Stack, Text, TextProps } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import memojiStyle from "@/styles/memoji.module.css";
+import { FaGithub, FaDownload } from "react-icons/fa";
+import Link from "next/link";
 
 // main card animation
 const cardVariants = {
@@ -73,6 +75,32 @@ function AnimatedColorText(props: AnimatedColorTextProps) {
   );
 }
 
+function CustomButton(props: {
+  readonly children?: React.ReactNode;
+  readonly link: string;
+}) {
+  const { children, link } = props;
+  return (
+    <Link passHref href={link}>
+      <Flex
+        sx={{
+          fontSize: "1rem",
+          cursor: "pointer",
+          borderRadius: "4px",
+          px: 3,
+          py: 2,
+          transition: "all 0.3s ease-in-out",
+          _hover: {
+            bg: "#ffffff20",
+          },
+        }}
+      >
+        {children}
+      </Flex>
+    </Link>
+  );
+}
+
 export default function Home() {
   return (
     <PageHeaderWrapper>
@@ -134,6 +162,20 @@ export default function Home() {
                 Also an enthusiast of frontend technologies and UI/UX design.
               </Text>
             </Stack>
+            <HStack>
+              <CustomButton link="https://github.com/swh00tw">
+                <HStack>
+                  <FaDownload color={"white"} />
+                  <Text color={"white"}>Resume</Text>
+                </HStack>
+              </CustomButton>
+              <CustomButton link="https://github.com/swh00tw">
+                <HStack>
+                  <FaGithub color={"white"} />
+                  <Text color={"white"}>@swh00tw</Text>
+                </HStack>
+              </CustomButton>
+            </HStack>
           </Stack>
           <motion.div
             whileHover={{
