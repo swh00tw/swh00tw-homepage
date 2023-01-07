@@ -1,7 +1,7 @@
 import PageMotionContainer from "../components/PageMotionContainer";
 import { useState, useEffect } from "react";
 
-export default function Home(props) {
+export default function Home() {
   // main card animation
   const cardVariants = {
     offscreen: {

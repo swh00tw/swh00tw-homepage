@@ -12,6 +12,7 @@ import {
   MenuList,
   MenuItem,
   Stack,
+  ButtonProps,
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
@@ -21,16 +22,24 @@ import ThemeToggleButton from "./ThemeToggleButton";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 
-function NavBarItem(props) {
+interface NavBarProps extends ButtonProps {
+  link: string;
+}
+
+function NavBarItem(props: NavBarProps) {
+  const { link, ...restProps } = props;
   const bgColor = useColorModeValue("gray.100", "black");
 
   return (
-    <Link href={props.href}>
+    <Link href={link}>
       <a>
         <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
-          <Button bg={bgColor} h="6vh" _focus={{ border: "none" }}>
-            {props.children}
-          </Button>
+          <Button
+            bg={bgColor}
+            h="6vh"
+            _focus={{ border: "none" }}
+            {...restProps}
+          />
         </motion.div>
       </a>
     </Link>
@@ -40,7 +49,6 @@ function NavBarItem(props) {
 function HeaderBar() {
   const { pathname } = useRouter();
 
-  const { colorMode, toggleColorMode } = useColorMode();
   const NavbarFontColor = useColorModeValue("#000", "#fff");
   const IconColor = useColorModeValue("orange.600", "purple.300");
   const BgColor = useColorModeValue("gray.100", "black");
@@ -94,7 +102,7 @@ function HeaderBar() {
           justifyContent="center"
           gap={10}
         >
-          <NavBarItem href="/projects">
+          <NavBarItem link="/projects">
             <Text
               fontSize="sm"
               color={
@@ -106,7 +114,7 @@ function HeaderBar() {
               Projects
             </Text>
           </NavBarItem>
-          <NavBarItem href="https://github.com/swh00tw">
+          <NavBarItem link="https://github.com/swh00tw">
             <HStack w="80px">
               <FaGithub color={NavbarFontColor} />
               <Text

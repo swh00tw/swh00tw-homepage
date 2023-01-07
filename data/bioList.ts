@@ -1,4 +1,9 @@
-const bioList = [
+interface BioListItem {
+  year: string;
+  content: string;
+}
+
+const bioList: BioListItem[] = [
   { year: "June. 2000", content: "Born in Kaohsiung, Taiwan" },
   {
     year: "Feb. 2022 - July. 2022",
