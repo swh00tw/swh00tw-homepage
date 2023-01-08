@@ -10,33 +10,17 @@ import {
   ButtonProps,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { FaDownload, FaGithub } from "react-icons/fa";
+import { FaBolt, FaPhoneAlt } from "react-icons/fa";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Link as ScrollLink } from "react-scroll";
 
-interface NavBarProps extends ButtonProps {
-  link?: string;
-}
-
-function NavBarItem(props: NavBarProps) {
-  const { link, ...restProps } = props;
-
-  const body = (
-    <a>
-      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-        <Button
-          bg={"transparent"}
-          h="6vh"
-          _focus={{ border: "none" }}
-          {...restProps}
-        />
-      </motion.div>
-    </a>
+function NavBarItem(props: ButtonProps) {
+  return (
+    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+      <Button bg={"transparent"} _focus={{ border: "none" }} {...props} />
+    </motion.div>
   );
-  if (!link) {
-    return body;
-  }
-  return <Link href={link}>{body}</Link>;
 }
 
 function HeaderBar(props: { readonly isScrolled: boolean }) {
@@ -111,34 +95,36 @@ function HeaderBar(props: { readonly isScrolled: boolean }) {
             justifyContent="end"
             gap={10}
           >
-            <NavBarItem>
-              <a href="/Frank_resume.pdf" download="Frank_resume.pdf">
-                <HStack w="80px">
-                  <FaDownload color={NavbarFontColor} />
+            <ScrollLink to="myWorks" smooth={true} duration={400}>
+              <NavBarItem>
+                <HStack>
+                  <FaBolt color={NavbarFontColor} />
                   <Text
                     fontSize="sm"
                     color={NavbarFontColor}
                     fontWeight={400}
                     fontFamily="mono"
                   >
-                    Resume
+                    Works
                   </Text>
                 </HStack>
-              </a>
-            </NavBarItem>
-            <NavBarItem link="https://github.com/swh00tw">
-              <HStack w="80px">
-                <FaGithub color={NavbarFontColor} />
-                <Text
-                  fontSize="sm"
-                  color={NavbarFontColor}
-                  fontWeight={400}
-                  fontFamily="mono"
-                >
-                  Github
-                </Text>
-              </HStack>
-            </NavBarItem>
+              </NavBarItem>
+            </ScrollLink>
+            <ScrollLink to="contactMe" smooth={true} duration={400}>
+              <NavBarItem>
+                <HStack>
+                  <FaPhoneAlt color={NavbarFontColor} />
+                  <Text
+                    fontSize="sm"
+                    color={NavbarFontColor}
+                    fontWeight={400}
+                    fontFamily="mono"
+                  >
+                    Contact
+                  </Text>
+                </HStack>
+              </NavBarItem>
+            </ScrollLink>
           </Stack>
         </Flex>
       </Flex>
