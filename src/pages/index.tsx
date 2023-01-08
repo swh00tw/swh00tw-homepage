@@ -16,23 +16,13 @@ import memojiStyle from "@/styles/memoji.module.css";
 import { FaGithub, FaDownload } from "react-icons/fa";
 import Link from "next/link";
 import React from "react";
-
-// main card animation
-const cardVariants = {
-  offscreen: {
-    y: 300,
-    opacity: 0,
-  },
-  onscreen: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      bounce: 0.5,
-      duration: 0.8,
-    },
-  },
-};
+import {
+  experienceSource,
+  ExperienceInfo,
+  isProjectExperienceInfo,
+} from "@/data/experience";
+import moment from "moment";
+import { Element } from "react-scroll";
 
 interface AnimatedColorTextProps extends TextProps {
   readonly children?: React.ReactNode;
@@ -112,7 +102,7 @@ function CustomButton(props: {
           bottom: "0px",
           backgroundImage: bg,
           opacity: 0,
-          transition: "all 2s ease-in-out",
+          transition: "all 1s ease-in-out",
         },
         _hover: {
           _after: {
@@ -205,7 +195,7 @@ function WelcomeSection() {
             Also an enthusiast of frontend technologies and UI/UX design.
           </Text>
         </Stack>
-        <HStack>
+        <HStack pt={4}>
           <CustomButton bg="linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,253,237,1) 51%, rgba(69,252,196,1) 100%)">
             <a href="/Frank_resume.pdf" download="Frank_resume.pdf">
               <HStack>
@@ -259,7 +249,7 @@ function ScrollTriggeredDiv(
     <motion.div
       initial={{ opacity: 0, x: `-${offsetX}px` }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: false }}
+      viewport={{ once: true }}
       transition={{
         x: { duration: duration },
         delay: 0.3 + delay,
@@ -272,49 +262,76 @@ function ScrollTriggeredDiv(
 function ExperienceSection() {
   const verticalLineWidth = 10;
   return (
-    <Flex
-      h="100vh"
-      w="70%"
-      mx="auto"
-      sx={{
-        position: "relative",
-      }}
-    >
-      <Box
+    <Box>
+      <Element name="myWorks">
+        <Box
+          sx={{
+            w: "100%",
+            h: "10vh",
+          }}
+        />
+      </Element>
+      <Flex
+        minH="100vh"
+        w="70%"
+        mx="auto"
         sx={{
-          bg: "linear-gradient(180deg, rgba(0,0,0,0.9) 40%, rgba(255,255,255,0) 100%)",
-          position: "absolute",
-          top: 0,
-          zIndex: 2,
-          h: "100px",
-          w: "100%",
+          position: "relative",
         }}
-      />
-      <Flex h="100%" w={`${verticalLineWidth}px`} bg="#ffffff20" />
-      <Flex flexGrow={1} py="120px" position="relative">
-        <Box w="100%" position={"absolute"} left={`-${verticalLineWidth}px`}>
-          <ExperienceItem verticalLineWidth={verticalLineWidth} />
-        </Box>
+      >
+        <Box
+          sx={{
+            bg: "linear-gradient(180deg, rgba(0,0,0,0.9) 40%, rgba(255,255,255,0) 100%)",
+            position: "absolute",
+            top: 0,
+            zIndex: 2,
+            h: "100px",
+            w: "100%",
+          }}
+        />
+        <Box
+          position={"absolute"}
+          left={0}
+          zIndex={-1}
+          h="100%"
+          w={`${verticalLineWidth}px`}
+          bg="#ffffff20"
+        />
+        <Flex flexGrow={1} py="120px" position="relative">
+          <Box w="100%" bg="transparent">
+            {experienceSource.map((e) => (
+              <ExperienceItem
+                key={e.startTs}
+                verticalLineWidth={verticalLineWidth}
+                experience={e}
+              />
+            ))}
+          </Box>
+        </Flex>
+        <Box
+          sx={{
+            bg: "linear-gradient(0deg, rgba(0,0,0,0.9) 40%, rgba(255,255,255,0) 100%)",
+            position: "absolute",
+            bottom: 0,
+            zIndex: 2,
+            h: "100px",
+            w: "100%",
+          }}
+        />
       </Flex>
-      <Box
-        sx={{
-          bg: "linear-gradient(0deg, rgba(0,0,0,0.9) 40%, rgba(255,255,255,0) 100%)",
-          position: "absolute",
-          bottom: 0,
-          zIndex: 2,
-          h: "100px",
-          w: "100%",
-        }}
-      />
-    </Flex>
+    </Box>
   );
 }
 
-function ExperienceItem(props: { readonly verticalLineWidth: number }) {
-  const { verticalLineWidth } = props;
-  const horizontalGap = 40;
+function ExperienceItem(props: {
+  readonly verticalLineWidth: number;
+  experience: ExperienceInfo;
+}) {
+  const { verticalLineWidth, experience } = props;
+  const horizontalGap = 60;
+
   return (
-    <Box>
+    <Box minH="60vh" mt="10vh">
       <Flex
         sx={{
           alignItems: "center",
@@ -336,12 +353,32 @@ function ExperienceItem(props: { readonly verticalLineWidth: number }) {
               h: "10px",
               bg: "#202020",
               borderRadius: "50%",
-              transform: "scale(5)",
+              transform: "scale(7)",
+              border: "1px solid #202020",
+              boxSizing: "border-box",
             }}
           >
-            <AspectRatio ratio={1 / 1}>
-              <ChakraImage src="/kinetik.png" borderRadius="full" />
-            </AspectRatio>
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              whileInView={{
+                scale: 1,
+                opacity: 1,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.5,
+              }}
+            >
+              <AspectRatio ratio={1 / 1}>
+                <ChakraImage
+                  src={experience.imagePath}
+                  borderRadius="full"
+                  sx={{
+                    shadow: "0 0 8px 0 #FFD700",
+                  }}
+                />
+              </AspectRatio>
+            </motion.div>
           </Box>
         </Flex>
         <ScrollTriggeredDiv>
@@ -352,7 +389,11 @@ function ExperienceItem(props: { readonly verticalLineWidth: number }) {
               fontFamily: "mono",
             }}
           >
-            {`Jan, 2023`}
+            {`${moment(experience.startTs).format("MMM YYYY")}${
+              experience.endTs
+                ? ` - ${moment(experience.startTs).format("MMM YYYY")}`
+                : "Present"
+            }`}
           </Flex>
         </ScrollTriggeredDiv>
       </Flex>
@@ -364,7 +405,9 @@ function ExperienceItem(props: { readonly verticalLineWidth: number }) {
               fontWeight: 700,
             }}
           >
-            NTU OAA CIMD
+            {isProjectExperienceInfo(experience)
+              ? experience.projectName
+              : experience.organization}
           </Flex>
         </ScrollTriggeredDiv>
       </Stack>
