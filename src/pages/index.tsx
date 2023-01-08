@@ -1,11 +1,21 @@
 import PageMotionContainer from "@/components/PageMotionContainer";
 import PageHeaderWrapper from "@/components/PageTitleWrapper";
-import { Flex, HStack, Stack, Text, TextProps, Box } from "@chakra-ui/react";
+import {
+  Flex,
+  HStack,
+  Stack,
+  Text,
+  TextProps,
+  Box,
+  AspectRatio,
+  Image as ChakraImage,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import memojiStyle from "@/styles/memoji.module.css";
 import { FaGithub, FaDownload } from "react-icons/fa";
 import Link from "next/link";
+import React from "react";
 
 // main card animation
 const cardVariants = {
@@ -139,7 +149,7 @@ function WelcomeSection() {
   return (
     <Flex
       w="80%"
-      minH="90vh"
+      minH="85vh"
       mx="auto"
       pt="10%"
       alignItems={"start"}
@@ -237,14 +247,137 @@ function WelcomeSection() {
   );
 }
 
+function ScrollTriggeredDiv(
+  props: React.PropsWithChildren<{
+    readonly delay?: number;
+    readonly duration?: number;
+    readonly offsetX?: number;
+  }>
+) {
+  const { delay = 0, duration = 0.5, offsetX = 50 } = props;
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: `-${offsetX}px` }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: false }}
+      transition={{
+        x: { duration: duration },
+        delay: 0.3 + delay,
+      }}
+      {...props}
+    />
+  );
+}
+
+function ExperienceSection() {
+  const verticalLineWidth = 10;
+  return (
+    <Flex
+      h="100vh"
+      w="70%"
+      mx="auto"
+      sx={{
+        position: "relative",
+      }}
+    >
+      <Box
+        sx={{
+          bg: "linear-gradient(180deg, rgba(0,0,0,0.9) 40%, rgba(255,255,255,0) 100%)",
+          position: "absolute",
+          top: 0,
+          zIndex: 2,
+          h: "100px",
+          w: "100%",
+        }}
+      />
+      <Flex h="100%" w={`${verticalLineWidth}px`} bg="#ffffff20" />
+      <Flex flexGrow={1} py="120px" position="relative">
+        <Box w="100%" position={"absolute"} left={`-${verticalLineWidth}px`}>
+          <ExperienceItem verticalLineWidth={verticalLineWidth} />
+        </Box>
+      </Flex>
+      <Box
+        sx={{
+          bg: "linear-gradient(0deg, rgba(0,0,0,0.9) 40%, rgba(255,255,255,0) 100%)",
+          position: "absolute",
+          bottom: 0,
+          zIndex: 2,
+          h: "100px",
+          w: "100%",
+        }}
+      />
+    </Flex>
+  );
+}
+
+function ExperienceItem(props: { readonly verticalLineWidth: number }) {
+  const { verticalLineWidth } = props;
+  const horizontalGap = 40;
+  return (
+    <Box>
+      <Flex
+        sx={{
+          alignItems: "center",
+          gap: `${horizontalGap}px`,
+        }}
+      >
+        <Flex
+          sx={{
+            w: `${verticalLineWidth}px`,
+            h: `${verticalLineWidth}px`,
+            justifyContent: "center",
+            alignItems: "center",
+            overflow: "visible",
+          }}
+        >
+          <Box
+            sx={{
+              w: "10px",
+              h: "10px",
+              bg: "#202020",
+              borderRadius: "50%",
+              transform: "scale(5)",
+            }}
+          >
+            <AspectRatio ratio={1 / 1}>
+              <ChakraImage src="/ntu.jpeg" borderRadius="full" />
+            </AspectRatio>
+          </Box>
+        </Flex>
+        <ScrollTriggeredDiv>
+          <Flex
+            sx={{
+              fontSize: "1.2rem",
+              color: "#ffffff90",
+              fontFamily: "mono",
+            }}
+          >
+            {`Jan, 2023`}
+          </Flex>
+        </ScrollTriggeredDiv>
+      </Flex>
+      <Stack pl={`${verticalLineWidth + horizontalGap}px`}>
+        <ScrollTriggeredDiv delay={0.1}>
+          <Flex
+            sx={{
+              fontSize: "2.5rem",
+              fontWeight: 700,
+            }}
+          >
+            NTU OAA CIMD
+          </Flex>
+        </ScrollTriggeredDiv>
+      </Stack>
+    </Box>
+  );
+}
+
 export default function Home() {
   return (
     <PageHeaderWrapper>
       <PageMotionContainer duration={0.75}>
         <WelcomeSection />
-        <Box h="100vh" w="80%" mx="auto">
-          placeholder section 2
-        </Box>
+        <ExperienceSection />
       </PageMotionContainer>
     </PageHeaderWrapper>
   );
