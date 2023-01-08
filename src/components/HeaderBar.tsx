@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { FaBolt, FaPhoneAlt } from "react-icons/fa";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 
@@ -60,8 +59,8 @@ function HeaderBar(props: { readonly isScrolled: boolean }) {
         }}
       >
         <Flex w="80%" alignItems="center" justifyContent="center">
-          <Link href="/">
-            <a>
+          <ScrollLink to="welcome" smooth={true} duration={500}>
+            <Button variant={"unstyled"} _focus={{ border: "none" }}>
               <HStack h="100%">
                 <Image
                   priority
@@ -78,12 +77,11 @@ function HeaderBar(props: { readonly isScrolled: boolean }) {
                   fontWeight={900}
                   fontFamily="mono"
                 >
-                  {" "}
-                  Shu-Wei Hsu{" "}
+                  Shu-Wei Hsu
                 </Text>
               </HStack>
-            </a>
-          </Link>
+            </Button>
+          </ScrollLink>
           <Spacer />
           <Stack
             direction={{ base: "column", md: "row" }}
