@@ -10,32 +10,34 @@ import {
   ButtonProps,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { FaGithub } from "react-icons/fa";
+import { FaDownload, FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 interface NavBarProps extends ButtonProps {
-  link: string;
+  link?: string;
 }
 
 function NavBarItem(props: NavBarProps) {
   const { link, ...restProps } = props;
 
-  return (
-    <Link href={link}>
-      <a>
-        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
-          <Button
-            bg={"transparent"}
-            h="6vh"
-            _focus={{ border: "none" }}
-            {...restProps}
-          />
-        </motion.div>
-      </a>
-    </Link>
+  const body = (
+    <a>
+      <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+        <Button
+          bg={"transparent"}
+          h="6vh"
+          _focus={{ border: "none" }}
+          {...restProps}
+        />
+      </motion.div>
+    </a>
   );
+  if (!link) {
+    return body;
+  }
+  return <Link href={link}>{body}</Link>;
 }
 
 function HeaderBar(props: { readonly isScrolled: boolean }) {
@@ -112,17 +114,20 @@ function HeaderBar(props: { readonly isScrolled: boolean }) {
             justifyContent="end"
             gap={10}
           >
-            <NavBarItem link="/projects">
-              <Text
-                fontSize="sm"
-                color={
-                  pathname.includes("/projects") ? IconColor : NavbarFontColor
-                }
-                fontWeight={400}
-                fontFamily="mono"
-              >
-                Projects
-              </Text>
+            <NavBarItem>
+              <a href="/Frank_resume.pdf" download="Frank_resume.pdf">
+                <HStack w="80px">
+                  <FaDownload color={NavbarFontColor} />
+                  <Text
+                    fontSize="sm"
+                    color={NavbarFontColor}
+                    fontWeight={400}
+                    fontFamily="mono"
+                  >
+                    Resume
+                  </Text>
+                </HStack>
+              </a>
             </NavBarItem>
             <NavBarItem link="https://github.com/swh00tw">
               <HStack w="80px">
