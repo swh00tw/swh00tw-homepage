@@ -6,6 +6,8 @@ import {
   Image as ChakraImage,
   HStack,
   Spacer,
+  Center,
+  Text,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
@@ -232,19 +234,22 @@ function ExperienceItem(props: {
           </Flex>
         </ScrollTriggeredDiv>
       </Flex>
-      <Flex>
+      <Flex flexWrap={"wrap"}>
         <Stack
           pl={`${verticalLineWidth + horizontalGap}px`}
-          w={{ base: "80%", lg: "60%" }}
+          w={{ base: "100%", lg: "60%" }}
         >
           <ScrollTriggeredDiv delay={0.1}>
             <Flex
               sx={{
-                fontSize: "2.5rem",
+                fontSize: { base: "1.5rem", lg: "2.5rem" },
+                lineHeight: 1.4,
                 fontWeight: 700,
                 alignItems: "center",
                 gap: 6,
               }}
+              flexWrap="wrap"
+              mb={{ base: 4, lg: 0 }}
             >
               <Flex>
                 {isProjectExperienceInfo(experience)
@@ -283,41 +288,53 @@ function ExperienceItem(props: {
           <ScrollTriggeredDiv delay={0.3}>
             <Flex
               sx={{
-                fontSize: "1.1rem",
-                alignItems: "center",
+                fontSize: { base: "0.8rem", lg: "1.1rem" },
+                alignItems: { base: "start", lg: "center" },
                 gap: "8px",
               }}
             >
-              <FaIdBadge color="#FFD700" />
-              <Flex>
-                <Flex>{experience.roles.join(" / ")}</Flex>
-                <Flex mx={1}>
-                  {isWorkExperienceInfo(experience)
-                    ? `${experience.team ? ` of ${experience.team}` : ""}`
-                    : null}
-                </Flex>
-              </Flex>
+              <Center>
+                <FaIdBadge color="#FFD700" size="20px" />
+              </Center>
+              <Text>
+                {experience.roles.join(" / ") +
+                  `${
+                    isWorkExperienceInfo(experience)
+                      ? `${experience.team ? ` of ${experience.team}` : ""}`
+                      : ""
+                  }`}
+              </Text>
             </Flex>
           </ScrollTriggeredDiv>
           {experience.location ? (
             <ScrollTriggeredDiv delay={0.4}>
               <Flex
                 sx={{
-                  fontSize: "1.1rem",
+                  fontSize: { base: "0.8rem", lg: "1.1rem" },
                   alignItems: "center",
                   gap: "8px",
                 }}
               >
-                <FaMapMarkerAlt color="#EA4335" />
-                <Flex>
-                  <Flex>{experience.location}</Flex>
-                </Flex>
+                <Center>
+                  <FaMapMarkerAlt color="#EA4335" size="20px" />
+                </Center>
+                <Text>{experience.location}</Text>
               </Flex>
             </ScrollTriggeredDiv>
           ) : null}
         </Stack>
         <Spacer />
-        <Flex w={{ base: "80%", lg: "30%" }}>
+        <Flex
+          pl={{
+            base: `${verticalLineWidth + horizontalGap}px`,
+            lg: `0px`,
+          }}
+          pt={{
+            base: "50px",
+            lg: 0,
+          }}
+          w={{ base: "100%", lg: "30%" }}
+        >
           <ScrollTriggeredDiv delay={0.2}>
             <ChakraImage
               src={experience.imagePath}

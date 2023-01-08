@@ -1,4 +1,4 @@
-import { Flex, Stack, HStack, Box } from "@chakra-ui/react";
+import { Flex, Stack, Box } from "@chakra-ui/react";
 import Link from "next/link";
 import { Element } from "react-scroll";
 import { useState } from "react";
@@ -96,7 +96,13 @@ export default function ContactSection() {
           >
             Find me on
           </Flex>
-          <HStack spacing={4}>
+          <Stack
+            spacing={4}
+            direction={{
+              base: "column",
+              lg: "row",
+            }}
+          >
             <ContactButton
               link="https://www.linkedin.com/in/swh00tw/"
               bg="linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(69,252,196,1) 100%)"
@@ -112,7 +118,7 @@ export default function ContactSection() {
               </Flex>
             </ContactButton>
             <ContactButton
-              link="https://www.linkedin.com/in/swh00tw/"
+              link="https://github.com/swh00tw"
               bg="linear-gradient(90deg, rgba(180,118,58,1) 23%,  rgba(252,69,105,1) 100%)"
             >
               <Flex
@@ -125,7 +131,7 @@ export default function ContactSection() {
                 <Flex>Github</Flex>
               </Flex>
             </ContactButton>
-          </HStack>
+          </Stack>
         </Stack>
       </Flex>
     </>
