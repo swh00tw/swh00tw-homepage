@@ -4,16 +4,137 @@ import {
   Box,
   AspectRatio,
   Image as ChakraImage,
+  HStack,
+  Spacer,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 import {
   experienceSource,
   ExperienceInfo,
   isProjectExperienceInfo,
+  isWorkExperienceInfo,
 } from "@/data/experience";
 import moment from "moment";
 import { Element } from "react-scroll";
+import {
+  FaIdBadge,
+  FaMapMarkerAlt,
+  FaGithub,
+  FaLinkedin,
+  FaLink,
+} from "react-icons/fa";
+import Image from "next/image";
+import Link from "next/link";
+
+function ExternalLinkButton(props: {
+  readonly children?: React.ReactNode;
+  readonly link: string;
+  readonly bg: string;
+}) {
+  const { children, link, bg } = props;
+  const [isHovered, setIsHovered] = useState(false);
+  return (
+    <Link passHref href={link}>
+      <Flex
+        sx={{
+          fontSize: "1rem",
+          cursor: "pointer",
+          borderRadius: "999px",
+          px: 2,
+          py: 2,
+          bg: "#ffffff20",
+          position: "relative",
+          _after: {
+            content: '""',
+            position: "absolute",
+            borderRadius: "999px",
+            left: "0px",
+            top: "0px",
+            right: "0px",
+            bottom: "0px",
+            backgroundImage: bg,
+            opacity: 0,
+            transition: "all 1s ease-in-out",
+          },
+          _hover: {
+            _after: {
+              opacity: 1,
+            },
+          },
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <Box
+          zIndex={3}
+          color={isHovered ? "black" : "white"}
+          sx={{
+            transition: "all .5s ease-in-out",
+          }}
+        >
+          {children}
+        </Box>
+      </Flex>
+    </Link>
+  );
+}
+
+function ExperienceCard(props: { experience: ExperienceInfo }) {
+  const { experience: e } = props;
+  return (
+    <Box borderRadius="2xl" mt={8} w="100%" bg={"#ffffff10"}>
+      <Flex
+        py={10}
+        flexDirection={{ base: "column", lg: "row" }}
+        w="100%"
+        justifyContent="center"
+        alignItems="start"
+      >
+        <Box
+          w={{ base: "80%", lg: "50%" }}
+          justifyContent="space-between"
+          alignItems={{ base: "center", md: "start" }}
+          py={10}
+          h="100%"
+        >
+          <Flex
+            flexDirection={"column"}
+            flexGrow={1}
+            w={{ base: "80%", lg: "70%" }}
+          ></Flex>
+          <Flex
+            mt={8}
+            flexDirection={{ base: "column", md: "row" }}
+            w={{ base: "100%", md: "100%" }}
+            alignItems={{ base: "center", md: "start" }}
+            gap={4}
+          ></Flex>
+        </Box>
+        <Flex
+          w={{ base: "80%", lg: "35%" }}
+          pt={{ base: 8, lg: 0 }}
+          justifyContent="center"
+          alignItems="center"
+        >
+          <motion.div whileHover={{ scale: 1.05 }}>
+            <Image
+              quality="100"
+              priority
+              src={e.imagePath}
+              alt="homepage"
+              height="1100"
+              width="2000"
+              style={{
+                borderRadius: "10px",
+              }}
+            />
+          </motion.div>
+        </Flex>
+      </Flex>
+    </Box>
+  );
+}
 
 function ScrollTriggeredDiv(
   props: React.PropsWithChildren<{
@@ -22,7 +143,7 @@ function ScrollTriggeredDiv(
     readonly offsetX?: number;
   }>
 ) {
-  const { delay = 0, duration = 0.5, offsetX = 50 } = props;
+  const { delay = 0, duration = 0.5, offsetX = 50, ...restProps } = props;
   return (
     <motion.div
       initial={{ opacity: 0, x: `-${offsetX}px` }}
@@ -32,7 +153,7 @@ function ScrollTriggeredDiv(
         x: { duration: duration },
         delay: 0.3 + delay,
       }}
-      {...props}
+      {...restProps}
     />
   );
 }
@@ -45,7 +166,7 @@ function ExperienceItem(props: {
   const horizontalGap = 60;
 
   return (
-    <Box minH="60vh" mt="10vh">
+    <Box minH="40vh" mt="10vh">
       <Flex
         sx={{
           alignItems: "center",
@@ -85,7 +206,7 @@ function ExperienceItem(props: {
             >
               <AspectRatio ratio={1 / 1}>
                 <ChakraImage
-                  src={experience.imagePath}
+                  src={experience.logoImagePath}
                   borderRadius="full"
                   sx={{
                     shadow: "0 0 8px 0 #FFD700",
@@ -111,20 +232,104 @@ function ExperienceItem(props: {
           </Flex>
         </ScrollTriggeredDiv>
       </Flex>
-      <Stack pl={`${verticalLineWidth + horizontalGap}px`}>
-        <ScrollTriggeredDiv delay={0.1}>
-          <Flex
-            sx={{
-              fontSize: "2.5rem",
-              fontWeight: 700,
-            }}
-          >
-            {isProjectExperienceInfo(experience)
-              ? experience.projectName
-              : experience.organization}
-          </Flex>
-        </ScrollTriggeredDiv>
-      </Stack>
+      <Flex>
+        <Stack
+          pl={`${verticalLineWidth + horizontalGap}px`}
+          w={{ base: "80%", lg: "60%" }}
+        >
+          <ScrollTriggeredDiv delay={0.1}>
+            <Flex
+              sx={{
+                fontSize: "2.5rem",
+                fontWeight: 700,
+                alignItems: "center",
+                gap: 6,
+              }}
+            >
+              <Flex>
+                {isProjectExperienceInfo(experience)
+                  ? experience.projectName
+                  : experience.organization}
+              </Flex>
+              <HStack>
+                {experience.websiteUrl ? (
+                  <ExternalLinkButton
+                    link={experience.websiteUrl}
+                    bg="linear-gradient(86deg, rgba(195,77,34,1) 0%, rgba(253,247,45,1) 100%)"
+                  >
+                    <FaLink />
+                  </ExternalLinkButton>
+                ) : null}
+                {isWorkExperienceInfo(experience) && experience.linkedinUrl ? (
+                  <ExternalLinkButton
+                    link={experience.linkedinUrl}
+                    bg="linear-gradient(86deg, rgba(195,77,34,1) 0%, rgba(253,247,45,1) 100%)"
+                  >
+                    <FaLinkedin />
+                  </ExternalLinkButton>
+                ) : null}
+                {isProjectExperienceInfo(experience) &&
+                experience.githubLink ? (
+                  <ExternalLinkButton
+                    link={experience.githubLink}
+                    bg="linear-gradient(86deg, rgba(195,77,34,1) 0%, rgba(253,247,45,1) 100%)"
+                  >
+                    <FaGithub />
+                  </ExternalLinkButton>
+                ) : null}
+              </HStack>
+            </Flex>
+          </ScrollTriggeredDiv>
+          <ScrollTriggeredDiv delay={0.3}>
+            <Flex
+              sx={{
+                fontSize: "1.1rem",
+                alignItems: "center",
+                gap: "8px",
+              }}
+            >
+              <FaIdBadge color="#FFD700" />
+              <Flex>
+                <Flex>{experience.roles.join(" / ")}</Flex>
+                <Flex mx={1}>
+                  {isWorkExperienceInfo(experience)
+                    ? `${experience.team ? ` of ${experience.team}` : ""}`
+                    : null}
+                </Flex>
+              </Flex>
+            </Flex>
+          </ScrollTriggeredDiv>
+          {experience.location ? (
+            <ScrollTriggeredDiv delay={0.4}>
+              <Flex
+                sx={{
+                  fontSize: "1.1rem",
+                  alignItems: "center",
+                  gap: "8px",
+                }}
+              >
+                <FaMapMarkerAlt color="#EA4335" />
+                <Flex>
+                  <Flex>{experience.location}</Flex>
+                </Flex>
+              </Flex>
+            </ScrollTriggeredDiv>
+          ) : null}
+        </Stack>
+        <Spacer />
+        <Flex w={{ base: "80%", lg: "30%" }}>
+          <ScrollTriggeredDiv delay={0.2}>
+            <ChakraImage
+              src={experience.imagePath}
+              alt="homepage"
+              sx={{
+                borderRadius: "10px",
+                border: "3px solid #ffffff15",
+              }}
+            />
+          </ScrollTriggeredDiv>
+        </Flex>
+      </Flex>
     </Box>
   );
 }
