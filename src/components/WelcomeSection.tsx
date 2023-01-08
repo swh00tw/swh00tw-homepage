@@ -26,7 +26,7 @@ function AnimatedColorText(props: AnimatedColorTextProps) {
   } = props;
 
   return (
-    <Text {...restProps}>
+    <Text align={"center"} {...restProps}>
       <motion.p
         animate={{
           color: isReversed
@@ -129,58 +129,129 @@ export default function WelcomeSection() {
         pt="10%"
         alignItems={"start"}
         justifyContent="space-between"
+        flexDirection={{
+          base: "column-reverse",
+          lg: "row",
+        }}
       >
         <Stack
           sx={{
             fontSize: "2rem",
             fontWeight: 500,
           }}
-          maxW="60%"
+          maxW={{
+            base: "100%",
+            lg: "60%",
+          }}
           pt={"7%"}
         >
           <Flex
             alignItems={"center"}
+            justifyContent={{
+              base: "center",
+              lg: "start",
+            }}
             sx={{
-              fontSize: "3rem",
+              fontSize: {
+                base: "2.5rem",
+                lg: "3rem",
+              },
               fontWeight: 700,
             }}
           >
             Shu-Wei Hsu
-            <Text mx="2" fontSize="2.5rem">
+            <Text
+              mx="2"
+              fontSize={{
+                base: "1.5rem",
+                lg: "2.5rem",
+              }}
+            >
               🇹🇼
             </Text>
           </Flex>
           <Flex
             sx={{
+              fontSize: {
+                base: "1.5rem",
+                lg: "2rem",
+              },
               fontWeight: 600,
             }}
             wrap="wrap"
+            justifyContent={{
+              base: "center",
+              lg: "start",
+            }}
           >
             <AnimatedColorText endColor="#4FD1C5" duration={10}>
               {"Engineering Student"}
             </AnimatedColorText>
-            <Text mx={2}>/</Text>
+            <Flex
+              mx={2}
+              display={{
+                base: "none",
+                lg: "flex",
+              }}
+            >
+              /
+            </Flex>
+            <Flex
+              w="100%"
+              mx={2}
+              justifyContent="center"
+              display={{
+                base: "flex",
+                lg: "none",
+              }}
+            >
+              <Text>x</Text>
+            </Flex>
             <AnimatedColorText endColor="#F687B3" isReversed duration={10}>
               {"Web Developer"}
             </AnimatedColorText>
           </Flex>
           <Stack
             pt={4}
-            w="90%"
+            w={{
+              base: "100%",
+              lg: "90%",
+            }}
             sx={{
               color: "#ffffff90",
               fontSize: "1.1rem",
             }}
           >
-            <Text>
+            <Text
+              align={{
+                base: "center",
+                lg: "start",
+              }}
+            >
               I am a Taiwanese full-stack web engineer who is experienced in
               React, Next.js, and Node.js.
             </Text>
-            <Text>
+            <Text
+              align={{
+                base: "center",
+                lg: "start",
+              }}
+            >
               Also an enthusiast of frontend technologies and UI/UX design.
             </Text>
           </Stack>
-          <HStack pt={4}>
+          <Flex
+            pt={4}
+            gap={1}
+            w={{
+              base: "100%",
+              lg: "fit-content",
+            }}
+            justifyContent={{
+              base: "center",
+              lg: "start",
+            }}
+          >
             <CustomButton bg="linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,253,237,1) 51%, rgba(69,252,196,1) 100%)">
               <a href="/Frank_resume.pdf" download="Frank_resume.pdf">
                 <HStack>
@@ -198,26 +269,37 @@ export default function WelcomeSection() {
                 <Text color={"white"}>swh00tw</Text>
               </HStack>
             </CustomButton>
-          </HStack>
+          </Flex>
         </Stack>
-        <motion.div
-          whileHover={{
-            scale: 1.05,
+        <Flex
+          w={{
+            base: "100%",
+            lg: "fit-content",
           }}
-          whileTap={{
-            scale: 0.95,
+          justifyContent={{
+            base: "center",
+            lg: "end",
           }}
         >
-          <Image
-            quality="100"
-            priority
-            src="/Images/stopit.png"
-            alt="hello"
-            height="450"
-            width="450"
-            className={memojiStyle.borderCircle}
-          />
-        </motion.div>
+          <motion.div
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
+          >
+            <Image
+              quality="100"
+              priority
+              src="/Images/stopit.png"
+              alt="hello"
+              height="450"
+              width="450"
+              className={memojiStyle.borderCircle}
+            />
+          </motion.div>
+        </Flex>
       </Flex>
     </>
   );
