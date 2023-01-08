@@ -6,19 +6,13 @@ import {
   Text,
   HStack,
   useColorModeValue,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
   Stack,
   ButtonProps,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FaGithub } from "react-icons/fa";
 import Link from "next/link";
-// import ThemeToggleButton from "@/components/ThemeToggleButton";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 
 interface NavBarProps extends ButtonProps {
@@ -27,14 +21,13 @@ interface NavBarProps extends ButtonProps {
 
 function NavBarItem(props: NavBarProps) {
   const { link, ...restProps } = props;
-  const bgColor = useColorModeValue("gray.100", "black");
 
   return (
     <Link href={link}>
       <a>
-        <motion.div whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.8 }}>
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
           <Button
-            bg={bgColor}
+            bg={"transparent"}
             h="6vh"
             _focus={{ border: "none" }}
             {...restProps}
@@ -116,7 +109,7 @@ function HeaderBar(props: { readonly isScrolled: boolean }) {
             alignItems="center"
             flexGrow={1}
             mt={{ base: 4, md: 0 }}
-            justifyContent="center"
+            justifyContent="end"
             gap={10}
           >
             <NavBarItem link="/projects">
@@ -145,58 +138,6 @@ function HeaderBar(props: { readonly isScrolled: boolean }) {
               </HStack>
             </NavBarItem>
           </Stack>
-          <Spacer />
-          <Flex>
-            {/* <ThemeToggleButton /> */}
-            <Box bg={BgColor} w="5px" />
-            <Box ml={2} display={{ base: "inline-block", md: "none" }}>
-              <Menu isLazy autoSelect={false}>
-                {({ isOpen }) => (
-                  <>
-                    <MenuButton as={Button} color={IconColor}>
-                      <AnimatePresence mode="wait" initial={false}>
-                        <motion.div
-                          style={{ display: "inline-block" }}
-                          key={isOpen ? "open" : "closed"}
-                          initial={{ y: 0, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          {isOpen ? <CloseIcon /> : <HamburgerIcon />}
-                        </motion.div>
-                      </AnimatePresence>
-                    </MenuButton>
-                    <MenuList>
-                      <motion.div
-                        animate={
-                          isOpen
-                            ? { opacity: 1, y: 0 }
-                            : { opacity: 0.5, y: "-30%" }
-                        }
-                      >
-                        <Link href="/projects">
-                          <a>
-                            <MenuItem>Projects</MenuItem>
-                          </a>
-                        </Link>
-                        <Link href="https://github.com/swh00tw">
-                          <a>
-                            <MenuItem>
-                              <HStack w="100px">
-                                <FaGithub color={NavbarFontColor} />
-                                <p>Github</p>
-                              </HStack>
-                            </MenuItem>
-                          </a>
-                        </Link>
-                      </motion.div>
-                    </MenuList>
-                  </>
-                )}
-              </Menu>
-            </Box>
-          </Flex>
         </Flex>
       </Flex>
     </Box>
