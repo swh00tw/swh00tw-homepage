@@ -75,11 +75,13 @@ function AnimatedColorText(props: AnimatedColorTextProps) {
   );
 }
 
+// ref: https://stackoverflow.com/a/17977118
 function CustomButton(props: {
   readonly children?: React.ReactNode;
   readonly link?: string;
+  readonly bg: string;
 }) {
-  const { children, link } = props;
+  const { children, link, bg } = props;
   const body = (
     <Flex
       sx={{
@@ -88,13 +90,40 @@ function CustomButton(props: {
         borderRadius: "4px",
         px: 3,
         py: 2,
-        transition: "all 0.3s ease-in-out",
+        bg: "linear-gradient(0deg,white,gray)",
+        position: "relative",
+        _after: {
+          content: '""',
+          position: "absolute",
+          borderRadius: "4px",
+          left: "0px",
+          top: "0px",
+          right: "0px",
+          bottom: "0px",
+          backgroundImage: bg,
+          opacity: 0,
+          transition: "all 2s ease-in-out",
+        },
         _hover: {
-          bg: "#ffffff20",
+          _after: {
+            opacity: 1,
+          },
         },
       }}
     >
-      {children}
+      <Box
+        sx={{
+          position: "absolute",
+          bg: "black",
+          zIndex: 2,
+          top: "1px",
+          left: "1px",
+          bottom: "1px",
+          right: "1px",
+          borderRadius: "4px",
+        }}
+      />
+      <Box zIndex={3}>{children}</Box>
     </Flex>
   );
   return link ? (
@@ -169,7 +198,7 @@ export default function Home() {
               </Text>
             </Stack>
             <HStack>
-              <CustomButton>
+              <CustomButton bg="linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(29,253,237,1) 51%, rgba(69,252,196,1) 100%)">
                 <a href="/Frank_resume.pdf" download="Frank_resume.pdf">
                   <HStack>
                     <FaDownload color={"white"} />
@@ -177,7 +206,10 @@ export default function Home() {
                   </HStack>
                 </a>
               </CustomButton>
-              <CustomButton link="https://github.com/swh00tw">
+              <CustomButton
+                link="https://github.com/swh00tw"
+                bg="linear-gradient(90deg, rgba(180,118,58,1) 23%, rgba(253,29,239,0.8954175420168067) 59%, rgba(252,69,105,1) 87%)"
+              >
                 <HStack>
                   <FaGithub color={"white"} />
                   <Text color={"white"}>swh00tw</Text>
