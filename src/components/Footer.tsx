@@ -1,11 +1,13 @@
-import { Box, useColorModeValue } from "@chakra-ui/react";
+import { Flex, useColorModeValue } from "@chakra-ui/react";
 
 const Footer = () => {
   const bgColor = useColorModeValue("gray.100", "black");
   const fontColor = useColorModeValue("gray.400", "gray.600");
 
   return (
-    <Box
+    <Flex
+      w="100%"
+      justifyContent="center"
       alignItems="center"
       bg={bgColor}
       color={fontColor}
@@ -16,7 +18,7 @@ const Footer = () => {
       pt="3"
     >
       &copy; {new Date().getFullYear()} Shu-Wei Hsu. All Rights Reserved.
-    </Box>
+    </Flex>
   );
 };
 
