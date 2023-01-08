@@ -1,8 +1,8 @@
 import React from "react";
 
 export interface BaseExperienceInfo {
-  startTs: number;
-  endTs: number | null;
+  startTs: number; // ms
+  endTs: number | null; // ms
   type: "Work" | "Project";
   roles: string[];
   location: string | null;
@@ -36,8 +36,8 @@ export function isProjectExperienceInfo(
 export const experienceSource: ExperienceInfo[] = [
   {
     type: "Work",
-    startTs: 1659225634,
-    endTs: 1673179196,
+    startTs: 1659225634000,
+    endTs: 1673179196000,
     organization: "National Taiwan University, Office of Academic Affairs",
     roles: ["Frontend Engineer", "Frontend Lead"],
     location: "Taipei, Taiwan",
@@ -47,8 +47,8 @@ export const experienceSource: ExperienceInfo[] = [
   },
   {
     type: "Work",
-    startTs: 1643673634,
-    endTs: 1659225634,
+    startTs: 1643673634000,
+    endTs: 1659225634000,
     organization: "Kinetik Athlete",
     roles: ["Software Engineer Intern"],
     location: "Taipei, Taiwan",
@@ -59,8 +59,8 @@ export const experienceSource: ExperienceInfo[] = [
   },
   {
     type: "Project",
-    startTs: 1635724834,
-    endTs: 1659225634,
+    startTs: 1635724834000,
+    endTs: 1659225634000,
     projectName: "NTUCourse Neo",
     roles: ["Fullstack Developer", "Co-founder"],
     location: "Taipei, Taiwan",
@@ -73,8 +73,8 @@ export const experienceSource: ExperienceInfo[] = [
   },
   {
     type: "Project",
-    startTs: 1619827234,
-    endTs: 1622505634,
+    startTs: 1619827234000,
+    endTs: 1622505634000,
     projectName: "DS Tutor",
     roles: ["Frontend Developer"],
     location: "Taipei, Taiwan",
