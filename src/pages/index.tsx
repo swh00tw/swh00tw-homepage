@@ -340,7 +340,7 @@ function ExperienceItem(props: { readonly verticalLineWidth: number }) {
             }}
           >
             <AspectRatio ratio={1 / 1}>
-              <ChakraImage src="/ntu.jpeg" borderRadius="full" />
+              <ChakraImage src="/kinetik.png" borderRadius="full" />
             </AspectRatio>
           </Box>
         </Flex>
