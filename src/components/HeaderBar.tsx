@@ -13,7 +13,6 @@ import Image from "next/image";
 import { FaDownload, FaGithub } from "react-icons/fa";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 
 interface NavBarProps extends ButtonProps {
   link?: string;
@@ -41,11 +40,9 @@ function NavBarItem(props: NavBarProps) {
 }
 
 function HeaderBar(props: { readonly isScrolled: boolean }) {
-  const { pathname } = useRouter();
   const { isScrolled } = props;
 
   const NavbarFontColor = useColorModeValue("#000", "#fff");
-  const IconColor = useColorModeValue("orange.600", "purple.300");
   const BgColor = useColorModeValue("gray.100", "black");
 
   return (
