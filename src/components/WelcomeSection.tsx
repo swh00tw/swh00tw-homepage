@@ -153,7 +153,7 @@ export default function WelcomeSection() {
             }}
             sx={{
               fontSize: {
-                base: "2.5rem",
+                base: "2.1rem",
                 lg: "3rem",
               },
               fontWeight: 700,
