@@ -231,7 +231,7 @@ function ExperienceItem(props: {
           >
             {`${moment(experience.startTs).format("MMM YYYY")}${
               experience.endTs
-                ? ` - ${moment(experience.startTs).format("MMM YYYY")}`
+                ? ` - ${moment(experience.endTs).format("MMM YYYY")}`
                 : "Present"
             }`}
           </Flex>
