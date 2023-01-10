@@ -221,7 +221,10 @@ function ExperienceItem(props: {
         <ScrollTriggeredDiv>
           <Flex
             sx={{
-              fontSize: "1.2rem",
+              fontSize: {
+                base: "1rem",
+                lg: "1.2rem",
+              },
               color: "#ffffff90",
               fontFamily: "mono",
             }}
