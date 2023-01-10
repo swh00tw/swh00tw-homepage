@@ -251,15 +251,26 @@ function ExperienceItem(props: {
                 alignItems: "center",
                 gap: 6,
               }}
-              flexWrap="wrap"
+              flexDirection={{ base: "column", md: "row" }}
+              alignItems={{ base: "start", md: "center" }}
               mb={{ base: 4, lg: 0 }}
             >
-              <Flex>
+              <Flex
+                w={{
+                  base: "100%",
+                  md: "fit-content",
+                }}
+              >
                 {isProjectExperienceInfo(experience)
                   ? experience.projectName
                   : experience.organization}
               </Flex>
-              <HStack>
+              <HStack
+                w={{
+                  base: "100%",
+                  md: "fit-content",
+                }}
+              >
                 {experience.websiteUrl ? (
                   <ExternalLinkButton
                     link={experience.websiteUrl}
