@@ -29,7 +29,7 @@ function HeaderBar(props: { readonly isScrolled: boolean }) {
   const BgColor = useColorModeValue("gray.100", "black");
 
   return (
-    <Box zIndex="1000" top={0} position="sticky">
+    <Box zIndex="1000" top={0} position="fixed">
       <Flex
         bg={BgColor}
         w="100%"
