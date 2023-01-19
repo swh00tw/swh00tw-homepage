@@ -10,6 +10,7 @@ import {
   Text,
   Collapse,
   Badge,
+  Tag,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
@@ -27,6 +28,7 @@ import {
   FaGithub,
   FaLinkedin,
   FaLink,
+  FaTools,
   FaCaretRight,
 } from "react-icons/fa";
 import Link from "next/link";
@@ -297,6 +299,27 @@ function ExperienceItem(props: {
                   <FaMapMarkerAlt color="#EA4335" size="20px" />
                 </Center>
                 <Text>{experience.location}</Text>
+              </Flex>
+            </ScrollTriggeredDiv>
+          ) : null}
+          {isProjectExperienceInfo(experience) ? (
+            <ScrollTriggeredDiv delay={0.4}>
+              <Flex
+                sx={{
+                  fontSize: { base: "0.8rem", lg: "1.1rem" },
+                  fontWeight: 500,
+                  gap: "8px",
+                  alignItems: "center",
+                }}
+              >
+                <Center h={{ base: "1.2rem", lg: "1.6rem" }}>
+                  <FaTools color="#B794F4" size="20px" />
+                </Center>
+                {experience.techStacks.map((techStack, index) => (
+                  <Tag key={index} size="sm">
+                    {techStack}
+                  </Tag>
+                ))}
               </Flex>
             </ScrollTriggeredDiv>
           ) : null}
