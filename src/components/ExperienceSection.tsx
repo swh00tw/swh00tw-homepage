@@ -26,7 +26,6 @@ import {
   FaLinkedin,
   FaLink,
 } from "react-icons/fa";
-import Image from "next/image";
 import Link from "next/link";
 
 function ExternalLinkButton(props: {
@@ -79,62 +78,6 @@ function ExternalLinkButton(props: {
         </Box>
       </Flex>
     </Link>
-  );
-}
-
-function ExperienceCard(props: { experience: ExperienceInfo }) {
-  const { experience: e } = props;
-  return (
-    <Box borderRadius="2xl" mt={8} w="100%" bg={"#ffffff10"}>
-      <Flex
-        py={10}
-        flexDirection={{ base: "column", lg: "row" }}
-        w="100%"
-        justifyContent="center"
-        alignItems="start"
-      >
-        <Box
-          w={{ base: "80%", lg: "50%" }}
-          justifyContent="space-between"
-          alignItems={{ base: "center", md: "start" }}
-          py={10}
-          h="100%"
-        >
-          <Flex
-            flexDirection={"column"}
-            flexGrow={1}
-            w={{ base: "80%", lg: "70%" }}
-          ></Flex>
-          <Flex
-            mt={8}
-            flexDirection={{ base: "column", md: "row" }}
-            w={{ base: "100%", md: "100%" }}
-            alignItems={{ base: "center", md: "start" }}
-            gap={4}
-          ></Flex>
-        </Box>
-        <Flex
-          w={{ base: "80%", lg: "35%" }}
-          pt={{ base: 8, lg: 0 }}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <Image
-              quality="100"
-              priority
-              src={e.imagePath}
-              alt="homepage"
-              height="1100"
-              width="2000"
-              style={{
-                borderRadius: "10px",
-              }}
-            />
-          </motion.div>
-        </Flex>
-      </Flex>
-    </Box>
   );
 }
 
