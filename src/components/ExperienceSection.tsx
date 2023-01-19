@@ -25,6 +25,7 @@ import {
   FaGithub,
   FaLinkedin,
   FaLink,
+  FaCaretRight,
 } from "react-icons/fa";
 import Link from "next/link";
 
@@ -109,6 +110,8 @@ function ExperienceItem(props: {
 }) {
   const { verticalLineWidth, experience } = props;
   const horizontalGap = 60;
+
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <Box minH="40vh" mt="10vh">
@@ -246,11 +249,12 @@ function ExperienceItem(props: {
             <Flex
               sx={{
                 fontSize: { base: "0.8rem", lg: "1.1rem" },
-                alignItems: { base: "start", lg: "center" },
+                alignItems: "start",
+                fontWeight: 500,
                 gap: "8px",
               }}
             >
-              <Center>
+              <Center h={{ base: "1.2rem", lg: "1.6rem" }}>
                 <FaIdBadge color="#FFD700" size="20px" />
               </Center>
               <Text>
@@ -268,17 +272,50 @@ function ExperienceItem(props: {
               <Flex
                 sx={{
                   fontSize: { base: "0.8rem", lg: "1.1rem" },
-                  alignItems: "center",
+                  alignItems: "start",
+                  fontWeight: 500,
                   gap: "8px",
                 }}
               >
-                <Center>
+                <Center h={{ base: "1.2rem", lg: "1.6rem" }}>
                   <FaMapMarkerAlt color="#EA4335" size="20px" />
                 </Center>
                 <Text>{experience.location}</Text>
               </Flex>
             </ScrollTriggeredDiv>
           ) : null}
+          <ScrollTriggeredDiv delay={0.5}>
+            <Flex
+              sx={{
+                fontSize: { base: "0.8rem", lg: "1rem" },
+                alignItems: "start",
+                color: "#fff",
+                gap: "8px",
+                w: "90%",
+              }}
+            >
+              <motion.div
+                whileHover={{
+                  scale: 1.2,
+                }}
+              >
+                <Center
+                  h={{ base: "1.2rem", lg: "1.4rem" }}
+                  cursor="pointer"
+                  onClick={() => {
+                    setExpanded(!expanded);
+                  }}
+                  sx={{
+                    transition: "all 0.2s ease-in-out",
+                    transform: expanded ? "rotate(90deg)" : "rotate(0deg)",
+                  }}
+                >
+                  <FaCaretRight color="#c0c0c0" size="20px" />
+                </Center>
+              </motion.div>
+              <Text>{experience.introduction}</Text>
+            </Flex>
+          </ScrollTriggeredDiv>
         </Stack>
         <Spacer />
         <Flex

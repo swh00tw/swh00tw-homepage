@@ -9,6 +9,7 @@ export interface BaseExperienceInfo {
   imagePath: string;
   websiteUrl?: string;
   achievements?: { emoji: string; text: string }[];
+  introduction: string;
 }
 export interface WorkExperienceInfo extends BaseExperienceInfo {
   type: "Work";
@@ -47,12 +48,14 @@ export const experienceSource: ExperienceInfo[] = [
       "The brand new course selection system and course information website",
     logoImagePath: "/ntu.jpeg",
     imagePath: "/ntu_nol_neo.png",
+    introduction:
+      "The brand new course selection system and course information website for National Taiwan University",
   },
   {
     type: "Work",
     startTs: 1643673634000,
     endTs: 1659225634000,
-    organization: "Kinetik Athlete",
+    organization: "WOD.co",
     roles: ["Software Engineer Intern"],
     location: "Taipei, Taiwan",
     description:
@@ -60,6 +63,8 @@ export const experienceSource: ExperienceInfo[] = [
     logoImagePath: "/kinetik.png",
     linkedinUrl: "https://www.linkedin.com/company/kinetikathlete/",
     imagePath: "/wodsquad.png",
+    introduction:
+      "A workout sharing platform to write better workouts and track athlete performance",
   },
   {
     type: "Project",
@@ -75,6 +80,8 @@ export const experienceSource: ExperienceInfo[] = [
     techStacks: ["React", "Next.js", "Typescript", "PostgreSQL", "Node.js"],
     githubLink: "https://github.com/NTUCourse-Neo",
     imagePath: "/project-ntucourse-neo.png",
+    introduction:
+      "A redesigned course planning website for students in National Taiwan University",
   },
   {
     type: "Project",
@@ -89,5 +96,7 @@ export const experienceSource: ExperienceInfo[] = [
     techStacks: ["Javascript", "HTML/Canvas", "TweenJS", "EaselJS"],
     githubLink: "https://github.com/swh00tw/DS_Tutor",
     imagePath: "/project-ds-tutor.png",
+    introduction:
+      "A data structure visualization tool for beginners in Data Structure",
   },
 ];
