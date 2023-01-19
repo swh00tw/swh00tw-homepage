@@ -9,6 +9,7 @@ import {
   Center,
   Text,
   Collapse,
+  Badge,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
@@ -175,12 +176,21 @@ function ExperienceItem(props: {
               color: "#ffffff90",
               fontFamily: "mono",
             }}
+            gap="16px"
+            alignItems={"center"}
           >
-            {`${moment(experience.startTs).format("MMM YYYY")}${
-              experience.endTs
-                ? ` - ${moment(experience.endTs).format("MMM YYYY")}`
-                : "Present"
-            }`}
+            <Flex>
+              {`${moment(experience.startTs).format("MMM YYYY")}${
+                experience.endTs
+                  ? ` - ${moment(experience.endTs).format("MMM YYYY")}`
+                  : "Present"
+              }`}
+            </Flex>
+            {isProjectExperienceInfo(experience) ? (
+              <Badge h="fit-content">
+                {isProjectExperienceInfo(experience) ? "Project" : "Job"}
+              </Badge>
+            ) : null}
           </Flex>
         </ScrollTriggeredDiv>
       </Flex>
