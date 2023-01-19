@@ -8,6 +8,7 @@ import {
   Spacer,
   Center,
   Text,
+  Collapse,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
@@ -114,7 +115,7 @@ function ExperienceItem(props: {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Box minH="40vh" mt="10vh">
+    <Box minH="50vh" mt="10vh">
       <Flex
         sx={{
           alignItems: "center",
@@ -187,6 +188,10 @@ function ExperienceItem(props: {
         <Stack
           pl={`${verticalLineWidth + horizontalGap}px`}
           w={{ base: "100%", lg: "60%" }}
+          spacing={{
+            base: 3,
+            lg: 2,
+          }}
         >
           <ScrollTriggeredDiv delay={0.1}>
             <Flex
@@ -313,7 +318,43 @@ function ExperienceItem(props: {
                   <FaCaretRight color="#c0c0c0" size="20px" />
                 </Center>
               </motion.div>
-              <Text>{experience.introduction}</Text>
+              <Stack>
+                <Text>{experience.introduction}</Text>
+                <Collapse in={expanded} animateOpacity>
+                  <Stack
+                    w="100%"
+                    p={{
+                      base: "0px",
+                      lg: "16px",
+                    }}
+                    spacing={3}
+                  >
+                    {experience.achievements.map((achievement, index) => (
+                      <Flex
+                        key={index}
+                        alignItems="start"
+                        gap={2}
+                        sx={{
+                          fontSize: { base: "12px", lg: "14px" },
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        <Center
+                          h={{
+                            base: "17px",
+                            lg: "19.6px",
+                          }}
+                        >
+                          <Text fontSize={{ base: "12px", lg: "14px" }}>
+                            ▫️
+                          </Text>
+                        </Center>
+                        <Text>{achievement}</Text>
+                      </Flex>
+                    ))}
+                  </Stack>
+                </Collapse>
+              </Stack>
             </Flex>
           </ScrollTriggeredDiv>
         </Stack>
