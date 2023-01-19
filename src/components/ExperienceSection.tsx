@@ -8,6 +8,9 @@ import {
   Spacer,
   Center,
   Text,
+  Collapse,
+  Badge,
+  Tag,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
@@ -25,8 +28,9 @@ import {
   FaGithub,
   FaLinkedin,
   FaLink,
+  FaTools,
+  FaCaretRight,
 } from "react-icons/fa";
-import Image from "next/image";
 import Link from "next/link";
 
 function ExternalLinkButton(props: {
@@ -82,62 +86,6 @@ function ExternalLinkButton(props: {
   );
 }
 
-function ExperienceCard(props: { experience: ExperienceInfo }) {
-  const { experience: e } = props;
-  return (
-    <Box borderRadius="2xl" mt={8} w="100%" bg={"#ffffff10"}>
-      <Flex
-        py={10}
-        flexDirection={{ base: "column", lg: "row" }}
-        w="100%"
-        justifyContent="center"
-        alignItems="start"
-      >
-        <Box
-          w={{ base: "80%", lg: "50%" }}
-          justifyContent="space-between"
-          alignItems={{ base: "center", md: "start" }}
-          py={10}
-          h="100%"
-        >
-          <Flex
-            flexDirection={"column"}
-            flexGrow={1}
-            w={{ base: "80%", lg: "70%" }}
-          ></Flex>
-          <Flex
-            mt={8}
-            flexDirection={{ base: "column", md: "row" }}
-            w={{ base: "100%", md: "100%" }}
-            alignItems={{ base: "center", md: "start" }}
-            gap={4}
-          ></Flex>
-        </Box>
-        <Flex
-          w={{ base: "80%", lg: "35%" }}
-          pt={{ base: 8, lg: 0 }}
-          justifyContent="center"
-          alignItems="center"
-        >
-          <motion.div whileHover={{ scale: 1.05 }}>
-            <Image
-              quality="100"
-              priority
-              src={e.imagePath}
-              alt="homepage"
-              height="1100"
-              width="2000"
-              style={{
-                borderRadius: "10px",
-              }}
-            />
-          </motion.div>
-        </Flex>
-      </Flex>
-    </Box>
-  );
-}
-
 function ScrollTriggeredDiv(
   props: React.PropsWithChildren<{
     readonly delay?: number;
@@ -167,8 +115,10 @@ function ExperienceItem(props: {
   const { verticalLineWidth, experience } = props;
   const horizontalGap = 60;
 
+  const [expanded, setExpanded] = useState(false);
+
   return (
-    <Box minH="40vh" mt="10vh">
+    <Box minH="50vh" mt="10vh">
       <Flex
         sx={{
           alignItems: "center",
@@ -228,12 +178,22 @@ function ExperienceItem(props: {
               color: "#ffffff90",
               fontFamily: "mono",
             }}
+            gap="16px"
+            alignItems={"center"}
+            flexWrap={"wrap"}
           >
-            {`${moment(experience.startTs).format("MMM YYYY")}${
-              experience.endTs
-                ? ` - ${moment(experience.endTs).format("MMM YYYY")}`
-                : "Present"
-            }`}
+            <Flex>
+              {`${moment(experience.startTs).format("MMM YYYY")}${
+                experience.endTs
+                  ? ` - ${moment(experience.endTs).format("MMM YYYY")}`
+                  : "Present"
+              }`}
+            </Flex>
+            {isProjectExperienceInfo(experience) ? (
+              <Badge h="fit-content">
+                {isProjectExperienceInfo(experience) ? "Project" : "Job"}
+              </Badge>
+            ) : null}
           </Flex>
         </ScrollTriggeredDiv>
       </Flex>
@@ -241,6 +201,10 @@ function ExperienceItem(props: {
         <Stack
           pl={`${verticalLineWidth + horizontalGap}px`}
           w={{ base: "100%", lg: "60%" }}
+          spacing={{
+            base: 3,
+            lg: 2,
+          }}
         >
           <ScrollTriggeredDiv delay={0.1}>
             <Flex
@@ -303,11 +267,12 @@ function ExperienceItem(props: {
             <Flex
               sx={{
                 fontSize: { base: "0.8rem", lg: "1.1rem" },
-                alignItems: { base: "start", lg: "center" },
+                alignItems: "start",
+                fontWeight: 500,
                 gap: "8px",
               }}
             >
-              <Center>
+              <Center h={{ base: "1.2rem", lg: "1.6rem" }}>
                 <FaIdBadge color="#FFD700" size="20px" />
               </Center>
               <Text>
@@ -325,17 +290,107 @@ function ExperienceItem(props: {
               <Flex
                 sx={{
                   fontSize: { base: "0.8rem", lg: "1.1rem" },
-                  alignItems: "center",
+                  alignItems: "start",
+                  fontWeight: 500,
                   gap: "8px",
                 }}
               >
-                <Center>
+                <Center h={{ base: "1.2rem", lg: "1.6rem" }}>
                   <FaMapMarkerAlt color="#EA4335" size="20px" />
                 </Center>
                 <Text>{experience.location}</Text>
               </Flex>
             </ScrollTriggeredDiv>
           ) : null}
+          {isProjectExperienceInfo(experience) ? (
+            <ScrollTriggeredDiv delay={0.4}>
+              <Flex
+                sx={{
+                  fontSize: { base: "0.8rem", lg: "1.1rem" },
+                  fontWeight: 500,
+                  gap: "8px",
+                  alignItems: "center",
+                }}
+              >
+                <Center h={{ base: "1.2rem", lg: "1.6rem" }}>
+                  <FaTools color="#B794F4" size="20px" />
+                </Center>
+                {experience.techStacks.map((techStack, index) => (
+                  <Tag key={index} size="sm">
+                    {techStack}
+                  </Tag>
+                ))}
+              </Flex>
+            </ScrollTriggeredDiv>
+          ) : null}
+          <ScrollTriggeredDiv delay={0.5}>
+            <Flex
+              sx={{
+                fontSize: { base: "0.8rem", lg: "1rem" },
+                alignItems: "start",
+                color: "#fff",
+                gap: "8px",
+                w: "90%",
+              }}
+            >
+              <motion.div
+                whileHover={{
+                  scale: 1.2,
+                }}
+              >
+                <Center
+                  h={{ base: "1.2rem", lg: "1.4rem" }}
+                  cursor="pointer"
+                  onClick={() => {
+                    setExpanded(!expanded);
+                  }}
+                  sx={{
+                    transition: "all 0.2s ease-in-out",
+                    transform: expanded ? "rotate(90deg)" : "rotate(0deg)",
+                  }}
+                >
+                  <FaCaretRight color="#c0c0c0" size="20px" />
+                </Center>
+              </motion.div>
+              <Stack>
+                <Text>{experience.introduction}</Text>
+                <Collapse in={expanded} animateOpacity>
+                  <Stack
+                    w="100%"
+                    p={{
+                      base: "0px",
+                      lg: "16px",
+                    }}
+                    spacing={3}
+                  >
+                    {experience.achievements.map((achievement, index) => (
+                      <Flex
+                        key={index}
+                        alignItems="start"
+                        gap={2}
+                        sx={{
+                          fontSize: { base: "12px", lg: "14px" },
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        <Center
+                          h={{
+                            base: "17px",
+                            lg: "19.6px",
+                          }}
+                        >
+                          <Text fontSize={{ base: "12px", lg: "14px" }}>
+                            ▫️
+                          </Text>
+                        </Center>
+                        <Text>{achievement}</Text>
+                      </Flex>
+                    ))}
+                  </Stack>
+                </Collapse>
+              </Stack>
+            </Flex>
+          </ScrollTriggeredDiv>
         </Stack>
         <Spacer />
         <Flex
@@ -379,7 +434,10 @@ export default function ExperienceSection() {
       </Element>
       <Flex
         minH="100vh"
-        w="70%"
+        w={{
+          base: "80%",
+          lg: "70%",
+        }}
         mx="auto"
         sx={{
           position: "relative",

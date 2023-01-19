@@ -8,7 +8,8 @@ export interface BaseExperienceInfo {
   logoImagePath: string;
   imagePath: string;
   websiteUrl?: string;
-  achievements?: { emoji: string; text: string }[];
+  introduction: string;
+  achievements: string[];
 }
 export interface WorkExperienceInfo extends BaseExperienceInfo {
   type: "Work";
@@ -47,12 +48,19 @@ export const experienceSource: ExperienceInfo[] = [
       "The brand new course selection system and course information website",
     logoImagePath: "/ntu.jpeg",
     imagePath: "/ntu_nol_neo.png",
+    introduction:
+      "The brand new course selection system and course information website for National Taiwan University",
+    achievements: [
+      "Project initiator: the project was transformed from NTUCourse Neo",
+      "Led in implementing frontend features and user interfaces",
+      "Designed the RESTful API schema",
+    ],
   },
   {
     type: "Work",
     startTs: 1643673634000,
     endTs: 1659225634000,
-    organization: "Kinetik Athlete",
+    organization: "WOD.co",
     roles: ["Software Engineer Intern"],
     location: "Taipei, Taiwan",
     description:
@@ -60,6 +68,14 @@ export const experienceSource: ExperienceInfo[] = [
     logoImagePath: "/kinetik.png",
     linkedinUrl: "https://www.linkedin.com/company/kinetikathlete/",
     imagePath: "/wodsquad.png",
+    introduction:
+      "A workout sharing platform to write better workouts and track athlete performance",
+    achievements: [
+      "Optimized the user experience by implementing a new workout-tracking flow",
+      "Visualized user’s historical workout data by designing and developing a new dashboard page",
+      "Built a cross-platform (iOS & Android) workout-displaying TV app in two months by React-Native and released in two CrossFit gyms in Taiwan",
+      "Implemented a remote-controlling feature to help gym owners communicate with the TV app by mobile devices",
+    ],
   },
   {
     type: "Project",
@@ -75,6 +91,14 @@ export const experienceSource: ExperienceInfo[] = [
     techStacks: ["React", "Next.js", "Typescript", "PostgreSQL", "Node.js"],
     githubLink: "https://github.com/NTUCourse-Neo",
     imagePath: "/project-ntucourse-neo.png",
+    introduction:
+      "A redesigned course planning website for students in National Taiwan University",
+    achievements: [
+      "Assisted 5000+ students in course planning and gained 1500+ registered users",
+      "Implemented frontend features, backend APIs, and user interfaces",
+      "Won the 2nd best team project of 2021-Fall Web Programming Course",
+      "Acquired by Office of Academic Affairs of National Taiwan University in Q3 2022",
+    ],
   },
   {
     type: "Project",
@@ -89,5 +113,11 @@ export const experienceSource: ExperienceInfo[] = [
     techStacks: ["Javascript", "HTML/Canvas", "TweenJS", "EaselJS"],
     githubLink: "https://github.com/swh00tw/DS_Tutor",
     imagePath: "/project-ds-tutor.png",
+    introduction:
+      "A data structure visualization tool for beginners in Data Structure",
+    achievements: [
+      "Designed and implemented the animation of the transformation of the data structures by TweenJS and EaselJS",
+      "Built the frontend interface for users to manipulate the data structures",
+    ],
   },
 ];

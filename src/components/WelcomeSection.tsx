@@ -1,4 +1,4 @@
-import { Flex, HStack, Stack, Text, TextProps, Box } from "@chakra-ui/react";
+import { Flex, HStack, Stack, Text, FlexProps, Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import memojiStyle from "@/styles/memoji.module.css";
@@ -7,7 +7,7 @@ import Link from "next/link";
 import React from "react";
 import { Element } from "react-scroll";
 
-interface AnimatedColorTextProps extends TextProps {
+interface AnimatedColorTextProps extends FlexProps {
   readonly children?: React.ReactNode;
   readonly endColor: string;
   readonly initialColor?: string;
@@ -26,7 +26,7 @@ function AnimatedColorText(props: AnimatedColorTextProps) {
   } = props;
 
   return (
-    <Text align={"center"} {...restProps}>
+    <Flex alignItems={"center"} {...restProps}>
       <motion.p
         animate={{
           color: isReversed
@@ -54,7 +54,7 @@ function AnimatedColorText(props: AnimatedColorTextProps) {
       >
         {children}
       </motion.p>
-    </Text>
+    </Flex>
   );
 }
 
