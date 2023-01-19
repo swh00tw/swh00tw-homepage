@@ -178,6 +178,7 @@ function ExperienceItem(props: {
             }}
             gap="16px"
             alignItems={"center"}
+            flexWrap={"wrap"}
           >
             <Flex>
               {`${moment(experience.startTs).format("MMM YYYY")}${
@@ -410,7 +411,10 @@ export default function ExperienceSection() {
       </Element>
       <Flex
         minH="100vh"
-        w="70%"
+        w={{
+          base: "80%",
+          lg: "70%",
+        }}
         mx="auto"
         sx={{
           position: "relative",
