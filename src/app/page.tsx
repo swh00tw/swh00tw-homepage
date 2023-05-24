@@ -2,7 +2,7 @@ import clsx from "clsx";
 import PageWrapper from "@/components/PageWrapper";
 import { PageContextProvider } from "@/components/PageProvider";
 import Footer from "@/components/Footer";
-import Headerbar from "@/components/Headerbar";
+import Headerbar from "@/components/HeaderBar";
 
 export default function Home() {
   return (
