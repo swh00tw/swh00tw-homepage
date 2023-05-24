@@ -1,133 +1,91 @@
-import {
-  Flex,
-  Box,
-  Spacer,
-  Button,
-  Text,
-  HStack,
-  useColorModeValue,
-  Stack,
-  ButtonProps,
-} from "@chakra-ui/react";
-import Image from "next/image";
-import { FaBolt, FaPhoneAlt } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { Link as ScrollLink } from "react-scroll";
+"use client";
+import { usePageContext } from "@/components/PageProvider";
+import clsx from "clsx";
+import { motion, AnimatePresence } from "framer-motion";
+import { TbBrandGithub } from "react-icons/tb";
+import { MdOutlineMail } from "react-icons/md";
+import { RiDownloadCloud2Line, RiLinkedinLine } from "react-icons/ri";
+import Link from "next/link";
 
-function NavBarItem(props: ButtonProps) {
+function LinkItem({
+  href,
+  children,
+}: {
+  readonly href: string;
+  readonly children: React.ReactNode;
+}) {
   return (
-    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-      <Button bg={"transparent"} _focus={{ border: "none" }} {...props} />
-    </motion.div>
+    <Link href={`${href}`} target="_blank">
+      {children}
+    </Link>
   );
 }
 
-function HeaderBar(props: { readonly isScrolled: boolean }) {
-  const { isScrolled } = props;
-
-  const NavbarFontColor = useColorModeValue("#000", "#fff");
-  const BgColor = useColorModeValue("gray.100", "black");
+export default function Headerbar() {
+  const { pageIndex } = usePageContext();
 
   return (
-    <Box zIndex="1000" top={0} position="fixed">
-      <Flex
-        bg={BgColor}
-        w="100%"
-        h="64px"
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-        position="fixed"
-        sx={{
-          backdropFilter: "blur(10px)",
-          bg: "#00000050",
-          borderBottom: `0.2px solid ${
-            isScrolled ? "#ffffff50" : "transparent"
-          }`,
-          transition: "all 0.3s ease-in-out",
-          ":before": {
-            position: "absolute",
-            display: "block",
-            content: '""',
-            top: "-50%",
-            left: "-50%",
-            right: "-50%",
-            bottom: "-50%",
-            borderBottom: "1px solid #000",
-            transform: "scale(0.5)",
-          },
-        }}
-      >
-        <Flex w="80%" alignItems="center" justifyContent="center">
-          <ScrollLink to="welcome" smooth={true} duration={500}>
-            <Button variant={"unstyled"} _focus={{ border: "none" }}>
-              <HStack h="100%">
-                <Image
-                  priority
-                  src="/Images/laptop_parrot.gif"
-                  alt="parrot"
-                  height="30%"
-                  width="30%"
-                />
-                <Box display={{ base: "none", md: "block" }} w="1px" />
-                <Text
-                  mr="0%"
-                  fontSize="xl"
-                  color={NavbarFontColor}
-                  fontWeight={900}
-                  fontFamily="mono"
-                >
-                  Shu-Wei Hsu
-                </Text>
-              </HStack>
-            </Button>
-          </ScrollLink>
-          <Spacer />
-          <Stack
-            direction={{ base: "column", md: "row" }}
-            display={{ base: "none", md: "flex" }}
-            width={{ base: "full", md: "10%" }}
-            alignItems="center"
-            flexGrow={1}
-            mt={{ base: 4, md: 0 }}
-            justifyContent="end"
-            gap={10}
+    <AnimatePresence>
+      {pageIndex === 0 ? null : (
+        <motion.div
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: 1,
+          }}
+          exit={{
+            opacity: 0,
+          }}
+          className={clsx(
+            "fixed",
+            "justify-center",
+            "top-0",
+            "w-full",
+            "h-20",
+            "flex",
+            "z-10"
+          )}
+        >
+          <div
+            className={clsx(
+              "w-[80%]",
+              "lg:w-[65%]",
+              "flex",
+              "justify-between",
+              "items-center"
+            )}
           >
-            <ScrollLink to="myWorks" smooth={true} duration={400}>
-              <NavBarItem>
-                <HStack>
-                  <FaBolt color={NavbarFontColor} />
-                  <Text
-                    fontSize="sm"
-                    color={NavbarFontColor}
-                    fontWeight={400}
-                    fontFamily="mono"
-                  >
-                    Works
-                  </Text>
-                </HStack>
-              </NavBarItem>
-            </ScrollLink>
-            <ScrollLink to="contactMe" smooth={true} duration={400}>
-              <NavBarItem>
-                <HStack>
-                  <FaPhoneAlt color={NavbarFontColor} />
-                  <Text
-                    fontSize="sm"
-                    color={NavbarFontColor}
-                    fontWeight={400}
-                    fontFamily="mono"
-                  >
-                    Contact
-                  </Text>
-                </HStack>
-              </NavBarItem>
-            </ScrollLink>
-          </Stack>
-        </Flex>
-      </Flex>
-    </Box>
+            <div
+              className={clsx("text-[#808080]", "text-[18px]", "font-medium")}
+            >
+              swh00tw
+            </div>
+            <div
+              className={clsx(
+                "flex",
+                "flex-row",
+                "text-[#808080]",
+                "md:gap-x-[50px]",
+                "gap-x-[20px]"
+              )}
+            >
+              <a href="/Frank_resume.pdf" download="Frank_resume.pdf">
+                <RiDownloadCloud2Line size="24px" />
+              </a>
+              <LinkItem href="mailto:a6140000@gmail.com">
+                <MdOutlineMail size="24px" />
+              </LinkItem>
+              <LinkItem href="https://github.com/swh00tw">
+                <TbBrandGithub size="24px" strokeWidth="2px" />
+              </LinkItem>
+              <LinkItem href="https://www.linkedin.com/in/swh00tw">
+                <RiLinkedinLine size="24px" />
+              </LinkItem>
+            </div>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
-
-export default HeaderBar;
