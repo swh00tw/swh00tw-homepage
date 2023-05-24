@@ -58,6 +58,7 @@ function SkillCard(props: SkillCardProps) {
           className="left-0 top-0 object-fill"
           alt={name}
           quality={100}
+          priority
         />
       </div>
       <div className="text-[14px]">{name}</div>

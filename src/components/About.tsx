@@ -125,6 +125,7 @@ export default function AboutPage() {
             height={300}
             alt="About me memoji"
             style={{ margin: "0 auto" }}
+            priority
           />
         </div>
       </div>
