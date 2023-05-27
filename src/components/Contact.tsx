@@ -52,7 +52,7 @@ export default function ContactPage() {
           duration: 0.5,
         },
       }}
-      className="w-[100%] lg:w-[60%] min-h-screen flex justify-center items-center overflow-hidden relative"
+      className="w-[100%] lg:w-[60%] min-h-[100svh] flex justify-center items-center overflow-hidden relative"
     >
       <div
         className={clsx(
@@ -66,7 +66,7 @@ export default function ContactPage() {
       >
         <div
           className={clsx(
-            "mb-[90px]",
+            "mb-[120px]",
             "lg:mb-0",
             "w-[80%]",
             "lg:w-[65%]",
