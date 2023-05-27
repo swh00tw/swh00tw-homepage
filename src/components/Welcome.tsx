@@ -52,10 +52,16 @@ export default function WelcomePage() {
           duration: 0.2,
         },
       }}
-      className="w-[80%] lg:w-[60%] h-screen flex justify-center items-center"
+      className="w-[80%] lg:w-[60%] h-[100svh] flex justify-center items-center"
     >
       <div
-        className={clsx("flex", "flex-col", "gap-y-[120px]", "items-center")}
+        className={clsx(
+          "flex",
+          "flex-col",
+          "gap-y-[30px]",
+          "lg:gap-y-[120px]",
+          "items-center"
+        )}
       >
         <div className={clsx("flex", "items-center", "flex-col")}>
           <Image

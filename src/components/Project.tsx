@@ -66,7 +66,15 @@ export default function ProjectPage() {
       }}
       className="w-[80%] lg:w-[60%] min-h-[100lvh] flex justify-center items-center"
     >
-      <div className={clsx("flex", "flex-col", "w-full", "max-h-[80svh]")}>
+      <div
+        className={clsx(
+          "flex",
+          "flex-col",
+          "w-full",
+          "lg:max-h-[80svh]",
+          "py-[5vh]"
+        )}
+      >
         <div
           className={clsx("mt-0", "lg:mt-0", "text-[30px]", "font-semibold")}
         >

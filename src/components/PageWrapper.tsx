@@ -45,9 +45,7 @@ export default function PageWrapper() {
           "lg:hidden",
           "flex-col",
           "items-center",
-          "justify-center",
-          "gap-y-20",
-          "md:gap-y-0"
+          "justify-center"
         )}
       >
         {...pages}
