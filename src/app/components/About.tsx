@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
@@ -28,33 +27,19 @@ function EducationRecordCard(props: EducationRecordCardProps) {
 
 export default function AboutPage() {
   return (
-    <motion.div
-      key={`About`}
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.5,
-        },
-      }}
-      className="w-[80%] lg:w-[60%] h-screen flex justify-center items-center"
-    >
+    <div className="lg:h-[100lvh] flex justify-center items-center py-[8vh]">
       <div
         className={clsx(
+          "w-[80%]",
+          "lg:w-[60%]",
           "flex",
           "flex-col",
           "lg:flex-row",
-          "w-full",
           "lg:justify-center",
           "items-center"
         )}
       >
-        <div className={clsx("w-full", "lg:w-[55%]", "pl-[5%]")}>
+        <div className={clsx("w-full", "lg:w-[55%]", "lg:pl-[5%]")}>
           <h1 className={clsx("text-[30px]", "font-semibold")}>
             Hi, I am <span className="text-primary">Frank</span>
           </h1>
@@ -125,10 +110,9 @@ export default function AboutPage() {
             height={300}
             alt="About me memoji"
             style={{ margin: "0 auto" }}
-            priority
           />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
