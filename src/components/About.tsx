@@ -42,7 +42,7 @@ export default function AboutPage() {
           duration: 0.5,
         },
       }}
-      className="w-[80%] lg:w-[60%] min-h-[100lvh] flex justify-center items-center"
+      className="w-[80%] lg:w-[60%] lg:h-[100lvh] flex justify-center items-center py-[8vh]"
     >
       <div
         className={clsx(
@@ -54,7 +54,7 @@ export default function AboutPage() {
           "items-center"
         )}
       >
-        <div className={clsx("w-full", "lg:w-[55%]", "pl-[5%]")}>
+        <div className={clsx("w-full", "lg:w-[55%]", "lg:pl-[5%]")}>
           <h1 className={clsx("text-[30px]", "font-semibold")}>
             Hi, I am <span className="text-primary">Frank</span>
           </h1>
