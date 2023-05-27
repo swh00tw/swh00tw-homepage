@@ -44,7 +44,15 @@ export default function Headerbar() {
             "w-full",
             "h-20",
             "flex",
-            "z-10"
+            "z-10",
+            "border-b-[1px]",
+            "lg:border-b-0",
+            "border-[#808080]",
+            "bg-[#ffffff20]",
+            "lg:bg-transparent",
+            "backdrop-blur",
+            "lg:backdrop-blur-0",
+            "text-[#808080]"
           )}
         >
           <div
@@ -56,16 +64,11 @@ export default function Headerbar() {
               "items-center"
             )}
           >
-            <div
-              className={clsx("text-[#808080]", "text-[18px]", "font-medium")}
-            >
-              swh00tw
-            </div>
+            <div className={clsx("text-[18px]", "font-medium")}>swh00tw</div>
             <div
               className={clsx(
                 "flex",
                 "flex-row",
-                "text-[#808080]",
                 "md:gap-x-[50px]",
                 "gap-x-[20px]"
               )}
