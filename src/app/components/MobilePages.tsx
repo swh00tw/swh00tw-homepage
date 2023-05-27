@@ -4,6 +4,7 @@ import CareerPage from "@/app/components/Career";
 import ContactPage from "@/app/components/Contact";
 import SkillPage from "@/app/components/Skill";
 import ProjectPage from "@/app/components/Project";
+import clsx from "clsx";
 
 function WelcomePageM() {
   return <WelcomePage />;
@@ -24,7 +25,7 @@ function ProjectPageM() {
   return <ProjectPage />;
 }
 
-export const pages = [
+const mobilePages = [
   <WelcomePageM key="welcome" />,
   <AboutPageM key="about" />,
   <CareerPageM key="career" />,
@@ -32,3 +33,20 @@ export const pages = [
   <ProjectPageM key="project" />,
   <ContactPageM key="contact" />,
 ];
+
+export default function MobilePages() {
+  console.log(typeof window !== "undefined" ? "client" : "server");
+  return (
+    <div
+      className={clsx(
+        "flex",
+        "lg:hidden",
+        "flex-col",
+        "items-center",
+        "justify-center"
+      )}
+    >
+      {...mobilePages}
+    </div>
+  );
+}
