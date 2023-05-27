@@ -2,25 +2,14 @@
 import clsx from "clsx";
 import { usePageContext } from "@/components/PageProvider";
 import { AnimatePresence } from "framer-motion";
-import WelcomePage from "@/components/pages/Welcome";
-import AboutPage from "@/components/pages/About";
-import CareerPage from "@/components/pages/Career";
-import ContactPage from "@/components/pages/Contact";
-import SkillPage from "@/components/pages/Skill";
-import ProjectPage from "@/components/pages/Project";
+import { pages } from "@/components/pages";
 import React from "react";
 import MotionWrapper from "@/components/MotionWrapper";
 
-const pages = [
-  { component: <WelcomePage key="welcome" />, tag: "Welcome" },
-  { component: <AboutPage key="about" />, tag: "About" },
-  { component: <CareerPage key="career" />, tag: "Career" },
-  { component: <SkillPage key="skill" />, tag: "Skill" },
-  { component: <ProjectPage key="project" />, tag: "Project" },
-  { component: <ContactPage key="contact" />, tag: "Contact" },
-];
-
-export default function PageWrapper() {
+export default function PageWrapper(props: {
+  readonly children: React.ReactNode;
+}) {
+  const { children } = props;
   const { pageIndex } = usePageContext();
 
   return (
@@ -53,7 +42,7 @@ export default function PageWrapper() {
           "justify-center"
         )}
       >
-        {...pages.map((p) => p.component)}
+        {children}
       </div>
     </React.Fragment>
   );
