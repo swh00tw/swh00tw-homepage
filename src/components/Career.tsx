@@ -187,7 +187,7 @@ export default function CareerPage() {
       }}
       className="w-[80%] lg:w-[60%] h-screen flex justify-center items-center"
     >
-      <div className={clsx("flex", "flex-col", "w-full", "max-h-[80vh]")}>
+      <div className={clsx("flex", "flex-col", "w-full", "max-h-[80svh]")}>
         <div
           className={clsx("mb-6", "lg:mb-0", "text-[30px]", "font-semibold")}
         >

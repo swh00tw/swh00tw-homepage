@@ -27,6 +27,7 @@ function EducationRecordCard(props: EducationRecordCardProps) {
 }
 
 export default function AboutPage() {
+  console.log("Server only?");
   return (
     <motion.div
       key={`About`}
