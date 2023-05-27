@@ -7,12 +7,7 @@ import VictoryGesture from "@/public/victorygesture.svg";
 const GestureImage = (props: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div className="relative" {...props}>
-      <Image
-        src={VictoryGesture}
-        alt="Victory Gesture"
-        priority
-        quality={100}
-      />
+      <Image src={VictoryGesture} alt="Victory Gesture" quality={100} />
     </div>
   );
 };
