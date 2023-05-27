@@ -64,7 +64,7 @@ export default function ProjectPage() {
           duration: 0.5,
         },
       }}
-      className="w-[80%] lg:w-[60%] flex justify-center items-center"
+      className="w-[80%] lg:w-[60%] min-h-screen flex justify-center items-center"
     >
       <div className={clsx("flex", "flex-col", "w-full", "max-h-[80svh]")}>
         <div
