@@ -46,7 +46,7 @@ export default function PageWrapper() {
           "flex-col",
           "items-center",
           "justify-center",
-          "gap-y-12",
+          "gap-y-20",
           "md:gap-y-0"
         )}
       >

@@ -52,7 +52,7 @@ export default function ContactPage() {
           duration: 0.5,
         },
       }}
-      className="w-[100%] lg:w-[60%] min-h-[100svh] flex justify-center items-center overflow-hidden relative"
+      className="w-[100%] lg:w-[60%] min-h-[100lvh] flex justify-start pt-[18vh] overflow-hidden relative"
     >
       <div
         className={clsx(
