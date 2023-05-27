@@ -82,68 +82,79 @@ export default function SkillPage() {
           duration: 0.5,
         },
       }}
-      className="w-[80%] lg:w-[60%] lg:h-[100lvh] flex justify-center items-center"
     >
-      <div
-        className={clsx(
-          "flex",
-          "flex-col",
-          "w-full",
-          "lg:max-h-[80svh]",
-          "py-[5vh]"
-        )}
-      >
-        <div
-          className={clsx("mt-0", "lg:mt-0", "text-[30px]", "font-semibold")}
-        >
-          Skills
-        </div>
+      <div className="lg:h-[100lvh] flex justify-center items-center">
         <div
           className={clsx(
-            "md:mt-8",
-            "grid",
-            "grid-cols-1",
-            "md:grid-cols-2",
-            "gap-6"
+            "flex",
+            "flex-col",
+            "w-[80%]",
+            "lg:w-[60%]",
+            "lg:max-h-[80svh]",
+            "py-[5vh]"
           )}
         >
-          <div className={clsx("md:row-span-2")}>
-            <SkillSection title="Web development">
-              <SkillCard name="React" iconPath="/logos/react.png" />
-              <SkillCard name="Next.js" iconPath="/logos/nextjs-original.png" />
-              <SkillCard
-                name="Tailwind CSS"
-                iconPath="/logos/tailwindcss-plain.png"
-              />
-              <SkillCard name="Node.js" iconPath="/logos/nodejs-original.png" />
-              <SkillCard name="GraphQL" iconPath="/logos/graphql-plain.png" />
-              <SkillCard
-                name="Express.js"
-                iconPath="/logos/express-original.png"
-              />
-              <SkillCard
-                name="MongoDB"
-                iconPath="/logos/mongodb-original.png"
-              />
-              <SkillCard
-                name="PostgreSQL"
-                iconPath="/logos/postgresql-plain-wordmark.png"
-              />
-            </SkillSection>
+          <div
+            className={clsx("mt-0", "lg:mt-0", "text-[30px]", "font-semibold")}
+          >
+            Skills
           </div>
-          <div>
-            <SkillSection title="Languages">
-              <SkillCard name="JavaScript" iconPath="/logos/javascript.png" />
-              <SkillCard name="TypeScript" iconPath="/logos/typescript.png" />
-              <SkillCard name="Python" iconPath="/logos/Python3.png" />
-            </SkillSection>
-          </div>
-          <div>
-            <SkillSection title="Others">
-              <SkillCard name="React Native" iconPath="/logos/react.png" />
-              <SkillCard name="Docker" iconPath="/logos/docker-original.png" />
-              <SkillCard name="Figma" iconPath="/logos/figma-original.png" />
-            </SkillSection>
+          <div
+            className={clsx(
+              "md:mt-8",
+              "grid",
+              "grid-cols-1",
+              "md:grid-cols-2",
+              "gap-6"
+            )}
+          >
+            <div className={clsx("md:row-span-2")}>
+              <SkillSection title="Web development">
+                <SkillCard name="React" iconPath="/logos/react.png" />
+                <SkillCard
+                  name="Next.js"
+                  iconPath="/logos/nextjs-original.png"
+                />
+                <SkillCard
+                  name="Tailwind CSS"
+                  iconPath="/logos/tailwindcss-plain.png"
+                />
+                <SkillCard
+                  name="Node.js"
+                  iconPath="/logos/nodejs-original.png"
+                />
+                <SkillCard name="GraphQL" iconPath="/logos/graphql-plain.png" />
+                <SkillCard
+                  name="Express.js"
+                  iconPath="/logos/express-original.png"
+                />
+                <SkillCard
+                  name="MongoDB"
+                  iconPath="/logos/mongodb-original.png"
+                />
+                <SkillCard
+                  name="PostgreSQL"
+                  iconPath="/logos/postgresql-plain-wordmark.png"
+                />
+              </SkillSection>
+            </div>
+            <div>
+              <SkillSection title="Languages">
+                <SkillCard name="JavaScript" iconPath="/logos/javascript.png" />
+                <SkillCard name="TypeScript" iconPath="/logos/typescript.png" />
+                <SkillCard name="Python" iconPath="/logos/Python3.png" />
+              </SkillSection>
+            </div>
+            <div>
+              <SkillSection title="Others">
+                <SkillCard name="React Native" iconPath="/logos/react.png" />
+                <SkillCard
+                  name="Docker"
+                  iconPath="/logos/docker-original.png"
+                />
+                <SkillCard name="Figma" iconPath="/logos/figma-original.png" />
+              </SkillSection>
+            </div>
           </div>
         </div>
       </div>

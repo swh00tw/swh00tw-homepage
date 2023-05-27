@@ -185,42 +185,44 @@ export default function CareerPage() {
           duration: 0.5,
         },
       }}
-      className="w-[80%] lg:w-[60%] lg:h-[100lvh] flex justify-center items-center"
     >
-      <div
-        className={clsx(
-          "flex",
-          "flex-col",
-          "w-full",
-          "lg:max-h-[80svh]",
-          "py-[5vh]"
-        )}
-      >
+      <div className="lg:h-[100lvh] flex justify-center items-center">
         <div
-          className={clsx("mb-6", "lg:mb-0", "text-[30px]", "font-semibold")}
+          className={clsx(
+            "flex",
+            "flex-col",
+            "w-[80%]",
+            "lg:w-[60%]",
+            "lg:max-h-[80svh]",
+            "py-[5vh]"
+          )}
         >
-          Career
-        </div>
-        <div className={clsx("grid", GRID_COLS, "lg:mt-8", "relative")}>
           <div
-            className={clsx(
-              "absolute",
-              "h-full lg:h-[18px]",
-              "w-[18px]",
-              "lg:w-full",
-              "bg-[#9FAFDF80]",
-              "left-0",
-              TIMELINE_Y_OFFSET,
-              TIMELINE_BORDER_RADIUS
-            )}
-          />
-          {experiences.map((e, i) => (
-            <CareerCard
-              experience={e}
-              isLast={i === experiences.length - 1}
-              key={`${e.company}-${e.startDate}`}
+            className={clsx("mb-6", "lg:mb-0", "text-[30px]", "font-semibold")}
+          >
+            Career
+          </div>
+          <div className={clsx("grid", GRID_COLS, "lg:mt-8", "relative")}>
+            <div
+              className={clsx(
+                "absolute",
+                "h-full lg:h-[18px]",
+                "w-[18px]",
+                "lg:w-full",
+                "bg-[#9FAFDF80]",
+                "left-0",
+                TIMELINE_Y_OFFSET,
+                TIMELINE_BORDER_RADIUS
+              )}
             />
-          ))}
+            {experiences.map((e, i) => (
+              <CareerCard
+                experience={e}
+                isLast={i === experiences.length - 1}
+                key={`${e.company}-${e.startDate}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>
