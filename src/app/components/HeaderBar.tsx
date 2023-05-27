@@ -1,5 +1,5 @@
 "use client";
-import { usePageContext } from "@/components/PageProvider";
+import { usePageContext } from "@/app/components/PageProvider";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { TbBrandGithub } from "react-icons/tb";

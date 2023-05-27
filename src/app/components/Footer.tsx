@@ -1,8 +1,8 @@
 "use client";
-import { usePageContext } from "@/components/PageProvider";
+import { usePageContext } from "@/app/components/PageProvider";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
-import { pageBreakPoints } from "@/components/PageProvider";
+import { pageBreakPoints } from "@/app/components/PageProvider";
 
 function FooterItem({
   children,
