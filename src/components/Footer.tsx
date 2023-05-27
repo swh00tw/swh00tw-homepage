@@ -71,7 +71,7 @@ export default function Footer() {
             "w-full",
             "justify-center",
             "items-center",
-            "md:flex",
+            "lg:flex",
             "hidden"
           )}
         >
