@@ -52,7 +52,7 @@ export default function ContactPage() {
           duration: 0.5,
         },
       }}
-      className="w-[100%] lg:w-[60%] min-h-[100lvh] flex justify-start pt-[18vh] lg:pt-0 overflow-hidden relative"
+      className="w-[100%] lg:w-[60%] h-[100lvh] flex justify-start pt-[18vh] md:pt-[25vh] lg:pt-0 overflow-hidden relative"
     >
       <div
         className={clsx(
@@ -70,7 +70,7 @@ export default function ContactPage() {
             "lg:mb-0",
             "w-[80%]",
             "lg:w-[65%]",
-            "pl-[5%]"
+            "lg:pl-[5%]"
           )}
         >
           <div className={clsx("text-[30px]", "font-semibold")}>Contact me</div>

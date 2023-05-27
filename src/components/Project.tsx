@@ -64,7 +64,7 @@ export default function ProjectPage() {
           duration: 0.5,
         },
       }}
-      className="w-[80%] lg:w-[60%] min-h-[100lvh] flex justify-center items-center"
+      className="w-[80%] lg:w-[60%] lg:h-[100lvh] flex justify-center items-center"
     >
       <div
         className={clsx(
