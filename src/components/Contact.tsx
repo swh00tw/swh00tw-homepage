@@ -106,7 +106,7 @@ export default function ContactPage() {
             "lg:w-[30%]",
             "h-[500px]",
             "lg:h-auto",
-            "bottom-[-200px]",
+            "bottom-[-220px]",
             "md:bottom-[-150px]",
             "bg-[#9FAFDF50]",
             "lg:bg-transparent",
