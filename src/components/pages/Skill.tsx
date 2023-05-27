@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import clsx from "clsx";
 import React from "react";
 import Image from "next/image";
@@ -68,96 +67,71 @@ function SkillCard(props: SkillCardProps) {
 
 export default function SkillPage() {
   return (
-    <motion.div
-      key={`Skill`}
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.5,
-        },
-      }}
-    >
-      <div className="lg:h-[100lvh] flex justify-center items-center">
+    <div className="lg:h-[100lvh] flex justify-center items-center">
+      <div
+        className={clsx(
+          "flex",
+          "flex-col",
+          "w-[80%]",
+          "lg:w-[60%]",
+          "lg:max-h-[80svh]",
+          "py-[5vh]"
+        )}
+      >
+        <div
+          className={clsx("mt-0", "lg:mt-0", "text-[30px]", "font-semibold")}
+        >
+          Skills
+        </div>
         <div
           className={clsx(
-            "flex",
-            "flex-col",
-            "w-[80%]",
-            "lg:w-[60%]",
-            "lg:max-h-[80svh]",
-            "py-[5vh]"
+            "md:mt-8",
+            "grid",
+            "grid-cols-1",
+            "md:grid-cols-2",
+            "gap-6"
           )}
         >
-          <div
-            className={clsx("mt-0", "lg:mt-0", "text-[30px]", "font-semibold")}
-          >
-            Skills
+          <div className={clsx("md:row-span-2")}>
+            <SkillSection title="Web development">
+              <SkillCard name="React" iconPath="/logos/react.png" />
+              <SkillCard name="Next.js" iconPath="/logos/nextjs-original.png" />
+              <SkillCard
+                name="Tailwind CSS"
+                iconPath="/logos/tailwindcss-plain.png"
+              />
+              <SkillCard name="Node.js" iconPath="/logos/nodejs-original.png" />
+              <SkillCard name="GraphQL" iconPath="/logos/graphql-plain.png" />
+              <SkillCard
+                name="Express.js"
+                iconPath="/logos/express-original.png"
+              />
+              <SkillCard
+                name="MongoDB"
+                iconPath="/logos/mongodb-original.png"
+              />
+              <SkillCard
+                name="PostgreSQL"
+                iconPath="/logos/postgresql-plain-wordmark.png"
+              />
+            </SkillSection>
           </div>
-          <div
-            className={clsx(
-              "md:mt-8",
-              "grid",
-              "grid-cols-1",
-              "md:grid-cols-2",
-              "gap-6"
-            )}
-          >
-            <div className={clsx("md:row-span-2")}>
-              <SkillSection title="Web development">
-                <SkillCard name="React" iconPath="/logos/react.png" />
-                <SkillCard
-                  name="Next.js"
-                  iconPath="/logos/nextjs-original.png"
-                />
-                <SkillCard
-                  name="Tailwind CSS"
-                  iconPath="/logos/tailwindcss-plain.png"
-                />
-                <SkillCard
-                  name="Node.js"
-                  iconPath="/logos/nodejs-original.png"
-                />
-                <SkillCard name="GraphQL" iconPath="/logos/graphql-plain.png" />
-                <SkillCard
-                  name="Express.js"
-                  iconPath="/logos/express-original.png"
-                />
-                <SkillCard
-                  name="MongoDB"
-                  iconPath="/logos/mongodb-original.png"
-                />
-                <SkillCard
-                  name="PostgreSQL"
-                  iconPath="/logos/postgresql-plain-wordmark.png"
-                />
-              </SkillSection>
-            </div>
-            <div>
-              <SkillSection title="Languages">
-                <SkillCard name="JavaScript" iconPath="/logos/javascript.png" />
-                <SkillCard name="TypeScript" iconPath="/logos/typescript.png" />
-                <SkillCard name="Python" iconPath="/logos/Python3.png" />
-              </SkillSection>
-            </div>
-            <div>
-              <SkillSection title="Others">
-                <SkillCard name="React Native" iconPath="/logos/react.png" />
-                <SkillCard
-                  name="Docker"
-                  iconPath="/logos/docker-original.png"
-                />
-                <SkillCard name="Figma" iconPath="/logos/figma-original.png" />
-              </SkillSection>
-            </div>
+          <div>
+            <SkillSection title="Languages">
+              <SkillCard name="JavaScript" iconPath="/logos/javascript.png" />
+              <SkillCard name="TypeScript" iconPath="/logos/typescript.png" />
+              <SkillCard name="Python" iconPath="/logos/Python3.png" />
+            </SkillSection>
+          </div>
+          <div>
+            <SkillSection title="Others">
+              <SkillCard name="React Native" iconPath="/logos/react.png" />
+              <SkillCard name="Docker" iconPath="/logos/docker-original.png" />
+              <SkillCard name="Figma" iconPath="/logos/figma-original.png" />
+            </SkillSection>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

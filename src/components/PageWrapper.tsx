@@ -9,14 +9,15 @@ import ContactPage from "@/components/pages/Contact";
 import SkillPage from "@/components/pages/Skill";
 import ProjectPage from "@/components/pages/Project";
 import React from "react";
+import MotionWrapper from "@/components/MotionWrapper";
 
 const pages = [
-  <WelcomePage key="welcome" />,
-  <AboutPage key="about" />,
-  <CareerPage key="career" />,
-  <SkillPage key="skill" />,
-  <ProjectPage key="project" />,
-  <ContactPage key="contact" />,
+  { component: <WelcomePage key="welcome" />, tag: "Welcome" },
+  { component: <AboutPage key="about" />, tag: "About" },
+  { component: <CareerPage key="career" />, tag: "Career" },
+  { component: <SkillPage key="skill" />, tag: "Skill" },
+  { component: <ProjectPage key="project" />, tag: "Project" },
+  { component: <ContactPage key="contact" />, tag: "Contact" },
 ];
 
 export default function PageWrapper() {
@@ -37,7 +38,11 @@ export default function PageWrapper() {
           "text-black"
         )}
       >
-        <AnimatePresence mode="wait">{pages[pageIndex]}</AnimatePresence>
+        <AnimatePresence mode="wait">
+          <MotionWrapper key={pages[pageIndex].tag}>
+            {pages[pageIndex].component}
+          </MotionWrapper>
+        </AnimatePresence>
       </div>
       <div
         className={clsx(
@@ -48,7 +53,7 @@ export default function PageWrapper() {
           "justify-center"
         )}
       >
-        {...pages}
+        {...pages.map((p) => p.component)}
       </div>
     </React.Fragment>
   );
