@@ -2,6 +2,7 @@ import clsx from "clsx";
 import React from "react";
 import { RiFireFill, RiHashtag } from "react-icons/ri";
 import Image from "next/image";
+import Link from "next/link";
 
 // in px
 interface Experience {
@@ -48,6 +49,31 @@ const experiences: Experience[] = [
     customTagIcon: <RiFireFill />,
   },
 ];
+
+function CompanyName(props: { readonly experience: Experience }) {
+  const { experience } = props;
+  const { company, link } = experience;
+  const body = (
+    <div
+      className={clsx(
+        "text-[16px]",
+        "font-medium",
+        "text-black",
+        link ? "cursor-pointer hover:underline" : ""
+      )}
+    >
+      {`${company}`}
+    </div>
+  );
+  if (link) {
+    return (
+      <Link href={link} target="_blank">
+        {body}
+      </Link>
+    );
+  }
+  return body;
+}
 
 function CareerCard(props: {
   readonly experience: Experience;
@@ -112,20 +138,7 @@ function CareerCard(props: {
           {experience.startDate}
         </div>
         <div className="lg:hidden my-2">{logo}</div>
-        <div
-          className={clsx(
-            "text-[16px]",
-            "font-medium",
-            "text-black",
-            experience?.link ? "cursor-pointer hover:underline" : ""
-          )}
-          onClick={() => {
-            if (!experience?.link) return;
-            window.open(experience.link, "_blank");
-          }}
-        >
-          {`${experience.company}`}
-        </div>
+        <CompanyName experience={experience} />
         <div className={clsx("flex", "justify-between", "items-center")}>
           <div className={clsx("text-[12px]", "lg:p-1")}>
             {experience.roles.join(" & ")}
