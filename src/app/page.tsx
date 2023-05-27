@@ -7,7 +7,7 @@ import Headerbar from "@/components/HeaderBar";
 export default function Home() {
   return (
     <PageContextProvider>
-      <div className={clsx("h-[calc(100svh+4000px)]", "relative")}>
+      <div className={clsx("lg:h-[calc(100svh+4000px)]", "relative")}>
         <Headerbar />
         <PageWrapper />
         <Footer />

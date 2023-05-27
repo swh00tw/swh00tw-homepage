@@ -8,6 +8,7 @@ import CareerPage from "@/components/Career";
 import ContactPage from "@/components/Contact";
 import SkillPage from "@/components/Skill";
 import ProjectPage from "@/components/Project";
+import React from "react";
 
 const pages = [
   <WelcomePage key="welcome" />,
@@ -22,19 +23,34 @@ export default function PageWrapper() {
   const { pageIndex } = usePageContext();
 
   return (
-    <div
-      className={clsx(
-        "fixed",
-        "top-0",
-        "w-full",
-        "h-screen",
-        "items-center",
-        "justify-center",
-        "flex",
-        "text-black"
-      )}
-    >
-      <AnimatePresence mode="wait">{pages[pageIndex]}</AnimatePresence>
-    </div>
+    <React.Fragment>
+      <div
+        className={clsx(
+          "hidden",
+          "lg:flex",
+          "fixed",
+          "top-0",
+          "w-full",
+          "h-screen",
+          "items-center",
+          "justify-center",
+          "text-black"
+        )}
+      >
+        <AnimatePresence mode="wait">{pages[pageIndex]}</AnimatePresence>
+      </div>
+      <div
+        className={clsx(
+          "flex",
+          "lg:hidden",
+          "flex-col",
+          "items-center",
+          "justify-center",
+          "gap-y-16"
+        )}
+      >
+        {...pages}
+      </div>
+    </React.Fragment>
   );
 }
