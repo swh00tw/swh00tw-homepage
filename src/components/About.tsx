@@ -42,7 +42,7 @@ export default function AboutPage() {
           duration: 0.5,
         },
       }}
-      className="w-[80%] lg:w-[60%] h-screen flex justify-center items-center"
+      className="w-[80%] lg:w-[60%] min-h-screen flex justify-center items-center"
     >
       <div
         className={clsx(
