@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
 import clsx from "clsx";
 import React from "react";
 import { RiFireFill, RiHashtag } from "react-icons/ri";
 import Image from "next/image";
+import Link from "next/link";
 
 // in px
 interface Experience {
@@ -49,6 +49,31 @@ const experiences: Experience[] = [
     customTagIcon: <RiFireFill />,
   },
 ];
+
+function CompanyName(props: { readonly experience: Experience }) {
+  const { experience } = props;
+  const { company, link } = experience;
+  const body = (
+    <div
+      className={clsx(
+        "text-[16px]",
+        "font-medium",
+        "text-black",
+        link ? "cursor-pointer hover:underline" : ""
+      )}
+    >
+      {`${company}`}
+    </div>
+  );
+  if (link) {
+    return (
+      <Link href={link} target="_blank">
+        {body}
+      </Link>
+    );
+  }
+  return body;
+}
 
 function CareerCard(props: {
   readonly experience: Experience;
@@ -113,20 +138,7 @@ function CareerCard(props: {
           {experience.startDate}
         </div>
         <div className="lg:hidden my-2">{logo}</div>
-        <div
-          className={clsx(
-            "text-[16px]",
-            "font-medium",
-            "text-black",
-            experience?.link ? "cursor-pointer hover:underline" : ""
-          )}
-          onClick={() => {
-            if (!experience?.link) return;
-            window.open(experience.link, "_blank");
-          }}
-        >
-          {`${experience.company}`}
-        </div>
+        <CompanyName experience={experience} />
         <div className={clsx("flex", "justify-between", "items-center")}>
           <div className={clsx("text-[12px]", "lg:p-1")}>
             {experience.roles.join(" & ")}
@@ -171,23 +183,17 @@ export default function CareerPage() {
   const TIMELINE_BORDER_RADIUS = "rounded-[28px]";
   const GRID_COLS = "grid-cols-1 lg:grid-cols-4";
   return (
-    <motion.div
-      key={`Career`}
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.5,
-        },
-      }}
-      className="w-[80%] lg:w-[60%] h-screen flex justify-center items-center"
-    >
-      <div className={clsx("flex", "flex-col", "w-full", "max-h-[80vh]")}>
+    <div className="lg:h-[100lvh] flex justify-center items-center">
+      <div
+        className={clsx(
+          "flex",
+          "flex-col",
+          "w-[80%]",
+          "lg:w-[60%]",
+          "lg:max-h-[80svh]",
+          "py-[5vh]"
+        )}
+      >
         <div
           className={clsx("mb-6", "lg:mb-0", "text-[30px]", "font-semibold")}
         >
@@ -215,6 +221,6 @@ export default function CareerPage() {
           ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

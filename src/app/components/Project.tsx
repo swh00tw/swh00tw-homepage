@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 function ProjectCard(props: {
@@ -50,23 +49,17 @@ function ProjectCard(props: {
 
 export default function ProjectPage() {
   return (
-    <motion.div
-      key={`Project`}
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.5,
-        },
-      }}
-      className="w-[80%] lg:w-[60%] flex justify-center items-center"
-    >
-      <div className={clsx("flex", "flex-col", "w-full", "max-h-[80vh]")}>
+    <div className="lg:h-[100lvh] flex justify-center items-center">
+      <div
+        className={clsx(
+          "flex",
+          "flex-col",
+          "w-[80%]",
+          "lg:w-[60%]",
+          "lg:max-h-[80svh]",
+          "py-[5vh]"
+        )}
+      >
         <div
           className={clsx("mt-0", "lg:mt-0", "text-[30px]", "font-semibold")}
         >
@@ -101,6 +94,6 @@ export default function ProjectPage() {
           <ProjectCard title="DS Tutor" imgSrc="/Project_DSTutor.png" />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

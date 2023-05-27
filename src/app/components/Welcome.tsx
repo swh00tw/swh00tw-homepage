@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
@@ -38,24 +37,17 @@ function ContactCard(props: ContactCardProps) {
 
 export default function WelcomePage() {
   return (
-    <motion.div
-      key={`Welcome`}
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.2,
-        },
-      }}
-      className="w-[80%] lg:w-[60%] h-screen flex justify-center items-center"
-    >
+    <div className="h-[100svh] flex justify-center items-center">
       <div
-        className={clsx("flex", "flex-col", "gap-y-[120px]", "items-center")}
+        className={clsx(
+          "w-[80%]",
+          "lg:w-[60%]",
+          "flex",
+          "flex-col",
+          "gap-y-[30px]",
+          "lg:gap-y-[120px]",
+          "items-center"
+        )}
       >
         <div className={clsx("flex", "items-center", "flex-col")}>
           <Image
@@ -105,6 +97,6 @@ export default function WelcomePage() {
           </ContactCard>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

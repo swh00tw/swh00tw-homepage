@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import clsx from "clsx";
 import React from "react";
 import Image from "next/image";
@@ -68,23 +67,17 @@ function SkillCard(props: SkillCardProps) {
 
 export default function SkillPage() {
   return (
-    <motion.div
-      key={`Skill`}
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.5,
-        },
-      }}
-      className="w-[80%] lg:w-[60%] h-screen flex justify-center items-center"
-    >
-      <div className={clsx("flex", "flex-col", "w-full", "max-h-[80vh]")}>
+    <div className="lg:h-[100lvh] flex justify-center items-center">
+      <div
+        className={clsx(
+          "flex",
+          "flex-col",
+          "w-[80%]",
+          "lg:w-[60%]",
+          "lg:max-h-[80svh]",
+          "py-[5vh]"
+        )}
+      >
         <div
           className={clsx("mt-0", "lg:mt-0", "text-[30px]", "font-semibold")}
         >
@@ -139,6 +132,6 @@ export default function SkillPage() {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
