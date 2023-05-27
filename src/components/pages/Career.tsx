@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import clsx from "clsx";
 import React from "react";
 import { RiFireFill, RiHashtag } from "react-icons/ri";
@@ -171,60 +170,44 @@ export default function CareerPage() {
   const TIMELINE_BORDER_RADIUS = "rounded-[28px]";
   const GRID_COLS = "grid-cols-1 lg:grid-cols-4";
   return (
-    <motion.div
-      key={`Career`}
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.5,
-        },
-      }}
-    >
-      <div className="lg:h-[100lvh] flex justify-center items-center">
+    <div className="lg:h-[100lvh] flex justify-center items-center">
+      <div
+        className={clsx(
+          "flex",
+          "flex-col",
+          "w-[80%]",
+          "lg:w-[60%]",
+          "lg:max-h-[80svh]",
+          "py-[5vh]"
+        )}
+      >
         <div
-          className={clsx(
-            "flex",
-            "flex-col",
-            "w-[80%]",
-            "lg:w-[60%]",
-            "lg:max-h-[80svh]",
-            "py-[5vh]"
-          )}
+          className={clsx("mb-6", "lg:mb-0", "text-[30px]", "font-semibold")}
         >
+          Career
+        </div>
+        <div className={clsx("grid", GRID_COLS, "lg:mt-8", "relative")}>
           <div
-            className={clsx("mb-6", "lg:mb-0", "text-[30px]", "font-semibold")}
-          >
-            Career
-          </div>
-          <div className={clsx("grid", GRID_COLS, "lg:mt-8", "relative")}>
-            <div
-              className={clsx(
-                "absolute",
-                "h-full lg:h-[18px]",
-                "w-[18px]",
-                "lg:w-full",
-                "bg-[#9FAFDF80]",
-                "left-0",
-                TIMELINE_Y_OFFSET,
-                TIMELINE_BORDER_RADIUS
-              )}
+            className={clsx(
+              "absolute",
+              "h-full lg:h-[18px]",
+              "w-[18px]",
+              "lg:w-full",
+              "bg-[#9FAFDF80]",
+              "left-0",
+              TIMELINE_Y_OFFSET,
+              TIMELINE_BORDER_RADIUS
+            )}
+          />
+          {experiences.map((e, i) => (
+            <CareerCard
+              experience={e}
+              isLast={i === experiences.length - 1}
+              key={`${e.company}-${e.startDate}`}
             />
-            {experiences.map((e, i) => (
-              <CareerCard
-                experience={e}
-                isLast={i === experiences.length - 1}
-                key={`${e.company}-${e.startDate}`}
-              />
-            ))}
-          </div>
+          ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

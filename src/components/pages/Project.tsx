@@ -1,5 +1,4 @@
 import clsx from "clsx";
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 function ProjectCard(props: {
@@ -50,67 +49,51 @@ function ProjectCard(props: {
 
 export default function ProjectPage() {
   return (
-    <motion.div
-      key={`Project`}
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      exit={{
-        opacity: 0,
-        transition: {
-          duration: 0.5,
-        },
-      }}
-    >
-      <div className="lg:h-[100lvh] flex justify-center items-center">
+    <div className="lg:h-[100lvh] flex justify-center items-center">
+      <div
+        className={clsx(
+          "flex",
+          "flex-col",
+          "w-[80%]",
+          "lg:w-[60%]",
+          "lg:max-h-[80svh]",
+          "py-[5vh]"
+        )}
+      >
+        <div
+          className={clsx("mt-0", "lg:mt-0", "text-[30px]", "font-semibold")}
+        >
+          Projects
+        </div>
         <div
           className={clsx(
-            "flex",
-            "flex-col",
-            "w-[80%]",
-            "lg:w-[60%]",
-            "lg:max-h-[80svh]",
-            "py-[5vh]"
+            "md:mt-8",
+            "grid",
+            "grid-cols-1",
+            "md:grid-cols-2",
+            "lg:grid-cols-3",
+            "lg:grid-rows-2",
+            "gap-6"
           )}
         >
           <div
-            className={clsx("mt-0", "lg:mt-0", "text-[30px]", "font-semibold")}
+            className={"md:col-span-2 lg:col-span-1 lg:row-span-2 lg:pr-[8%]"}
           >
-            Projects
+            <p>
+              Side projects are always the best way to explore new technologies
+              and showcase creativity and skills. 🧑‍🔬🧪
+            </p>
+            <div className="h-4" />
+            <p>
+              Click to see the tech stack and the stories behind each of them.
+              💥
+            </p>
           </div>
-          <div
-            className={clsx(
-              "md:mt-8",
-              "grid",
-              "grid-cols-1",
-              "md:grid-cols-2",
-              "lg:grid-cols-3",
-              "lg:grid-rows-2",
-              "gap-6"
-            )}
-          >
-            <div
-              className={"md:col-span-2 lg:col-span-1 lg:row-span-2 lg:pr-[8%]"}
-            >
-              <p>
-                Side projects are always the best way to explore new
-                technologies and showcase creativity and skills. 🧑‍🔬🧪
-              </p>
-              <div className="h-4" />
-              <p>
-                Click to see the tech stack and the stories behind each of them.
-                💥
-              </p>
-            </div>
-            <ProjectCard title="NTUCourse Neo" imgSrc="/Project_Neo.png" />
-            <ProjectCard title="Portfolio" imgSrc="/Project_Portfolio.png" />
-            <ProjectCard title="DS Tutor" imgSrc="/Project_DSTutor.png" />
-          </div>
+          <ProjectCard title="NTUCourse Neo" imgSrc="/Project_Neo.png" />
+          <ProjectCard title="Portfolio" imgSrc="/Project_Portfolio.png" />
+          <ProjectCard title="DS Tutor" imgSrc="/Project_DSTutor.png" />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
