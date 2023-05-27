@@ -48,7 +48,14 @@ function SkillCard(props: SkillCardProps) {
       {...rest}
     >
       <div
-        className={clsx("relative", "aspect-square", "h-full", "min-h-[30px]")}
+        className={clsx(
+          "relative",
+          "aspect-square",
+          "h-full",
+          "min-h-[30px]",
+          "hidden",
+          "lg:block"
+        )}
       >
         <Image
           src={iconPath}
@@ -60,6 +67,7 @@ function SkillCard(props: SkillCardProps) {
           priority
         />
       </div>
+      <div className="block lg:hidden">#</div>
       <div className="text-[14px]">{name}</div>
     </div>
   );
