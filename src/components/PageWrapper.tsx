@@ -2,12 +2,12 @@
 import clsx from "clsx";
 import { usePageContext } from "@/components/PageProvider";
 import { AnimatePresence } from "framer-motion";
-import WelcomePage from "@/components/Welcome";
-import AboutPage from "@/components/About";
-import CareerPage from "@/components/Career";
-import ContactPage from "@/components/Contact";
-import SkillPage from "@/components/Skill";
-import ProjectPage from "@/components/Project";
+import WelcomePage from "@/components/pages/Welcome";
+import AboutPage from "@/components/pages/About";
+import CareerPage from "@/components/pages/Career";
+import ContactPage from "@/components/pages/Contact";
+import SkillPage from "@/components/pages/Skill";
+import ProjectPage from "@/components/pages/Project";
 import React from "react";
 
 const pages = [
