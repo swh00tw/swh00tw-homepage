@@ -60,6 +60,7 @@ function SkillCard(props: SkillCardProps) {
           priority
         />
       </div>
+      {/* <div className="block">#</div> */}
       <div className="text-[14px]">{name}</div>
     </div>
   );
