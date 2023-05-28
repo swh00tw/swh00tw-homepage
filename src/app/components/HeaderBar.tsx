@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { TbBrandGithub } from "react-icons/tb";
@@ -26,11 +27,12 @@ export default function Headerbar() {
   const { ref, inView } = useInView({
     threshold: 0,
   });
+  const pathname = usePathname();
 
   return (
     <React.Fragment>
-      <AnimatePresence>
-        {inView ? null : (
+      <AnimatePresence initial={false}>
+        {inView && pathname === "/" ? null : (
           <motion.div
             initial={{
               opacity: 0,
