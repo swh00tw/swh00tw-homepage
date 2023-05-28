@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import React from "react";
+import Image from "next/image";
 
 interface SkillSectionProps extends React.HTMLAttributes<HTMLDivElement> {
   readonly title: string;
@@ -46,27 +47,20 @@ function SkillCard(props: SkillCardProps) {
       )}
       {...rest}
     >
-      {/* <div */}
-      {/*   className={clsx( */}
-      {/*     "relative", */}
-      {/*     "aspect-square", */}
-      {/*     "h-full", */}
-      {/*     "min-h-[30px]", */}
-      {/*     "hidden", */}
-      {/*     "lg:block" */}
-      {/*   )} */}
-      {/* > */}
-      {/*   <Image */}
-      {/*     src={iconPath} */}
-      {/*     fill */}
-      {/*     sizes="(max-width: 768px) 10vw, (max-width: 1200px) 10vw, 10vw" */}
-      {/*     className="left-0 top-0 object-fill" */}
-      {/*     alt={name} */}
-      {/*     quality={100} */}
-      {/*     priority */}
-      {/*   /> */}
-      {/* </div> */}
-      <div className="block">#</div>
+      <div
+        className={clsx("relative", "aspect-square", "h-full", "min-h-[30px]")}
+      >
+        <Image
+          src={iconPath}
+          fill
+          sizes="(max-width: 768px) 10vw, (max-width: 1200px) 10vw, 10vw"
+          className="left-0 top-0 object-fill"
+          alt={name}
+          quality={100}
+          priority
+        />
+      </div>
+      {/* <div className="block">#</div> */}
       <div className="text-[14px]">{name}</div>
     </div>
   );
