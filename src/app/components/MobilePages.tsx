@@ -35,7 +35,6 @@ const mobilePages = [
 ];
 
 export default function MobilePages() {
-  console.log(typeof window !== "undefined" ? "client" : "server");
   return (
     <div
       className={clsx(
