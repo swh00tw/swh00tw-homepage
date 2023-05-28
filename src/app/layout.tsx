@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={clsx(workSans.className, "relative")}
+        className={clsx(workSans.className, "relative", "bg-main")}
         suppressHydrationWarning={true}
       >
         {children}
