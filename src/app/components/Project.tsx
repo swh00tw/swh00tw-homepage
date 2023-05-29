@@ -1,49 +1,53 @@
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 
 function ProjectCard(props: {
   readonly title: string;
   readonly imgSrc: string;
+  readonly projectId: string;
 }) {
-  const { imgSrc, title } = props;
+  const { imgSrc, title, projectId } = props;
   return (
-    <div className={clsx("flex", "flex-col", "cursor-pointer", "relative")}>
-      <div
-        className={clsx(
-          "absolute",
-          "top-0",
-          "left-0",
-          "aspect-project-card",
-          "bg-black",
-          "w-full",
-          "rounded-2xl"
-        )}
-      />
-      <div
-        className={clsx(
-          "relative",
-          "aspect-project-card",
-          "hover:-translate-y-1",
-          "hover:translate-x-1",
-          "duration-200",
-          "ease-in-out",
-          "border-black",
-          "border-2",
-          "rounded-2xl",
-          "overflow-hidden"
-        )}
-      >
-        <Image
-          src={imgSrc}
-          fill
-          alt={`${title}`}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 30vw"
-          className="left-0 object-fill"
-          quality={100}
+    <Link href={`${projectId}`}>
+      <div className={clsx("flex", "flex-col", "cursor-pointer", "relative")}>
+        <div
+          className={clsx(
+            "absolute",
+            "top-0",
+            "left-0",
+            "aspect-project-card",
+            "bg-black",
+            "w-full",
+            "rounded-2xl"
+          )}
         />
+        <div
+          className={clsx(
+            "relative",
+            "aspect-project-card",
+            "hover:-translate-y-1",
+            "hover:translate-x-1",
+            "duration-200",
+            "ease-in-out",
+            "border-black",
+            "border-2",
+            "rounded-2xl",
+            "overflow-hidden"
+          )}
+        >
+          <Image
+            src={imgSrc}
+            fill
+            alt={`${title}`}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 30vw"
+            className="left-0 object-fill"
+            quality={100}
+          />
+        </div>
+        <div className={clsx("text-[14px]", "mt-1")}>{title}</div>
       </div>
-      <div className={clsx("text-[14px]", "mt-1")}>{title}</div>
-    </div>
+    </Link>
   );
 }
 
@@ -89,9 +93,21 @@ export default function ProjectPage() {
               💥
             </p>
           </div>
-          <ProjectCard title="NTUCourse Neo" imgSrc="/Project_Neo.png" />
-          <ProjectCard title="Portfolio" imgSrc="/Project_Portfolio.png" />
-          <ProjectCard title="DS Tutor" imgSrc="/Project_DSTutor.png" />
+          <ProjectCard
+            title="NTUCourse Neo"
+            imgSrc="/Project_Neo.png"
+            projectId="ntucourse-neo"
+          />
+          <ProjectCard
+            title="Portfolio"
+            imgSrc="/Project_Portfolio.png"
+            projectId="portfolio"
+          />
+          <ProjectCard
+            title="DS Tutor"
+            imgSrc="/Project_DSTutor.png"
+            projectId="dstutor"
+          />
         </div>
       </div>
     </div>
