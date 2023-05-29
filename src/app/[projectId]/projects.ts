@@ -28,7 +28,7 @@ const projects: Record<string, Project> = {
       "It was my very first frontend coding experience. No React or any frameworks, just pure HTML/CSS/JS. ",
     ],
     stack: ["Javascript", "HTML/Canvas", "EaselJS", "TweenJS"],
-    imagePath: "/Project_DSTutor.png",
+    imagePath: "/projects/dstutor.png",
   },
   "ntucourse-neo": {
     id: "ntucourse-neo",
