@@ -53,7 +53,7 @@ export default function Page(props: ProjectPageProps) {
         <div
           className={clsx("mt-0", "lg:mt-0", "text-[30px]", "font-semibold")}
         >
-          <Link href="/">
+          <Link href="/#project" scroll={false}>
             <div
               className={clsx(
                 "text-[#00000050]",
