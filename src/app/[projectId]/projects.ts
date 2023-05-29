@@ -14,7 +14,10 @@ const projects: Record<string, Project> = {
     name: "My Portfolio",
     link: null,
     github: "https://github.com/swh00tw/swh00tw-homepage",
-    description: [],
+    description: [
+      "I rebuild my portfolio every year. Partly, it’s because I am never satisfied with the current UI 😆. Partly, it’s because it’s fun to code with new stack. This time, I self-learned how to use Figma and designed the UI in as much detailed as possible. I found it more efficient since I only have to focus on implementing the UI after finishing the design. ",
+      "I also upgrade to Next.js v13 to use some cool features like Server Component, etc. 🤩 ",
+    ],
     stack: ["Next13", "Tailwind", "Figma"],
     imagePath: "/projects/portfolio.png",
   },
