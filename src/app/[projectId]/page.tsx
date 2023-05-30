@@ -71,6 +71,16 @@ interface ProjectPageProps {
     projectId: string;
   };
 }
+export async function generateMetadata(props: ProjectPageProps) {
+  const {
+    params: { projectId },
+  } = props;
+  const project = projects[projectId];
+  return {
+    title: `Frank Hsu - ${project.name}`,
+    description: `Story of project: ${project.name}`,
+  };
+}
 
 export default function Page(props: ProjectPageProps) {
   const { params } = props;
