@@ -1,6 +1,7 @@
 import "@/app/globals.css";
 import { Work_Sans } from "next/font/google";
 import clsx from "clsx";
+import Headerbar from "@/app/components/HeaderBar";
 
 const workSans = Work_Sans({ subsets: ["latin"] });
 
@@ -17,9 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={clsx(workSans.className, "relative")}
+        className={clsx(workSans.className, "relative", "bg-main")}
         suppressHydrationWarning={true}
       >
+        <Headerbar />
         {children}
       </body>
     </html>
