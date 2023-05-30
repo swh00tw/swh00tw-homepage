@@ -39,6 +39,8 @@ export const PageContextProvider: React.FC<{
       }
       return getPageIndex(window.scrollY);
     });
+    // sliently remove hash from url
+    history.pushState("", document.title, window.location.pathname);
     // then, bind scroll event listener
     const handleScroll = () => {
       if (typeof window === "undefined") return;
