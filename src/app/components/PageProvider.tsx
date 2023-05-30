@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, createContext, useContext, useEffect } from "react";
 import debounce from "lodash.debounce";
+
 const DebounceInterval =
   parseInt(process.env.NEXT_PUBLIC_DEBOUNCE_INTERVAL as string, 10) ?? 500;
 export const pageBreakPoints = [0, 300, 1100, 1900, 2700, 3500, Infinity];
@@ -28,14 +29,24 @@ export const PageContextProvider: React.FC<{
 
   useEffect(() => {
     // when hydration, set pageIndex according to scrollY
-    setPageIndex(getPageIndex(window.scrollY));
+    setPageIndex(() => {
+      // when navigate back from project page, scroll to project section sliently and instantly
+      if (window?.location?.hash === "#project") {
+        window.scrollTo({
+          top: 2700,
+          behavior: "auto",
+        });
+        // sliently remove hash from url
+        history.pushState("", document.title, window.location.pathname);
+      }
+      return getPageIndex(window.scrollY);
+    });
     // then, bind scroll event listener
     const handleScroll = () => {
       if (typeof window === "undefined") return;
       const scrollY = window.scrollY;
       const index = getPageIndex(scrollY);
       setPageIndex(index);
-      // console.log(index);
     };
     window.addEventListener("scroll", debounce(handleScroll, DebounceInterval));
     return () => window.removeEventListener("scroll", handleScroll);
