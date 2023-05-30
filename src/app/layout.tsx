@@ -8,6 +8,11 @@ const workSans = Work_Sans({ subsets: ["latin"] });
 export const metadata = {
   title: "Frank Hsu",
   description: "Welcome to Frank's portfolio site!",
+  icons: {
+    icon: "/favicon/favicon.ico",
+    apple: "/favicon/apple-touch-icon.png",
+    shortcut: "/favicon/favicon.ico",
+  },
 };
 
 export default function RootLayout({
