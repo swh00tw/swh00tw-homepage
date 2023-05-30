@@ -36,11 +36,11 @@ export const PageContextProvider: React.FC<{
           top: 2700,
           behavior: "auto",
         });
+        // sliently remove hash from url
+        history.pushState("", document.title, window.location.pathname);
       }
       return getPageIndex(window.scrollY);
     });
-    // sliently remove hash from url
-    history.pushState("", document.title, window.location.pathname);
     // then, bind scroll event listener
     const handleScroll = () => {
       if (typeof window === "undefined") return;
