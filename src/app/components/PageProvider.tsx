@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, createContext, useContext, useEffect } from "react";
-import debounce from "lodash.debounce";
+import _ from "lodash";
 
 const DebounceInterval =
   parseInt(process.env.NEXT_PUBLIC_DEBOUNCE_INTERVAL as string, 10) ?? 500;
@@ -48,7 +48,10 @@ export const PageContextProvider: React.FC<{
       const index = getPageIndex(scrollY);
       setPageIndex(index);
     };
-    window.addEventListener("scroll", debounce(handleScroll, DebounceInterval));
+    window.addEventListener(
+      "scroll",
+      _.throttle(handleScroll, DebounceInterval)
+    );
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
