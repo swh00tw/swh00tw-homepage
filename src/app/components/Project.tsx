@@ -41,7 +41,7 @@ function ProjectCard(props: {
             fill
             alt={`${title}`}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 30vw"
-            className="left-0 object-fill"
+            className="left-0 object-cover"
             quality={100}
           />
         </div>
@@ -97,6 +97,11 @@ export default function ProjectPage() {
             title="NTUCourse Neo"
             imgSrc="/Project_Neo.png"
             projectId="ntucourse-neo"
+          />
+          <ProjectCard
+            title="swh00tw.dev"
+            imgSrc="/Project_swh00tw.png"
+            projectId="swh00tw-dev"
           />
           <ProjectCard
             title="Portfolio"
