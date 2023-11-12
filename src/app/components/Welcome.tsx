@@ -5,6 +5,36 @@ import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { RiMailFill } from "react-icons/ri";
 
+function BlogNavigationButton() {
+  return (
+    <Link href="https://swh00tw.dev">
+      <div
+        className={clsx(
+          "bg-[#9F3AE0]",
+          "rotate-[6deg]",
+          "bg-opacity-80",
+          "text-white",
+          "py-2",
+          "px-4",
+          "rounded-md",
+          "mt-4",
+          "flex-col",
+          "items-center",
+          "text-center",
+          "hover:scale-110",
+          "transition-all",
+          "duration-200",
+          "ease-in-out",
+          "hover:rotate-[1deg]"
+        )}
+      >
+        <div>Frank just created a blog</div>
+        <div>🎊 Check it out! 🥳</div>
+      </div>
+    </Link>
+  );
+}
+
 interface ContactCardProps {
   readonly children: React.ReactNode;
   readonly title: string;
@@ -60,6 +90,7 @@ export default function WelcomePage() {
           />
           <div className={clsx("text-[36px]", "font-semibold")}>Frank Hsu</div>
           <div className={clsx("text-[20px]")}>Full Stack Developer</div>
+          <BlogNavigationButton />
         </div>
         <div
           className={clsx(
