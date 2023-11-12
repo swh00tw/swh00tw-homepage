@@ -23,16 +23,13 @@ function ProjectHeading(props: { readonly project: Project }) {
       <div className="text-[22px] hover:no-underline">
         {project.link === null ? null : "↗"}
       </div>
-      {project.github !== null ? (
-        <Link href={project.github} target="_blank" className="text-[22px]">
-          <FaGithub />
-        </Link>
-      ) : null}
     </div>
   );
 
   return (
-    <div className={clsx("w-fit")}>
+    <div
+      className={clsx("w-fit", "flex-row", "items-center", "gap-x-2", "flex")}
+    >
       {project.link ? (
         <Link href={project.link} target="_blank">
           {body}
@@ -40,6 +37,11 @@ function ProjectHeading(props: { readonly project: Project }) {
       ) : (
         body
       )}
+      {project.github !== null ? (
+        <Link href={project.github} target="_blank" className="text-[22px]">
+          <FaGithub />
+        </Link>
+      ) : null}
     </div>
   );
 }

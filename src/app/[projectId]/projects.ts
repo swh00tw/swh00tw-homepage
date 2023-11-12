@@ -45,6 +45,18 @@ const projects: Record<string, Project> = {
     stack: ["React", "Node.js", "Next.js", "Typescript", "PostgreSQL"],
     imagePath: "/projects/ncn.png",
   },
+  "swh00tw-dev": {
+    id: "swh00tw-dev",
+    name: "swh00tw.dev",
+    link: "https://swh00tw.dev",
+    github: "https://github.com/swh00tw/swh00tw-blog",
+    description: [
+      "My personal blog. I write about my life, my thoughts, and my projects. I also write about my learning experience in programming. ",
+      "I started this blog since I want to practice output and explain my thoughts in a more structure way. Hope one day, my content can benefit not only me but also someone like me.",
+    ],
+    stack: ["SvelteKit", "Tailwind", "MDsveX"],
+    imagePath: "/projects/swh00twdev.png",
+  },
 };
 
 export default projects;
