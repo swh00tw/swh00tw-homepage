@@ -2,6 +2,8 @@ import "@/app/globals.css";
 import { Work_Sans } from "next/font/google";
 import clsx from "clsx";
 import Headerbar from "@/app/components/HeaderBar";
+import { BlogPosts } from "@/app/components/BlogPosts";
+import { Suspense } from "react";
 
 const workSans = Work_Sans({ subsets: ["latin"], variable: "--font-worksans" });
 
@@ -21,7 +23,11 @@ export default function RootLayout({
         className={clsx("relative", "bg-main")}
         suppressHydrationWarning={true}
       >
-        <Headerbar />
+        <Headerbar>
+          <Suspense fallback={<div>Loading...</div>}>
+            <BlogPosts />
+          </Suspense>
+        </Headerbar>
         {children}
       </body>
     </html>
