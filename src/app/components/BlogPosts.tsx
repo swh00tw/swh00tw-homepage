@@ -20,7 +20,11 @@ export const postsSchema = z.array(postSchema);
 export type Posts = z.infer<typeof postsSchema>;
 
 async function loadBlogPosts() {
-  const data = await fetch(`${BlogUrl}/api/posts`);
+  const data = await fetch(`${BlogUrl}/api/posts`, {
+    next: {
+      revalidate: 60 * 60,
+    },
+  });
   const posts = await data.json();
   const res = postsSchema.safeParse(posts);
   if (!res.success) {
