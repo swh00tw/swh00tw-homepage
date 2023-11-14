@@ -8,6 +8,7 @@ import { MdOutlineMail } from "react-icons/md";
 import { RiDownloadCloud2Line, RiLinkedinLine } from "react-icons/ri";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
+import { BlogNavigator } from "@/app/components/BlogNavigator";
 
 function LinkItem({
   href,
@@ -80,7 +81,7 @@ export default function Headerbar({
                   "flex",
                   "flex-row",
                   "md:gap-x-[50px]",
-                  "gap-x-[20px]",
+                  "gap-x-[8px]",
                   "items-center"
                 )}
               >
@@ -96,7 +97,7 @@ export default function Headerbar({
                 <LinkItem href="https://www.linkedin.com/in/swh00tw">
                   <RiLinkedinLine size="24px" />
                 </LinkItem>
-                {/* <BlogNavigator>{children}</BlogNavigator> */}
+                <BlogNavigator>{children}</BlogNavigator>
               </div>
             </div>
           </motion.div>
