@@ -44,7 +44,7 @@ export const PageContextProvider: React.FC<{
     // then, bind scroll event listener
     const handleScroll = () => {
       if (typeof window === "undefined") return;
-      const scrollY = window.scrollY;
+      const scrollY = Math.max(0, window.scrollY);
       const index = getPageIndex(scrollY);
       setPageIndex(index);
     };
