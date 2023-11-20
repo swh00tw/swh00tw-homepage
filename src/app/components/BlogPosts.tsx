@@ -13,6 +13,7 @@ export const postSchema = z.object({
   published: z.boolean(),
   coverImgSrc: z.string(),
   backgroundImgSrc: z.string().optional(),
+  lang: z.union([z.literal("en"), z.literal("zh")]),
 });
 
 export type Post = z.infer<typeof postSchema>;
@@ -70,10 +71,24 @@ async function BlogPosts() {
             >
               <a
                 href={`${BlogUrl}/${post.slug}`}
-                className="flex-row flex gap-x-2 items-center justify-between"
+                className="flex-row flex gap-x-4 items-center justify-between"
               >
                 <div className="flex flex-col">
-                  <div>{post.title}</div>
+                  <div className="flex flex-row gap-x-2">
+                    <p>{post.title}</p>{" "}
+                    <p
+                      className={clsx(
+                        "text-[12px]",
+                        "bg-[#9F3AE090]",
+                        "h-fit",
+                        "px-1",
+                        "rounded-[4px]",
+                        "group-hover:text-white"
+                      )}
+                    >
+                      {post.lang}
+                    </p>
+                  </div>
                   <div className={clsx("text-[10px]")}>{post.description}</div>
                 </div>
                 <FaChevronRight
