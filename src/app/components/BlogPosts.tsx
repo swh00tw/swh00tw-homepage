@@ -21,21 +21,30 @@ export const postsSchema = z.array(postSchema);
 export type Posts = z.infer<typeof postsSchema>;
 
 async function loadBlogPosts() {
-  const data = await fetch(`${BlogUrl}/api/posts`, {
-    next: {
-      revalidate: 60 * 60,
-    },
-  });
-  const posts = await data.json();
-  const res = postsSchema.safeParse(posts);
-  if (!res.success) {
+  try {
+    const data = await fetch(`${BlogUrl}/api/posts`, {
+      next: {
+        revalidate: 60 * 60,
+      },
+    });
+    const posts = await data.json();
+    const res = postsSchema.safeParse(posts);
+    if (!res.success) {
+      return [];
+    }
+    return res.data;
+  } catch (e) {
+    console.error(e);
     return [];
   }
-  return res.data;
 }
 
 async function BlogPosts() {
   const data = await loadBlogPosts();
+
+  if (data.length === 0) {
+    return null;
+  }
 
   return (
     <div
