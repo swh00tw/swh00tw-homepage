@@ -14,7 +14,6 @@ function SkillSection(props: SkillSectionProps) {
         "w-full",
         "p-4",
         "flex-col",
-        "bg-[#ffffff75]",
         "rounded-lg",
         className
       )}
