@@ -91,7 +91,8 @@ export default function Footer() {
               "justify-center",
               "rounded-t-lg",
               "drop-shadow-footer",
-              "shadow-lg"
+              "shadow-lg",
+              "border-[1px]"
             )}
           >
             {items.map((item, index) => (

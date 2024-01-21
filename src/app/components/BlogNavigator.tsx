@@ -14,16 +14,15 @@ function BlogNavigator({ children }: { readonly children: React.ReactNode }) {
             "flex-row",
             "gap-x-2",
             "items-center",
-            "bg-[#9F3AE0]",
-            "bg-opacity-80",
-            "text-white",
+            "text-[#808080]",
             "py-1",
             "px-3",
-            "rounded-md"
+            "rounded-md",
+            "text-[16px]"
           )}
         >
           <div>Blog</div>
-          <FaExternalLinkAlt size={10} />
+          <FaExternalLinkAlt size={14} />
         </a>
       </HoverCard.Trigger>
       <HoverCard.Content
