@@ -92,7 +92,7 @@ export default function Page(props: ProjectPageProps) {
     return null;
   }
   return (
-    <div className="my-[15vh] md:my-0 min-h-[100vh] flex justify-center items-center">
+    <div className="my-[15vh] md:my-0 min-h-[100vh] flex justify-center items-center text-black">
       <div className="w-[80%] lg:w-[70%] flex flex-col">
         <div className={clsx("text-[30px]", "font-semibold")}>
           <div
