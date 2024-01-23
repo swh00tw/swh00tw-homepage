@@ -12,7 +12,7 @@ module.exports = {
       },
       colors: {
         primary: "#9FAFDF",
-        main: "#FAF0F0",
+        main: "#FFFFFF",
         secondary: "#D4BEE9",
         third: "#C9E4AE",
         highlight: "#9FE1DF",
@@ -62,5 +62,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-radix")()],
+  plugins: [require("tailwindcss-radix")(), require("daisyui")],
 };
