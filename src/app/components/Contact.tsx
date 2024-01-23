@@ -57,13 +57,7 @@ export default function ContactPage() {
         )}
       >
         <div
-          className={clsx(
-            "mb-[120px]",
-            "lg:mb-0",
-            "w-[80%]",
-            "lg:w-[100%]",
-            "lg:pl-[5%]"
-          )}
+          className={clsx("mb-[120px]", "lg:mb-0", "w-[80%]", "lg:w-[100%]")}
         >
           <div className={clsx("text-[30px]", "font-semibold")}>Contact me</div>
           <p className="py-7">
