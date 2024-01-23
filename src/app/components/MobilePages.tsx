@@ -42,7 +42,8 @@ export default function MobilePages() {
         "lg:hidden",
         "flex-col",
         "items-center",
-        "justify-center"
+        "justify-center",
+        "text-black"
       )}
     >
       {...mobilePages}
