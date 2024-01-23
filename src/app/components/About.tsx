@@ -27,11 +27,9 @@ function EducationRecordCard(props: EducationRecordCardProps) {
 
 export default function AboutPage() {
   return (
-    <div className="lg:h-[100lvh] flex justify-center items-center py-[8vh]">
+    <div className="lg:h-[100lvh] flex justify-center items-center py-[8vh] w-[80vw] lg:w-[60vw]">
       <div
         className={clsx(
-          "w-[80%]",
-          "lg:w-[60%]",
           "flex",
           "flex-col",
           "lg:flex-row",
@@ -39,7 +37,7 @@ export default function AboutPage() {
           "items-center"
         )}
       >
-        <div className={clsx("w-full", "lg:w-[55%]", "lg:pl-[5%]")}>
+        <div className={clsx("w-full", "lg:w-[100%]")}>
           <h1 className={clsx("text-[30px]", "font-semibold")}>
             Hi, I am <span className="text-primary">Frank</span>
           </h1>
@@ -94,23 +92,6 @@ export default function AboutPage() {
               />
             </EducationRecordCard>
           </div>
-        </div>
-        <div
-          className={clsx(
-            "hidden",
-            "lg:block",
-            "lg:w-[45%]",
-            "flex",
-            "justify-center"
-          )}
-        >
-          <Image
-            src="/About.png"
-            width={300}
-            height={300}
-            alt="About me memoji"
-            style={{ margin: "0 auto" }}
-          />
         </div>
       </div>
     </div>

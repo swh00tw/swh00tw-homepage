@@ -58,7 +58,6 @@ export default function Headerbar({
               "z-10",
               "border-b-[1px]",
               "lg:border-b-0",
-              "border-[#808080]",
               "bg-[#ffffff20]",
               "lg:bg-transparent",
               "backdrop-blur",

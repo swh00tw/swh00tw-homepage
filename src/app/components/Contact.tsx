@@ -57,13 +57,7 @@ export default function ContactPage() {
         )}
       >
         <div
-          className={clsx(
-            "mb-[120px]",
-            "lg:mb-0",
-            "w-[80%]",
-            "lg:w-[65%]",
-            "lg:pl-[5%]"
-          )}
+          className={clsx("mb-[120px]", "lg:mb-0", "w-[80%]", "lg:w-[100%]")}
         >
           <div className={clsx("text-[30px]", "font-semibold")}>Contact me</div>
           <p className="py-7">
@@ -88,32 +82,32 @@ export default function ContactPage() {
             />
           </div>
         </div>
-        <div
-          className={clsx(
-            "flex",
-            "justify-center",
-            "absolute",
-            "lg:static",
-            "w-[150%]",
-            "lg:w-[30%]",
-            "h-[500px]",
-            "lg:h-auto",
-            "bottom-[-220px]",
-            "md:bottom-[-150px]",
-            "bg-[#9FAFDF50]",
-            "lg:bg-transparent",
-            "rounded-gestureSvg"
-          )}
-        >
-          <Image
-            src="/Contact.png"
-            width={200}
-            height={253}
-            alt="contact me"
-            className={clsx("hidden", "lg:block")}
-          />
-          <GestureImage className="lg:hidden w-[275px] h-[396px]" />
-        </div>
+        {/* <div */}
+        {/*   className={clsx( */}
+        {/*     "flex", */}
+        {/*     "justify-center", */}
+        {/*     "absolute", */}
+        {/*     "lg:static", */}
+        {/*     "w-[150%]", */}
+        {/*     "lg:w-[30%]", */}
+        {/*     "h-[500px]", */}
+        {/*     "lg:h-auto", */}
+        {/*     "bottom-[-220px]", */}
+        {/*     "md:bottom-[-150px]", */}
+        {/*     "bg-[#9FAFDF50]", */}
+        {/*     "lg:bg-transparent", */}
+        {/*     "rounded-gestureSvg" */}
+        {/*   )} */}
+        {/* > */}
+        {/*   <Image */}
+        {/*     src="/Contact.png" */}
+        {/*     width={200} */}
+        {/*     height={253} */}
+        {/*     alt="contact me" */}
+        {/*     className={clsx("hidden", "lg:block")} */}
+        {/*   /> */}
+        {/*   <GestureImage className="lg:hidden w-[275px] h-[396px]" /> */}
+        {/* </div> */}
       </div>
     </div>
   );

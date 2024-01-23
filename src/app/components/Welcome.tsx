@@ -70,7 +70,7 @@ export default function WelcomePage() {
     <div className="h-[100svh] flex justify-center items-center">
       <div
         className={clsx(
-          "w-[80%]",
+          "w-[85%]",
           "lg:w-[60%]",
           "flex",
           "flex-col",
@@ -81,16 +81,15 @@ export default function WelcomePage() {
       >
         <div className={clsx("flex", "items-center", "flex-col")}>
           <Image
-            src="/Welcome.png"
-            width={300}
-            height={300}
-            className="aspect-square"
+            src="/avatar.png"
+            width={250}
+            height={250}
+            className="aspect-square mb-4"
             alt="Welcome emoji"
             priority
           />
           <div className={clsx("text-[36px]", "font-semibold")}>Frank Hsu</div>
           <div className={clsx("text-[20px]")}>Full Stack Developer</div>
-          <BlogNavigationButton />
         </div>
         <div
           className={clsx(
