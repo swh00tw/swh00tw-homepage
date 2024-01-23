@@ -46,7 +46,7 @@ function CompanyName(props: { readonly experience: Experience }) {
   const body = (
     <div
       className={clsx(
-        "text-[16px]",
+        "text-[20px]",
         "font-medium",
         "text-black",
         link ? "cursor-pointer hover:underline" : ""
@@ -67,11 +67,19 @@ function CompanyName(props: { readonly experience: Experience }) {
 
 function Timeline() {
   return (
-    <ul className="timeline my-4">
+    <ul className="timeline timeline-snap-icon lg:timeline-horizontal timeline-vertical relative right-[8vw] md:right-0">
       {experiences.map((experience, index) => (
         <li key={`${experience.company}-${index}`}>
           {index === 0 ? null : <hr />}
-          <div className="timeline-start">{experience.startDate}</div>
+          <div
+            className={clsx(
+              "lg:w-full px-2 text-gray-600 h-full lg:h-fit",
+              "py-2",
+              "timeline-start"
+            )}
+          >
+            {experience.startDate}
+          </div>
           <div className="timeline-middle">
             <Image
               src={experience.logoImagePath}
@@ -81,9 +89,31 @@ function Timeline() {
               className="aspect-square h-[40px] lg:inline-block"
             />
           </div>
-          <div className={clsx("timeline-end", "px-4")}>
+          <div className={clsx("pl-2", "pr-8", "timeline-end", "pb-8 lg:pb-0")}>
             <div className={clsx("flex", "flex-col")}>
               <CompanyName experience={experience} />
+              <div className={clsx("text-[16px]", "text-gray-600")}>
+                {experience.roles.join("/")}
+              </div>
+              <div
+                className={clsx(
+                  "text-[12px]",
+                  "text-gray-600",
+                  "flex",
+                  "flex-col",
+                  "px-4",
+                  "py-1"
+                )}
+              >
+                {experience.tags.map((tag, index) => (
+                  <div
+                    key={`${tag}-${index}`}
+                    className="inline-block whitespace-nowrap"
+                  >
+                    {tag}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           {index === experiences.length - 1 ? null : <hr />}
@@ -95,15 +125,14 @@ function Timeline() {
 
 export default function CareerPage() {
   return (
-    <div className="lg:h-[100lvh] flex justify-center items-center">
+    <div className="lg:h-[100lvh] flex justify-center items-center lg:w-[60vw] w-[80vw]">
       <div
         className={clsx(
           "flex",
           "flex-col",
-          "w-[80%]",
           "lg:max-h-[80svh]",
           "py-[5vh]",
-          "w-fit"
+          "w-full"
         )}
       >
         <div
