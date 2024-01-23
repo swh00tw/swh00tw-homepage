@@ -70,7 +70,7 @@ function Timeline() {
     <ul className="timeline timeline-snap-icon lg:timeline-horizontal timeline-vertical relative right-[8vw] md:right-0">
       {experiences.map((experience, index) => (
         <li key={`${experience.company}-${index}`}>
-          {index === 0 ? null : <hr />}
+          {index === 0 ? null : <hr className="bg-gray-700" />}
           <div
             className={clsx(
               "lg:w-full px-2 text-gray-600 h-full lg:h-fit",
@@ -116,7 +116,9 @@ function Timeline() {
               </div>
             </div>
           </div>
-          {index === experiences.length - 1 ? null : <hr />}
+          {index === experiences.length - 1 ? null : (
+            <hr className="bg-gray-700" />
+          )}
         </li>
       ))}
     </ul>
