@@ -37,6 +37,7 @@ module.exports = {
           "slideLeftAndFade 300ms cubic-bezier(0.16, 0, 0.13, 1)",
         slideDownAndFadeOut:
           "slideDownAndFadeOut 300ms cubic-bezier(0.16, 0, 0.13, 1)",
+        scrollDownArrow: "scrollDownArrow 2s infinite",
       },
       keyframes: {
         slideUpAndFade: {
@@ -58,6 +59,11 @@ module.exports = {
         slideDownAndFadeOut: {
           "0%": { opacity: 1, transform: "translateY(0)" },
           "100%": { opacity: 0, transform: "translateY(2px)" },
+        },
+        scrollDownArrow: {
+          "0%": { opacity: 1, transform: "translateY(0px)" },
+          "50%": { opacity: 0.5, transform: "translateY(3px)" },
+          "100%": { opacity: 1, transform: "translateY(0px)" },
         },
       },
     },

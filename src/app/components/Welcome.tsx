@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { RiMailFill } from "react-icons/ri";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 function BlogNavigationButton() {
   return (
@@ -67,7 +68,13 @@ function ContactCard(props: ContactCardProps) {
 
 export default function WelcomePage() {
   return (
-    <div className="h-[100svh] flex justify-center items-center">
+    <div className="h-[100svh] flex justify-center items-center relative">
+      <div className="absolute bottom-4 w-fit mx-auto text-gray-300 flex flex-row items-center gap-x-1">
+        <div className="animate-scrollDownArrow">
+          <MdKeyboardArrowDown size={30} />
+        </div>
+        Scroll down to view more
+      </div>
       <div
         className={clsx(
           "w-[85%]",
