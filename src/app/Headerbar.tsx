@@ -6,6 +6,13 @@ import { robotoMono } from "@/utils/fonts";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import {
+  GitHubLogoIcon,
+  LinkedInLogoIcon,
+  TwitterLogoIcon,
+} from "@radix-ui/react-icons";
+import { useRef, useState } from "react";
+import { useMotionValueEvent, useScroll } from "framer-motion";
 
 type HeaderbarLink = {
   label: string;
@@ -47,6 +54,34 @@ function HeaderbarLink({
 }
 
 export function Headerbar() {
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const { scrollXProgress } = useScroll({ container: tabsRef });
+  const tolerance = 0.05;
+  const [isReachLeft, setIsReachLeft] = useState(false);
+  const [isReachRight, setIsReachRight] = useState(false);
+
+  useMotionValueEvent(scrollXProgress, "change", (val) => {
+    if (
+      tabsRef.current?.scrollWidth &&
+      tabsRef.current?.clientWidth &&
+      tabsRef.current.scrollWidth > tabsRef.current.clientWidth
+    ) {
+      if (1 - tolerance < val && 1 >= val) {
+        setIsReachRight(true);
+      } else {
+        setIsReachRight(false);
+      }
+      if (0 <= val && val < tolerance) {
+        setIsReachLeft(true);
+      } else {
+        setIsReachLeft(false);
+      }
+    }
+  });
+
+  const iconClasses =
+    "text-gray-10 hover:text-gray-11 transition-colors ease-in-out";
+
   return (
     <Flex
       className={cn(
@@ -57,24 +92,61 @@ export function Headerbar() {
       <div className="absolute w-full bottom-0 bg-gray-6 h-[1px] z-[1]" />
       <Flex
         className={cn(
-          "absolute bottom-0 flex flex-row px-4 w-full items-center justify-between",
+          "absolute bottom-0 flex flex-row px-4 w-full items-center justify-between gap-4",
         )}
       >
-        <Flex className="items-center">
-          <Flex className="px-2 mr-2">
+        <Flex className="items-center max-w-[70%]">
+          <Flex className="md:px-2 mr-2 min-w-fit">
             <Image
               src="/logo.webp"
               width={24}
               height={24}
               alt="logo"
-              className="rounded-2"
+              className="rounded-2 min-w-min"
             />
           </Flex>
-          {links.map((link, index) => (
-            <HeaderbarLink key={link.label} {...link} index={index} />
-          ))}
+          <div className="relative max-w-[80%] sm:max-w-full">
+            <Flex
+              className={cn(
+                "items-center overflow-auto",
+                `sm:before:hidden before:transition-all before:ease-in-out before:content-[''] before:w-[20px] before:h-full before:bg-gradient-to-r before:from-gray-6 before:to-transparent before:absolute before:left-0 before:top-0 before:z-[5]`,
+                `sm:after:hidden after:transition-all after:ease-in-out after:content-[''] after:w-[20px] after:h-full after:bg-gradient-to-l after:from-gray-6 after:to-transparent after:absolute after:right-0 after:top-0 after:z-[5]`,
+                {
+                  "before:from-transparent": isReachLeft,
+                  "after:from-transparent": isReachRight,
+                },
+              )}
+              ref={tabsRef}
+            >
+              {links.map((link, index) => (
+                <HeaderbarLink {...link} index={index} key={link.href} />
+              ))}
+            </Flex>
+          </div>
         </Flex>
-        <Flex>icons</Flex>
+        <Flex gap="3" className="items-center min-w-min">
+          <Link
+            href="https://github.com/swh00tw"
+            className={iconClasses}
+            target="_blank"
+          >
+            <GitHubLogoIcon width={20} height={20} />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/swh00tw/"
+            className={iconClasses}
+            target="_blank"
+          >
+            <LinkedInLogoIcon width={20} height={20} />
+          </Link>
+          <Link
+            href="https://x.com/swh00tw"
+            className={iconClasses}
+            target="_blank"
+          >
+            <TwitterLogoIcon width={20} height={20} />
+          </Link>
+        </Flex>
       </Flex>
     </Flex>
   );
