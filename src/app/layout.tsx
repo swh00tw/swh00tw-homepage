@@ -20,7 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(workSans.className)}>
         <Theme accentColor="gray">
-          <div className="bg-main w-screen h-screen">
+          <div className="bg-offwhite w-screen h-screen">
             <Headerbar />
             <div className="p-4">{children}</div>
           </div>
