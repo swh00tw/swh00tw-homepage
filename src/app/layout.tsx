@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Work_Sans } from "next/font/google";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import "./globals.css";
-
-const workSans = Work_Sans({ subsets: ["latin"] });
+import { Headerbar } from "./Headerbar";
+import { workSans } from "@/utils/fonts";
+import { cn } from "@/utils/cn";
 
 export const metadata: Metadata = {
   title: "Frank Hsu",
@@ -18,8 +18,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={workSans.className}>
-        <Theme accentColor="gray">{children}</Theme>
+      <body className={cn(workSans.className)}>
+        <Theme accentColor="gray">
+          <div className="bg-main w-screen h-screen">
+            <Headerbar />
+            <div className="p-4">{children}</div>
+          </div>
+        </Theme>
       </body>
     </html>
   );
