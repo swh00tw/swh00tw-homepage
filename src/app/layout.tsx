@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Work_Sans } from "next/font/google";
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
 import "./globals.css";
 
 const workSans = Work_Sans({ subsets: ["latin"] });
@@ -16,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={workSans.className}>{children}</body>
+      <body className={workSans.className}>
+        <Theme accentColor="gray">{children}</Theme>
+      </body>
     </html>
   );
 }
