@@ -1,5 +1,4 @@
 {
-  "root": true,
   "extends": [
     "next/core-web-vitals",
     "plugin:prettier/recommended",
@@ -29,17 +28,6 @@
         }
       },
       "rules": {
-        "no-restricted-imports": [
-          "error",
-          {
-            "patterns": [
-              {
-                "group": [".*"],
-                "message": "please use absolute import path instead."
-              }
-            ]
-          }
-        ],
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "error",
         "react/prop-types": "off",
