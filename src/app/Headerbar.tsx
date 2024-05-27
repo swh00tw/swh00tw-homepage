@@ -85,7 +85,7 @@ export function Headerbar() {
   return (
     <Flex
       className={cn(
-        "w-full relative min-h-[48px] bg-gray-4",
+        "w-full relative min-h-[48px] bg-gray-4 z-[1]",
         robotoMono.className,
       )}
     >
