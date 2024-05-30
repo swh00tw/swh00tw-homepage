@@ -126,7 +126,7 @@ export default function Home() {
         className={cn(
           // "h-[50svh] sm:h-[90svh] w-full",
           "[mask-image:radial-gradient(circle_at_center,white,transparent)]",
-          "z-[2]",
+          "z-[2] scale-[80%] md:scale-100",
         )}
         squares={
           ref
