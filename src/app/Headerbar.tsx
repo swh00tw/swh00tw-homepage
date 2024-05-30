@@ -38,7 +38,7 @@ function HeaderbarLink({
     <Link
       href={href}
       className={cn(
-        "border-[1px] border-gray-6 py-2 px-4 cursor-pointer z-[2] border-l-0 bg-gray-3",
+        "border-[1px] border-gray-7 py-2 px-4 cursor-pointer z-[2] border-l-0 bg-gray-3",
         "transition-all ease-in-out duration-100",
         {
           "border-l-[1px]": index === 0,
@@ -46,7 +46,7 @@ function HeaderbarLink({
         },
       )}
     >
-      <Text size="1" className="text-gray-11">
+      <Text size="1" className="text-gray-12">
         {label}
       </Text>
     </Link>
@@ -80,7 +80,7 @@ export function Headerbar() {
   });
 
   const iconClasses =
-    "text-gray-10 hover:text-gray-11 transition-colors ease-in-out";
+    "text-gray-11 hover:text-gray-12 transition-colors ease-in-out";
 
   return (
     <Flex
@@ -89,7 +89,7 @@ export function Headerbar() {
         robotoMono.className,
       )}
     >
-      <div className="absolute w-full bottom-0 bg-gray-6 h-[1px] z-[1]" />
+      <div className="absolute w-full bottom-0 bg-gray-7 h-[1px] z-[1]" />
       <Flex
         className={cn(
           "absolute bottom-0 flex flex-row px-4 w-full items-center justify-between gap-4",

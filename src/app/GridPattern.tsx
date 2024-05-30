@@ -1,3 +1,4 @@
+// ref: https://magicui.design/docs/components/grid-pattern
 "use client";
 
 import { cn } from "@/utils/cn";
@@ -33,7 +34,7 @@ export function GridPattern({
     <svg
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute z-[5] inset-0 h-full w-full fill-gray-9 stroke-gray-6",
+        "pointer-events-none absolute z-[5] inset-0 h-full w-full fill-gray-12 stroke-gray-6",
         className,
       )}
       {...props}

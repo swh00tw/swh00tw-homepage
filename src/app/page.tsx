@@ -1,9 +1,10 @@
 "use client";
 
-// import { DotPattern } from "./DotsPattern";
 import { cn } from "@/utils/cn";
 import { GridPattern } from "./GridPattern";
 import { useMemo, useState, useEffect } from "react";
+import { Grid, Text } from "@radix-ui/themes";
+import { DirectionAwareHover } from "./DirectAwareHover";
 
 const FRANK_gridBoxes: [x: number, y: number][] = [
   // a
@@ -100,13 +101,9 @@ export default function Home() {
 
   useEffect(() => {
     function handleResize() {
-      const { width, height } = ref?.getBoundingClientRect() || {
+      setWindowSize({
         height: window.innerHeight,
         width: window.innerWidth,
-      };
-      setWindowSize({
-        height: height,
-        width: width,
       });
     }
     window.addEventListener("resize", handleResize);
@@ -141,6 +138,83 @@ export default function Home() {
         }
         center={centerPoint}
       />
+      <Grid
+        columns={"12"}
+        rows="12"
+        className="w-full h-[80%] md:w-[864px] md:h-[648px] z-[10]"
+        gapX={"2"}
+        gapY={"2"}
+      >
+        <DirectionAwareHover
+          imageUrl="/about.webp"
+          gridColumnStart={{
+            initial: "2",
+            md: "3",
+          }}
+          gridColumnEnd={{
+            initial: "8",
+            md: "6",
+          }}
+          gridRowStart={{
+            initial: "1",
+          }}
+          gridRowEnd={{
+            initial: "3",
+            md: "4",
+          }}
+        >
+          <Text size="2" weight={"medium"}>
+            About me
+          </Text>
+          <Text size="1">About Frank Hsu.</Text>
+        </DirectionAwareHover>
+        <DirectionAwareHover
+          imageUrl="/posts.webp"
+          gridRowStart={{
+            initial: "3",
+            md: "3",
+          }}
+          gridRowEnd={{
+            initial: "5",
+          }}
+          gridColumnStart={{
+            initial: "7",
+            md: "8",
+          }}
+          gridColumnEnd={{
+            initial: "12",
+            md: "12",
+          }}
+        >
+          <Text size="2" weight={"medium"}>
+            Posts
+          </Text>
+          <Text size="1">Some random thoughts.</Text>
+        </DirectionAwareHover>
+        <DirectionAwareHover
+          imageUrl="/projects.webp"
+          gridColumnStart={{
+            initial: "3",
+            md: "4",
+          }}
+          gridColumnEnd={{
+            initial: "11",
+            md: "9",
+          }}
+          gridRowStart={{
+            initial: "9",
+          }}
+          gridRowEnd={{
+            initial: "12",
+            md: "13",
+          }}
+        >
+          <Text size="2" weight={"medium"}>
+            Crafts
+          </Text>
+          <Text size="1">Projects I've worked on.</Text>
+        </DirectionAwareHover>
+      </Grid>
     </div>
   );
 }
