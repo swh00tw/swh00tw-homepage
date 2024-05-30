@@ -13,6 +13,7 @@ import {
 } from "@radix-ui/react-icons";
 import { useRef, useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import { externalLinks } from "./constant";
 
 type HeaderbarLink = {
   label: string;
@@ -126,24 +127,20 @@ export function Headerbar() {
         </Flex>
         <Flex gap="3" className="items-center min-w-min">
           <Link
-            href="https://github.com/swh00tw"
+            href={externalLinks.github}
             className={iconClasses}
             target="_blank"
           >
             <GitHubLogoIcon width={20} height={20} />
           </Link>
           <Link
-            href="https://www.linkedin.com/in/swh00tw/"
+            href={externalLinks.linkedin}
             className={iconClasses}
             target="_blank"
           >
             <LinkedInLogoIcon width={20} height={20} />
           </Link>
-          <Link
-            href="https://x.com/swh00tw"
-            className={iconClasses}
-            target="_blank"
-          >
+          <Link href={externalLinks.x} className={iconClasses} target="_blank">
             <TwitterLogoIcon width={20} height={20} />
           </Link>
         </Flex>

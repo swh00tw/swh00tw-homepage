@@ -3,8 +3,11 @@
 import { cn } from "@/utils/cn";
 import { GridPattern } from "./GridPattern";
 import { useMemo, useState, useEffect } from "react";
-import { Grid, Text } from "@radix-ui/themes";
+import { Flex, Grid, Text } from "@radix-ui/themes";
 import { DirectionAwareHover } from "./DirectAwareHover";
+import { Github, Linkedin } from "lucide-react";
+import Link from "next/link";
+import { externalLinks } from "./constant";
 
 const FRANK_gridBoxes: [x: number, y: number][] = [
   // a
@@ -146,6 +149,7 @@ export default function Home() {
         gapY={"2"}
       >
         <DirectionAwareHover
+          href="/about"
           imageUrl="/about.webp"
           gridColumnStart={{
             initial: "2",
@@ -169,6 +173,7 @@ export default function Home() {
           <Text size="1">About Frank Hsu.</Text>
         </DirectionAwareHover>
         <DirectionAwareHover
+          href="/posts"
           imageUrl="/posts.webp"
           gridRowStart={{
             initial: "3",
@@ -192,6 +197,7 @@ export default function Home() {
           <Text size="1">Some random thoughts.</Text>
         </DirectionAwareHover>
         <DirectionAwareHover
+          href="/crafts"
           imageUrl="/projects.webp"
           gridColumnStart={{
             initial: "3",
@@ -214,6 +220,60 @@ export default function Home() {
           </Text>
           <Text size="1">Projects I've worked on.</Text>
         </DirectionAwareHover>
+        <Flex
+          gridColumnStart={{
+            initial: "2",
+          }}
+          gridColumnEnd={{
+            initial: "3",
+          }}
+          gridRowStart={{
+            md: "7",
+          }}
+          gridRowEnd={{
+            md: "8",
+          }}
+          className="hidden md:flex flex-col items-center justify-center"
+        >
+          <Link
+            href={externalLinks.github}
+            target="_blank"
+            className="relative shadow-6 hover:translate-x-[2px] hover:-translate-y-[2px] transition-all duration-300 ease-in-out cursor-pointer rounded-4 bg-gray-8 flex items-center justify-center aspect-square h-full"
+          >
+            <Github
+              size={"24px"}
+              strokeWidth={"1.25px"}
+              className="text-gray-2"
+            />
+          </Link>
+        </Flex>
+        <Flex
+          gridColumnStart={{
+            initial: "11",
+          }}
+          gridColumnEnd={{
+            initial: "12",
+          }}
+          gridRowStart={{
+            initial: "10",
+          }}
+          gridRowEnd={{
+            initial: "11",
+          }}
+          className="hidden md:flex flex-col items-center justify-center"
+        >
+          <Link
+            href={externalLinks.linkedin}
+            target="_blank"
+            className="relative shadow-6 hover:translate-x-[2px] hover:-translate-y-[2px] transition-all duration-300 ease-in-out cursor-pointer rounded-4 bg-gray-8 flex items-center justify-center aspect-square h-full"
+          >
+            <Linkedin
+              className="text-gray-2"
+              size={"24px"}
+              strokeWidth={"1.25px"}
+            />
+          </Link>
+        </Flex>
       </Grid>
     </div>
   );

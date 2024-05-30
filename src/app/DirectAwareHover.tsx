@@ -1,11 +1,27 @@
 // ref: https://ui.aceternity.com/components/direction-aware-hover
 "use client";
 
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { Flex, FlexProps } from "@radix-ui/themes";
+import Link from "next/link";
+
+const OptionalLinkWrapper = ({
+  children,
+  href,
+}: {
+  children: React.ReactNode;
+  href?: string;
+}) =>
+  href ? (
+    <Link href={href} className="cursor-pointer">
+      {children}
+    </Link>
+  ) : (
+    children
+  );
 
 export const DirectionAwareHover = ({
   imageUrl,
@@ -13,6 +29,7 @@ export const DirectionAwareHover = ({
   childrenClassName,
   imageClassName,
   wrapperClassName,
+  href,
   ...rest
 }: FlexProps & {
   imageUrl: string;
@@ -20,6 +37,7 @@ export const DirectionAwareHover = ({
   childrenClassName?: string;
   imageClassName?: string;
   wrapperClassName?: string;
+  href?: string;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -75,46 +93,48 @@ export const DirectionAwareHover = ({
         )}
       >
         <AnimatePresence mode="wait">
-          <motion.div
-            className="relative h-full w-full"
-            initial="initial"
-            whileHover={direction}
-            exit="exit"
-          >
-            <motion.div className="group-hover/card:block hidden absolute inset-0 w-full h-full bg-black/30 z-10 transition duration-500" />
+          <OptionalLinkWrapper href={href}>
             <motion.div
-              variants={variants}
-              className="h-full w-full relative bg-gray-1"
-              transition={{
-                duration: 0.2,
-                ease: "easeOut",
-              }}
+              className="relative h-full w-full"
+              initial="initial"
+              whileHover={direction}
+              exit="exit"
             >
-              <Image
-                alt="image"
+              <motion.div className="group-hover/card:block hidden absolute inset-0 w-full h-full bg-black/30 z-10 transition duration-500" />
+              <motion.div
+                variants={variants}
+                className="h-full w-full relative bg-gray-1"
+                transition={{
+                  duration: 0.2,
+                  ease: "easeOut",
+                }}
+              >
+                <Image
+                  alt="image"
+                  className={cn(
+                    "h-full w-full object-cover scale-[1.35] grayscale-[90%] contrast-[75%]",
+                    imageClassName,
+                  )}
+                  fill
+                  src={imageUrl}
+                  priority
+                />
+              </motion.div>
+              <motion.div
+                variants={textVariants}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                }}
                 className={cn(
-                  "h-full w-full object-cover scale-[1.35] grayscale-[90%] contrast-[75%]",
-                  imageClassName,
+                  "text-white absolute bottom-4 left-4 z-40 flex flex-col gap-y-0",
+                  childrenClassName,
                 )}
-                fill
-                src={imageUrl}
-                priority
-              />
+              >
+                {children}
+              </motion.div>
             </motion.div>
-            <motion.div
-              variants={textVariants}
-              transition={{
-                duration: 0.5,
-                ease: "easeOut",
-              }}
-              className={cn(
-                "text-white absolute bottom-4 left-4 z-40 flex flex-col gap-y-0",
-                childrenClassName,
-              )}
-            >
-              {children}
-            </motion.div>
-          </motion.div>
+          </OptionalLinkWrapper>
         </AnimatePresence>
       </motion.div>
     </Flex>
