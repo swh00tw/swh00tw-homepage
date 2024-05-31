@@ -5,6 +5,7 @@ import "./globals.css";
 import { Headerbar } from "./Headerbar";
 import { workSans } from "@/utils/fonts";
 import { cn } from "@/utils/cn";
+import GridBackground from "./GridBackground";
 
 export const metadata: Metadata = {
   title: "Frank Hsu",
@@ -22,7 +23,7 @@ export default function RootLayout({
         <Theme accentColor="gray">
           <div className="bg-offwhite w-screen h-screen">
             <Headerbar />
-            <div className="p-4">{children}</div>
+            <GridBackground>{children}</GridBackground>
           </div>
         </Theme>
       </body>
