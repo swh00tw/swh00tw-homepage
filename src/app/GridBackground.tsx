@@ -120,7 +120,7 @@ export default function GridBackground({
   return (
     <div
       ref={(c) => setRef(c)}
-      className="relative flex min-h-[92svh] w-full items-center justify-center overflow-hidden rounded-lg md:shadow-xl"
+      className="relative flex min-h-[95svh] h-full w-full items-center justify-center overflow-hidden rounded-lg md:shadow-xl"
     >
       <GridPattern
         width={gridBoxWidth}
@@ -143,7 +143,7 @@ export default function GridBackground({
         }
         center={centerPoint}
       />
-      <div className="z-[2]">{children}</div>
+      <div className="z-[2] max-h-full">{children}</div>
     </div>
   );
 }

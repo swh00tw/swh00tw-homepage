@@ -7,6 +7,7 @@ import { workSans } from "@/utils/fonts";
 import { cn } from "@/utils/cn";
 import GridBackground from "./GridBackground";
 import { ViewTransitions } from "next-view-transitions";
+import { Footer } from "./Footer";
 
 export const metadata: Metadata = {
   title: "Frank Hsu",
@@ -23,9 +24,10 @@ export default function RootLayout({
       <html lang="en">
         <body className={cn(workSans.className)}>
           <Theme accentColor="gray">
-            <div className="bg-offwhite w-screen h-screen">
+            <div className="bg-offwhite w-screen relative">
               <Headerbar />
               <GridBackground>{children}</GridBackground>
+              <Footer />
             </div>
           </Theme>
         </body>
