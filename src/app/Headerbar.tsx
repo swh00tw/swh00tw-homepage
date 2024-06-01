@@ -3,7 +3,7 @@
 import { Flex, Text } from "@radix-ui/themes";
 import { cn } from "@/utils/cn";
 import { robotoMono } from "@/utils/fonts";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import {

@@ -6,6 +6,7 @@ import { Headerbar } from "./Headerbar";
 import { workSans } from "@/utils/fonts";
 import { cn } from "@/utils/cn";
 import GridBackground from "./GridBackground";
+import { ViewTransitions } from "next-view-transitions";
 
 export const metadata: Metadata = {
   title: "Frank Hsu",
@@ -18,15 +19,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={cn(workSans.className)}>
-        <Theme accentColor="gray">
-          <div className="bg-offwhite w-screen h-screen">
-            <Headerbar />
-            <GridBackground>{children}</GridBackground>
-          </div>
-        </Theme>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={cn(workSans.className)}>
+          <Theme accentColor="gray">
+            <div className="bg-offwhite w-screen h-screen">
+              <Headerbar />
+              <GridBackground>{children}</GridBackground>
+            </div>
+          </Theme>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

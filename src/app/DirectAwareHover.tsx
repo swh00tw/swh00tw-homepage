@@ -6,7 +6,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import { Flex, FlexProps } from "@radix-ui/themes";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 const OptionalLinkWrapper = ({
   children,
@@ -33,7 +33,7 @@ export const DirectionAwareHover = ({
   ...rest
 }: FlexProps & {
   imageUrl: string;
-  children: React.ReactNode | string;
+  children?: React.ReactNode | string;
   childrenClassName?: string;
   imageClassName?: string;
   wrapperClassName?: string;
