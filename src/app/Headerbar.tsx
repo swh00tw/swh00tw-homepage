@@ -23,7 +23,7 @@ type HeaderbarLink = {
 const links: HeaderbarLink[] = [
   { label: "index", href: "/" },
   { label: "/about", href: "/about" },
-  { label: "/crafts", href: "/crafts" },
+  { label: "/projects", href: "/projects" },
   { label: "/posts", href: "/posts" },
 ];
 

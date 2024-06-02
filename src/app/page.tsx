@@ -62,7 +62,7 @@ export default function Home() {
         <Text size="1">Some random thoughts.</Text>
       </DirectionAwareHover>
       <DirectionAwareHover
-        href="/crafts"
+        href="/projects"
         imageUrl="/projects.webp"
         gridColumnStart={{
           initial: "3",
@@ -81,9 +81,9 @@ export default function Home() {
         }}
       >
         <Text size="2" weight={"medium"}>
-          Crafts
+          Projects
         </Text>
-        <Text size="1">Projects I've worked on.</Text>
+        <Text size="1">Things I've worked on.</Text>
       </DirectionAwareHover>
       <Flex
         gridColumnStart={{
