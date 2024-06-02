@@ -1,5 +1,5 @@
 ---
-displayName: recnet
+displayName: RecNet
 date: 2024-06-02
 tags:
   - next

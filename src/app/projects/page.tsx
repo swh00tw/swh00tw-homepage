@@ -1,3 +1,17 @@
+import { getProjects } from "./getProjects";
+
 export default function Page() {
-  return <div>This is crafts page</div>;
+  const projects = getProjects();
+
+  return (
+    <div>
+      {projects.map((project) => {
+        return (
+          <div key={project.meta.displayName}>
+            <h2>{project.meta.displayName}</h2>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
