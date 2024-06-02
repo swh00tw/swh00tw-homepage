@@ -7,6 +7,7 @@ import { Link } from "next-view-transitions";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import {
+  Cross2Icon,
   GitHubLogoIcon,
   LinkedInLogoIcon,
   TwitterLogoIcon,
@@ -14,24 +15,15 @@ import {
 import { useRef, useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { externalLinks } from "./constant";
-
-type HeaderbarLink = {
-  label: string;
-  href: string;
-};
-
-const links: HeaderbarLink[] = [
-  { label: "index", href: "/" },
-  { label: "/about", href: "/about" },
-  { label: "/projects", href: "/projects" },
-  { label: "/posts", href: "/posts" },
-];
+import { useOpenTabs, type HeaderbarLink } from "./OpenTabProvider";
 
 function HeaderbarLink({
   label,
   href,
+  allowClose = false,
   index,
 }: HeaderbarLink & { index: number }) {
+  const { closeTab } = useOpenTabs();
   const pathname = usePathname();
   const isActive = pathname === href;
 
@@ -39,6 +31,7 @@ function HeaderbarLink({
     <Link
       href={href}
       className={cn(
+        "flex flex-row gap-x-2 items-center",
         "border-[1px] border-gray-7 py-2 px-4 cursor-pointer z-[2] border-l-0 bg-gray-3",
         "transition-all ease-in-out duration-100",
         {
@@ -50,11 +43,26 @@ function HeaderbarLink({
       <Text size="1" className="text-gray-12">
         {label}
       </Text>
+      {allowClose ? (
+        <div className="hover:bg-gray-4 transition-all ease-in-out">
+          <Cross2Icon
+            width={14}
+            height={14}
+            className="text-gray-10 hover:text-gray-12"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              closeTab(href);
+            }}
+          />
+        </div>
+      ) : null}
     </Link>
   );
 }
 
 export function Headerbar() {
+  const { openTabs } = useOpenTabs();
   const tabsRef = useRef<HTMLDivElement>(null);
   const { scrollXProgress } = useScroll({ container: tabsRef });
   const tolerance = 0.05;
@@ -119,8 +127,8 @@ export function Headerbar() {
               )}
               ref={tabsRef}
             >
-              {links.map((link, index) => (
-                <HeaderbarLink {...link} index={index} key={link.href} />
+              {openTabs.map((tab, index) => (
+                <HeaderbarLink {...tab} index={index} key={tab.href} />
               ))}
             </Flex>
           </div>

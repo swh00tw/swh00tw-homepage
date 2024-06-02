@@ -3,6 +3,7 @@ import path from "path";
 import { getProject } from "./getProject";
 import { MDXCustom } from "@/app/mdx/mdx-components";
 import { projectsMarkdownPath as projectsDir } from "@/app/constant";
+import { NewTabWrapper } from "@/app/NewTabWrapper";
 
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join(projectsDir), {
@@ -43,5 +44,9 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
     markdownPath: projectsDir,
   });
 
-  return <MDXCustom source={data.content} />;
+  return (
+    <NewTabWrapper>
+      <MDXCustom source={data.content} />
+    </NewTabWrapper>
+  );
 }
