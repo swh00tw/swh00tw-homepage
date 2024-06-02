@@ -6,8 +6,9 @@ tags:
   - react
   - nest
   - aws
-coverImageSrc: 
+coverImageSrc: /projects/recnet.webp
 published: true
+desc: "123"
 ---
 ## Hello
 

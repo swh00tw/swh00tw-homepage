@@ -21,7 +21,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
   presets: [radixThemePreset],
 };
 export default config;

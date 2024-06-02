@@ -4,6 +4,7 @@ date: 2021-11-01
 tags:
   - next
   - express
-coverImageSrc: 
+coverImageSrc: /projects/neo.webp
 published: true
+desc:
 ---

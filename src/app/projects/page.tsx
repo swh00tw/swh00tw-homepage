@@ -1,21 +1,39 @@
 import { getProjects } from "./getProjects";
-import { Link } from "next-view-transitions";
+import { BentoGrid, BentoGridItem } from "./BentoGrid";
+import { cn } from "@/utils/cn";
+import Image from "next/image";
 
 export default function Page() {
   const projects = getProjects();
 
   return (
-    <div>
-      {projects.map((project) => {
-        return (
-          <Link
-            key={project.meta.displayName}
-            href={`/projects/${project.slug}`}
-          >
-            <h2>{project.meta.displayName}</h2>
-          </Link>
-        );
-      })}
+    <div
+      className={cn(
+        "min-h-[70svh] md:min-h-[50svh] flex flex-col gap-y-8 my-16 sm:my-12",
+        "text-gray-11",
+        "w-[80vw] sm:w-[60vw] md:w-[40vw]",
+      )}
+    >
+      <BentoGrid className="w-full">
+        {projects.map((project) => {
+          return (
+            <BentoGridItem
+              key={project.slug}
+              title={project.meta.displayName}
+              description={project.meta.desc}
+              href={`/projects/${project.slug}`}
+              header={
+                <Image
+                  src={project.meta.coverImageSrc}
+                  alt={project.meta.displayName}
+                  fill
+                  className="object-cover w-full h-full aspect-[4/3] rounded-2 grayscale-[50%]"
+                />
+              }
+            />
+          );
+        })}
+      </BentoGrid>
     </div>
   );
 }

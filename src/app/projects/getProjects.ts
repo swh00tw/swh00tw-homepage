@@ -10,8 +10,9 @@ export const projectFrontmatterSchema = z.object({
   displayName: z.string(),
   date: z.date(),
   tags: z.array(z.string()).nullish(),
-  coverImageSrc: z.string().nullish(),
+  coverImageSrc: z.string(),
   published: z.boolean(),
+  desc: z.string().nullish(),
 });
 export type ProjectFrontmatter = z.infer<typeof projectFrontmatterSchema>;
 
