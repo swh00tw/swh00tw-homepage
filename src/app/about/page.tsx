@@ -90,7 +90,7 @@ export default function Page() {
     >
       <div className="flex flex-col gap-y-4">
         <div className="flex flex-col">
-          <Text size="3" weight={"medium"} className="text-gray-12 vt-test">
+          <Text size="3" weight={"medium"} className="text-gray-12">
             Frank Hsu
           </Text>
           <Text size="2">Full Stack Developer</Text>
