@@ -4,6 +4,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { notEmpty } from "@/utils/notEmpty";
+import { projectsMarkdownPath } from "../constant";
 
 export const projectFrontmatterSchema = z.object({
   displayName: z.string(),
@@ -16,7 +17,7 @@ export type ProjectFrontmatter = z.infer<typeof projectFrontmatterSchema>;
 
 export function getProjects() {
   // 1} project dir
-  const markdownDir = "src/mdx/projects";
+  const markdownDir = projectsMarkdownPath;
   // 2) Find all files in the project directory
   const files = fs.readdirSync(path.resolve(markdownDir), {
     withFileTypes: true,
@@ -41,7 +42,9 @@ export function getProjects() {
       }
       return {
         meta: res.data,
-        slug: filename.replace(".md", ""),
+        slug: filename.endsWith(".mdx")
+          ? filename.replace(".mdx", "")
+          : filename.replace(".md", ""),
       };
     })
     .filter(notEmpty);
