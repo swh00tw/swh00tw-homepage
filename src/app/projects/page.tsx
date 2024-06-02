@@ -2,6 +2,7 @@ import { getProjects } from "./getProjects";
 import { BentoGrid, BentoGridItem } from "./BentoGrid";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
+import { Text } from "@radix-ui/themes";
 
 export default function Page() {
   const projects = getProjects();
@@ -9,9 +10,9 @@ export default function Page() {
   return (
     <div
       className={cn(
-        "min-h-[70svh] md:min-h-[50svh] flex flex-col gap-y-8 my-16 sm:my-12",
+        "min-h-[70svh] md:min-h-[50svh] my-16 sm:my-12",
         "text-gray-11",
-        "w-[80vw] sm:w-[60vw] md:w-[40vw]",
+        "w-[60vw] sm:w-[60vw] md:w-[40vw]",
       )}
     >
       <BentoGrid className="w-full">
@@ -29,6 +30,11 @@ export default function Page() {
                   fill
                   className="object-cover w-full h-full aspect-[4/3] rounded-2 grayscale-[50%]"
                 />
+              }
+              tag={
+                <Text size="1" className="">
+                  {new Date(project.meta.date).getFullYear()}
+                </Text>
               }
             />
           );

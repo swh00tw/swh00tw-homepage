@@ -1,6 +1,6 @@
 // ref: https://ui.aceternity.com/components/bento-grid
 import { cn } from "@/utils/cn";
-import { Text } from "@radix-ui/themes";
+import { Text, Flex } from "@radix-ui/themes";
 import { Link } from "next-view-transitions";
 
 const OptionalLinkWrapper = ({
@@ -44,10 +44,12 @@ export const BentoGridItem = ({
   header,
   icon,
   href,
+  tag,
 }: {
   className?: string;
   title?: string | React.ReactNode;
   description?: string | React.ReactNode;
+  tag?: string | React.ReactNode;
   header?: React.ReactNode;
   icon?: React.ReactNode;
   href?: string;
@@ -57,16 +59,19 @@ export const BentoGridItem = ({
       <div
         className={cn(
           "row-span-1 rounded-4 group/bento hover:shadow-xl transition duration-200 shadow-input bg-offwhite border border-transparent flex flex-col gap-y-4",
-          "p-2 border-[1px] border-gray-8 cursor-pointer",
+          "p-2 border-[1px] border-gray-7 cursor-pointer hover:border-gray-9",
           className,
         )}
       >
         <div className="w-full aspect-[4/3] relative">{header}</div>
-        <div className="group-hover/bento:translate-x-1 transition duration-200 flex flex-col gap-y-1">
+        <div className="px-1 group-hover/bento:translate-x-0 transition duration-200 flex flex-col gap-y-1">
           {icon}
-          <Text size="2" className="text-gray-12" weight={"medium"}>
-            {title}
-          </Text>
+          <Flex className="w-full justify-between">
+            <Text size="2" className="text-gray-12" weight={"medium"}>
+              {title}
+            </Text>
+            {tag}
+          </Flex>
           <Text size="1" className="text-gray-11">
             {description}
           </Text>

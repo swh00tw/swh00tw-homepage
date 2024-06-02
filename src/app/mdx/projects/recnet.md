@@ -8,7 +8,7 @@ tags:
   - aws
 coverImageSrc: /projects/recnet.webp
 published: true
-desc: "123"
+desc:
 ---
 ## Hello
 
