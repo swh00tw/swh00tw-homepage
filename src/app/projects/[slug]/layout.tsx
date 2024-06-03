@@ -20,8 +20,8 @@ export default function Layout({
   return (
     <div
       className={cn(
-        "flex flex-col my-16",
-        "w-[80vw] sm:w-[60vw] md:w-[30vw] gap-y-4",
+        "flex flex-col my-16 gap-y-8",
+        "w-[80vw] sm:w-[60vw] md:w-[30vw]",
         "min-h-[70svh]",
       )}
     >
@@ -49,7 +49,7 @@ export default function Layout({
           />
         </div>
       </div>
-      {children}
+      <div>{children}</div>
     </div>
   );
 }

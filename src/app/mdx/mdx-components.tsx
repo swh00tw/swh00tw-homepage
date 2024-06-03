@@ -17,13 +17,16 @@ export const mdxComponents: MDXComponents = {
   p: (props) => {
     const { children, ...restProps } = props;
     return (
-      <p {...restProps}>
-        <Text size="2" as="span" className={cn("text-gray-11")}>
-          {children}
-        </Text>
-      </p>
+      <div className="pb-4">
+        <p {...restProps}>
+          <Text size="2" as="span" className={cn("text-gray-11")}>
+            {children}
+          </Text>
+        </p>
+      </div>
     );
   },
+  a: (props) => <a {...props} className={cn("text-blue-11")} target="_blank" />,
 };
 
 export function MDXCustom(props: MDXRemoteProps) {
