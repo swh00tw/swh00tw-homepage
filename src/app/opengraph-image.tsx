@@ -31,6 +31,7 @@ export default async function Image() {
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
+          background: "#FAF9F6",
         }}
       >
         <div
