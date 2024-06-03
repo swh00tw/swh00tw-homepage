@@ -17,13 +17,18 @@ export default function Page() {
       )}
     >
       <BentoGrid className="w-full">
-        {projects.map((project) => {
+        {projects.map((project, idx) => {
           return (
             <BentoGridItem
               key={project.slug}
               title={project.meta.displayName}
               description={project.meta.desc}
               href={`/projects/${project.slug}`}
+              className={cn(
+                idx === 0
+                  ? "col-span-1 sm:col-span-2 lg:col-span-3"
+                  : "col-span-1",
+              )}
               header={
                 <Image
                   src={project.meta.coverImageSrc}
@@ -35,7 +40,7 @@ export default function Page() {
                   )}
                   style={
                     {
-                      "--vt-name": project.meta.displayName,
+                      "--vt-name": project.slug,
                     } as CSSProperties
                   }
                 />

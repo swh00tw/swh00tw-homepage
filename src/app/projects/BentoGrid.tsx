@@ -6,16 +6,18 @@ import { Link } from "next-view-transitions";
 const OptionalLinkWrapper = ({
   children,
   href,
+  className,
 }: {
   children: React.ReactNode;
   href?: string;
+  className?: string;
 }) =>
   href ? (
-    <Link href={href} className="cursor-pointer">
+    <Link href={href} className={cn("cursor-pointer", className)}>
       {children}
     </Link>
   ) : (
-    children
+    <div className={className}>{children}</div>
   );
 
 export const BentoGrid = ({
@@ -55,27 +57,26 @@ export const BentoGridItem = ({
   href?: string;
 }) => {
   return (
-    <OptionalLinkWrapper href={href}>
-      <div
-        className={cn(
-          "row-span-1 rounded-4 group/bento hover:shadow-xl transition duration-200 shadow-input bg-offwhite border border-transparent flex flex-col gap-y-4",
-          "p-2 border-[1px] border-gray-7 cursor-pointer hover:border-gray-9",
-          className,
-        )}
-      >
-        <div className="w-full aspect-[16/9] relative">{header}</div>
-        <div className="px-1 group-hover/bento:translate-x-0 transition duration-200 flex flex-col gap-y-1">
-          {icon}
-          <Flex className="w-full justify-between">
-            <Text size="2" className="text-gray-12" weight={"medium"}>
-              {title}
-            </Text>
-            {tag}
-          </Flex>
-          <Text size="1" className="text-gray-10">
-            {description}
+    <OptionalLinkWrapper
+      href={href}
+      className={cn(
+        "row-span-1 h-fit rounded-4 group/bento hover:shadow-xl transition duration-200 shadow-input bg-offwhite border border-transparent flex flex-col gap-y-4",
+        "p-2 border-[1px] border-gray-7 cursor-pointer hover:border-gray-9",
+        className,
+      )}
+    >
+      <div className="w-full aspect-[16/9] relative">{header}</div>
+      <div className="px-1 group-hover/bento:translate-x-0 transition duration-200 flex flex-col gap-y-1">
+        {icon}
+        <Flex className="w-full justify-between">
+          <Text size="2" className="text-gray-12" weight={"medium"}>
+            {title}
           </Text>
-        </div>
+          {tag}
+        </Flex>
+        <Text size="1" className="text-gray-10">
+          {description}
+        </Text>
       </div>
     </OptionalLinkWrapper>
   );

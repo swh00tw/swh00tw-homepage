@@ -42,7 +42,7 @@ export default function Layout({
             className={cn(`rounded-4 object-cover`, "vt-project")}
             style={
               {
-                "--vt-name": data.frontMatter.displayName,
+                "--vt-name": data.slug,
               } as CSSProperties
             }
             fill

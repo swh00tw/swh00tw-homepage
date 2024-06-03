@@ -40,7 +40,7 @@ function HeaderbarLink({
         },
       )}
     >
-      <Text size="1" className="text-gray-12">
+      <Text size="1" className="text-gray-12 whitespace-nowrap">
         {label}
       </Text>
       {allowClose ? (
