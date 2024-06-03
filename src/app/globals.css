@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .vt-project {
-    view-transition-name: var(--vt-name);
+  view-transition-name: var(--vt-name);
 }
