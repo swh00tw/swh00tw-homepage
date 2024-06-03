@@ -1,35 +1,40 @@
-import "@/app/globals.css";
-import { Work_Sans } from "next/font/google";
-import clsx from "clsx";
-import Headerbar from "@/app/components/HeaderBar";
-import { BlogPosts } from "@/app/components/BlogPosts";
-import { Suspense } from "react";
+import type { Metadata } from "next";
+import { Theme } from "@radix-ui/themes";
+import "@radix-ui/themes/styles.css";
+import "./globals.css";
+import { Headerbar } from "./Headerbar";
+import { workSans } from "@/utils/fonts";
+import { cn } from "@/utils/cn";
+import GridBackground from "./GridBackground";
+import { ViewTransitions } from "next-view-transitions";
+import { Footer } from "./Footer";
+import { OpenTabsProvider } from "./OpenTabProvider";
 
-const workSans = Work_Sans({ subsets: ["latin"], variable: "--font-worksans" });
-
-export const metadata = {
+export const metadata: Metadata = {
   title: "Frank Hsu",
-  description: "Welcome to Frank's portfolio site!",
+  description: "Everything about Frank Hsu",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" className={workSans.variable}>
-      <body
-        className={clsx("relative", "bg-main")}
-        suppressHydrationWarning={true}
-      >
-        <Headerbar>
-          <Suspense fallback={<div>Loading...</div>}>
-            <BlogPosts />
-          </Suspense>
-        </Headerbar>
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body className={cn(workSans.className)}>
+          <Theme accentColor="gray">
+            <OpenTabsProvider>
+              <div className="bg-offwhite w-screen relative">
+                <Headerbar />
+                <GridBackground>{children}</GridBackground>
+                <Footer />
+              </div>
+            </OpenTabsProvider>
+          </Theme>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
