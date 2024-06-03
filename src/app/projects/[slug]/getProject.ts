@@ -3,16 +3,11 @@ import matter from "gray-matter";
 import fs from "fs";
 import path from "path";
 import { projectFrontmatterSchema } from "../getProjects";
+import { projectsMarkdownPath } from "@/app/constant";
 
-export function getProject({
-  slug,
-  markdownPath,
-}: {
-  slug: string;
-  markdownPath: string;
-}) {
+export function getProject({ slug }: { slug: string }) {
   const markdownFile = fs.readFileSync(
-    path.join(markdownPath, slug + ".md"),
+    path.join(projectsMarkdownPath, slug + ".md"),
     "utf-8",
   );
   const { data: frontMatter, content, excerpt } = matter(markdownFile);

@@ -63,7 +63,7 @@ export const BentoGridItem = ({
           className,
         )}
       >
-        <div className="w-full aspect-[4/3] relative">{header}</div>
+        <div className="w-full aspect-[16/9] relative">{header}</div>
         <div className="px-1 group-hover/bento:translate-x-0 transition duration-200 flex flex-col gap-y-1">
           {icon}
           <Flex className="w-full justify-between">
@@ -72,7 +72,7 @@ export const BentoGridItem = ({
             </Text>
             {tag}
           </Flex>
-          <Text size="1" className="text-gray-11">
+          <Text size="1" className="text-gray-10">
             {description}
           </Text>
         </div>

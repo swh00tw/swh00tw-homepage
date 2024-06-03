@@ -29,7 +29,6 @@ export async function generateMetadata({
 }) {
   const blog = getProject({
     slug: params.slug,
-    markdownPath: projectsDir,
   });
 
   return {
@@ -41,7 +40,6 @@ export async function generateMetadata({
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   const data = getProject({
     slug: params.slug,
-    markdownPath: projectsDir,
   });
 
   return (

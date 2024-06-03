@@ -3,6 +3,7 @@ import { BentoGrid, BentoGridItem } from "./BentoGrid";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { Text } from "@radix-ui/themes";
+import { CSSProperties } from "react";
 
 export default function Page() {
   const projects = getProjects();
@@ -28,7 +29,15 @@ export default function Page() {
                   src={project.meta.coverImageSrc}
                   alt={project.meta.displayName}
                   fill
-                  className="object-cover w-full h-full aspect-[4/3] rounded-2 grayscale-[50%]"
+                  className={cn(
+                    "object-cover w-full h-full aspect-[16/9] rounded-2 grayscale-[50%]",
+                    `vt-project`,
+                  )}
+                  style={
+                    {
+                      "--vt-name": project.meta.displayName,
+                    } as CSSProperties
+                  }
                 />
               }
               tag={

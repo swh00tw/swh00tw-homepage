@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.vt-project {
+    view-transition-name: var(--vt-name);
+}
