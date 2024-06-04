@@ -105,7 +105,7 @@ export function Headerbar() {
         )}
       >
         <Flex className="items-center max-w-[70%]">
-          <Flex className="md:px-2 mr-2 min-w-[18px] h-[95%] aspect-square relative">
+          <Flex className="md:px-2 mr-2 w-[18px] h-[18px] sm:h-[95%] sm:aspect-square relative">
             <Image
               src="/logo.webp"
               // width={18}
