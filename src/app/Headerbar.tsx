@@ -104,8 +104,8 @@ export function Headerbar() {
           "absolute bottom-0 flex flex-row px-4 w-full items-center justify-between gap-4",
         )}
       >
-        <Flex className="items-center max-w-[90%]">
-          <Flex className="md:px-2 mr-2 min-w-fit h-[95%] aspect-square relative">
+        <Flex className="items-center max-w-[70%]">
+          <Flex className="md:px-2 mr-2 min-w-[18px] h-[95%] aspect-square relative">
             <Image
               src="/logo.webp"
               // width={18}
