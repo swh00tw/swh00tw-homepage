@@ -3,7 +3,7 @@ import { Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { z } from "zod";
 
-const BlogUrl = "https://swh00tw.dev";
+const BlogUrl = "https://blog.swh00tw.me";
 
 const postSchema = z.object({
   title: z.string(),
