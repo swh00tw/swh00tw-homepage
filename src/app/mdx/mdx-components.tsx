@@ -51,6 +51,42 @@ export const mdxComponents: MDXComponents = {
       className="p-4 my-4 rounded-4 overflow-x-auto *:bg-transparent"
     />
   ),
+  Callout: (props: { type?: string; children: React.ReactNode }) => {
+    const { type, children } = props;
+    const iconMap = {
+      info: "ℹ️",
+      warning: "⚠️",
+      danger: "🚨",
+      deprecated: "🚨",
+    } as Record<string, string>;
+    const icon = type ? iconMap[type.toLowerCase()] : "ℹ️";
+
+    return (
+      <div className="my-4 border-[1px] border-solid p-4 rounded-4">
+        <div
+          className={cn("flex", "flex-row", "gap-x-2", "text-[16px]", "mb-1")}
+        >
+          <div className="w-fit">{icon}</div>
+          <div className={cn("font-bold")}>{type}</div>
+        </div>
+        <div className="">{children}</div>
+      </div>
+    );
+  },
+  Youtube: (props: { title?: string; id: string }) => {
+    const { title, id } = props;
+    return (
+      <div className="relative h-0 pb-[56.25%]">
+        <iframe
+          src={`https://www.youtube.com/embed/${id}?autoplay=0&rel=0`}
+          title={title}
+          allow="picture-in-picture; clipboard-write"
+          allowFullScreen
+          className="w-full mt-4 mb-2 aspect-video"
+        />
+      </div>
+    );
+  },
 };
 
 export async function MDXCustom(props: MDXRemoteProps) {

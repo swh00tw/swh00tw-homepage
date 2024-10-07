@@ -9,11 +9,6 @@ coverImgSrc: /posts/svelte-101-big.webp
 lang: en
 ---
 
-<script>
-	import Callout from "../lib/mdsvex/custom/Callout.svelte";
-	import Youtube from "../lib/mdsvex/custom/Youtube.svelte";
-</script>
-
 ## Svelte? What's that?
 
 If you are a web developer or front-end enthusiast, you've probably heard of this before. If not, it's also understandable. These years, new web frameworks keep showing up. It's not the old era that React/Vue/Angular dominate. Now, we have [Qwik](https://qwik.builder.io/), [Svelte](https://svelte.dev/), [Solid](https://www.solidjs.com/), [Lit](https://lit.dev/), etc. Crazy.
