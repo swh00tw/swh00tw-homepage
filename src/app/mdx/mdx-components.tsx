@@ -18,7 +18,7 @@ export const mdxComponents: MDXComponents = {
     const { children, ...restProps } = props;
     return (
       <h3 {...restProps} className="mb-1 mt-2">
-        <Text size="3" as="span" className={cn("text-gray-11")}>
+        <Text size="3" as="span" className={cn("text-gray-11 font-medium")}>
           {children}
         </Text>
       </h3>
@@ -27,7 +27,7 @@ export const mdxComponents: MDXComponents = {
   p: (props) => {
     const { children, ...restProps } = props;
     return (
-      <div className="pb-4">
+      <div className="py-2">
         <p {...restProps}>
           <Text size="3" as="span" className={cn("text-gray-11")}>
             {children}
@@ -37,6 +37,10 @@ export const mdxComponents: MDXComponents = {
     );
   },
   a: (props) => <a {...props} className={cn("text-blue-11")} target="_blank" />,
+  ol: (props) => (
+    <ol {...props} className="list-decimal pl-6 text-gray-11 my-2" />
+  ),
+  ul: (props) => <ul {...props} className="list-disc pl-6 text-gray-11 my-2" />,
 };
 
 export function MDXCustom(props: MDXRemoteProps) {

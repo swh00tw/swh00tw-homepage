@@ -11,7 +11,7 @@ export const postFrontmatterSchema = z.object({
   slug: z.string(),
   description: z.string(),
   publishedAt: z.date(),
-  tags: z.array(z.string()).default([]),
+  tags: z.array(z.string()).nullish().default([]),
   published: z.boolean().default(false),
   coverImgSrc: z.string().optional(),
   lang: z.union([z.literal("en"), z.literal("zh")]),
