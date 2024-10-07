@@ -26,13 +26,13 @@ export default function Layout({
       )}
     >
       <div className="flex flex-col gap-y-2 w-full">
-        <Text size="4" weight={"medium"} className="text-gray-12">
+        <Text size="5" weight={"medium"} className="text-gray-12">
           {data.frontMatter.title}{" "}
         </Text>
         <span className="text-gray-9 text-[12px]">
           {new Date(data.frontMatter.publishedAt).toLocaleDateString()}
         </span>
-        <Text size="2" className="text-gray-10">
+        <Text size="3" className="text-gray-10">
           {data.frontMatter.description}
         </Text>
         {data.frontMatter.coverImgSrc ? (

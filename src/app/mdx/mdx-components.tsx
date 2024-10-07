@@ -7,11 +7,21 @@ export const mdxComponents: MDXComponents = {
   h2: (props) => {
     const { children, ...restProps } = props;
     return (
-      <h2 {...restProps}>
-        <Text size="3" as="span" className={cn("text-gray-12")}>
+      <h2 {...restProps} className="mb-1 mt-2">
+        <Text size="4" as="span" className={cn("text-gray-12 font-medium")}>
           {children}
         </Text>
       </h2>
+    );
+  },
+  h3: (props) => {
+    const { children, ...restProps } = props;
+    return (
+      <h3 {...restProps} className="mb-1 mt-2">
+        <Text size="3" as="span" className={cn("text-gray-11")}>
+          {children}
+        </Text>
+      </h3>
     );
   },
   p: (props) => {
@@ -19,7 +29,7 @@ export const mdxComponents: MDXComponents = {
     return (
       <div className="pb-4">
         <p {...restProps}>
-          <Text size="2" as="span" className={cn("text-gray-11")}>
+          <Text size="3" as="span" className={cn("text-gray-11")}>
             {children}
           </Text>
         </p>
