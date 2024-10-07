@@ -33,7 +33,7 @@ export async function generateMetadata({
 
   return {
     title: blog.frontMatter.displayName,
-    description: "Frank Hsu",
+    description: blog.frontMatter.desc || "Frank Hsu - Projects",
   };
 }
 
