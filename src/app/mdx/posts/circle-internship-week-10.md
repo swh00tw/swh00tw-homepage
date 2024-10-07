@@ -5,8 +5,7 @@ publishedAt: 2024-07-21
 tags:
   - internship
 published: true
-coverImgSrc: posts/circle-internship-small.webp
-backgroundImgSrc: posts/circle-internship-big.webp
+coverImgSrc: /posts/circle-internship-big.webp
 lang: zh
 ---
 最後一個月了，在 Circle 的時光剩下兩週。已經開始在講 offboarding 和最後一週該做什麼了，有點小感傷。

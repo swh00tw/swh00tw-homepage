@@ -2,10 +2,9 @@
 title: 2023 年度回顧（上）
 description: Hello, 2024
 publishedAt: 2023-12-27
-tags: 
+tags:
 published: true
-coverImgSrc: posts/2023-reflection-small.webp
-backgroundImgSrc: posts/2023-reflection-big.webp
+coverImgSrc: /posts/2023-reflection-big.webp
 lang: zh
 ---
 ## Bye, 2023
@@ -34,7 +33,7 @@ lang: zh
 
 另外一件神奇的事情，最近有天突然在 LinkedIn 上被在 Bloomberg 工作的工程師主動提供內推機會，說是因為我的 Threads 廢文認識我的。雖然那時已經被 Bloomberg 拒了，不過還是挺開心自己的能力有被看到，雖然沒想到是透過 Threads 這個被我拿來發廢文的地方啦。
 
-### Cornell Tech 
+### Cornell Tech
 
 寫在[另一篇](https://swh00tw.dev/ct-1st-semester-reflection)。
 
@@ -89,5 +88,3 @@ Software Engineering 這環境變化太迅速，有時候難以避免會 FOMO (F
 2023 年開始了一些好的習慣，像是開始寫作，開始學一些新東西，不過最難的從來都不是開始，而是持續這個 momentum。我覺得 2023 年算是找到一個很好的努力方向，釐清自己想做什麼，On the right track 之後，希望 2024 年能持續往這個方向好好努力。
 
 Anyways，大概先這樣啦～祝正在讀的人新年快樂，2024 繼續往自己的目標前進 🚀
-
-

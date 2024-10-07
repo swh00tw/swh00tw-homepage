@@ -6,8 +6,7 @@ tags:
   - cornell
   - studyabroad
 published: true
-coverImgSrc: posts/ct-2nd-semester-reflection-small.webp
-backgroundImgSrc: posts/ct-2nd-semester-reflection-big.webp
+coverImgSrc: /posts/ct-2nd-semester-reflection-big.webp
 lang: zh
 ---
 ## Yo!
@@ -65,4 +64,3 @@ lang: zh
 ### 時間和期望管理
 
 學期末有段時間心情有點低落，一部分是因為太忙，一部分是對自己沒有好好執行學期初制定的計畫有點失望。常常想做和想學的事太多，但進展速度不如預期，對於課程 loading 的計算也沒掌握好，後來太忙好多想做的事情都得先放在旁邊，我都會想檢討到底是哪裡出了問題，真的是忙到這麼誇張還是輸給自己的惰性呢，我是不是在用“太忙”來找藉口？真的好想變強啊，想在自己規劃好的路線上全速衝刺，往目標邁進。就是這樣急著想變厲害的心情引起的吧，我覺得 takeaway 就是做好期望管理，認清自己終究不是機器人，不可能以等速高速前進，進度時快時慢都蠻正常的，所以還是要放過自己然後好好照顧自己，不要讓自己 burnt out 倒在半路。
-

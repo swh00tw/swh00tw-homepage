@@ -5,8 +5,7 @@ publishedAt: 2024-07-14
 tags:
   - internship
 published: true
-coverImgSrc: posts/circle-internship-small.webp
-backgroundImgSrc: posts/circle-internship-big.webp
+coverImgSrc: /posts/circle-internship-big.webp
 lang: zh
 ---
 上週美國國慶日連假，SF 渡假 skip 一週。

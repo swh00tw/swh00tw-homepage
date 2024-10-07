@@ -5,8 +5,7 @@ publishedAt: 2024-05-15
 tags:
   - react
 published: true
-coverImgSrc: posts/react-conf-2024-small.webp
-backgroundImgSrc: posts/react-conf-2024-big.webp
+coverImgSrc: /posts/react-conf-2024-big.webp
 lang: en
 ---
 ## `useTransition`
@@ -39,9 +38,9 @@ function Component(){
 			})
 		})
 	}
-	
+
 	return <form onSubmit={submitAction} />
-	// or  
+	// or
 	return <button onClick={submitAction} />
 }
 ```
@@ -54,7 +53,7 @@ function Component(){
 		// form submission (async)
 		return newData // set state to newData
 	}, null)
-	
+
 	return <form action={submitAction} />
 	// or
 	return <button formAction={submitAction} />

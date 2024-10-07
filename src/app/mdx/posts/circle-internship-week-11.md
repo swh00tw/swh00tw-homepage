@@ -5,8 +5,7 @@ publishedAt: 2024-08-04
 tags:
   - internship
 published: true
-coverImgSrc: posts/circle-internship-small.webp
-backgroundImgSrc: posts/circle-internship-big.webp
+coverImgSrc: /posts/circle-internship-big.webp
 lang: zh
 ---
 倒數兩週，one week left。

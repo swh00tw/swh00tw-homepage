@@ -5,8 +5,7 @@ publishedAt: 2023-10-24
 tags:
   - svelte
 published: true
-coverImgSrc: posts/svelte-101-small.webp
-backgroundImgSrc: posts/svelte-101-big.webp
+coverImgSrc: /posts/svelte-101-big.webp
 lang: en
 ---
 

@@ -2,10 +2,9 @@
 title: 2023 年度回顧（下）
 description: 這篇聊聊 Web dev/Career 上的
 publishedAt: 2024-01-20
-tags: 
+tags:
 published: true
-coverImgSrc: posts/2023-reflection-small.webp
-backgroundImgSrc: posts/2023-reflection-big.webp
+coverImgSrc: /posts/2023-reflection-big.webp
 lang: zh
 ---
 <script>
@@ -74,8 +73,3 @@ Web dev frameworks 百家爭鳴，2023 年已經聽過太多新崛起的 librari
 4. T 型 Developer 大概是我想追求的，T 表示我覺得我應該 T 字發展自己的 Skill set。希望自己能投資在其他領域上，但同時持續專精一個我最擅長或最有興趣的領域。
 
 就這樣，繼續努力啦！
-
-
-
-
-

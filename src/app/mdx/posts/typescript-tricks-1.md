@@ -7,8 +7,7 @@ tags:
   - learning
   - web-dev
 published: true
-coverImgSrc: posts/ts-trick-small.webp
-backgroundImgSrc: posts/ts-trick-big.webp
+coverImgSrc: /posts/ts-trick-big.webp
 lang: en
 ---
 ## Preface
@@ -59,20 +58,20 @@ The challenge want us to implement a type wrapper `DeepReadonly<T>` which we can
 
 For example
 ```ts
-type X = { 
-  x: { 
+type X = {
+  x: {
     a: 1
     b: 'hi'
   }
   y: 'hey'
 }
 
-type Expected = { 
-  readonly x: { 
+type Expected = {
+  readonly x: {
     readonly a: 1
     readonly b: 'hi'
   }
-  readonly y: 'hey' 
+  readonly y: 'hey'
 }
 
 type Todo = DeepReadonly<X> // should be same as `Expected`
@@ -89,12 +88,12 @@ type DeepReadonly<T extends object> = {
 }
 ```
 
-However, there is an edge case when `T[P]`'s type if `Function`. Since `T[P] extends object` holds true when it is a function(function is an object), we must explicitly handle this kind of situation, so we add another ternary operator inside it to solve this.  
+However, there is an edge case when `T[P]`'s type if `Function`. Since `T[P] extends object` holds true when it is a function(function is an object), we must explicitly handle this kind of situation, so we add another ternary operator inside it to solve this.
 
 ```ts
 type DeepReadonly<T extends object> = {
 	readonly [P in keyof T]: T[P] extends object ? T[P] extends Function? T[P]: DeepReadonly<T[P]> : T[P];
-} 
+}
 ```
 
 Great. That's it. You learned how to write recursive in TypeScript!

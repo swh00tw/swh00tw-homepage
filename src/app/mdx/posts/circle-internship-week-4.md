@@ -5,8 +5,7 @@ publishedAt: 2024-06-15
 tags:
   - internship
 published: true
-coverImgSrc: posts/circle-internship-small.webp
-backgroundImgSrc: posts/circle-internship-big.webp
+coverImgSrc: /posts/circle-internship-big.webp
 lang: zh
 ---
 上禮拜因為出差參加公司活動，再加上感冒，停更一週 lol

@@ -5,8 +5,7 @@ publishedAt: 2024-05-24
 tags:
   - internship
 published: true
-coverImgSrc: posts/circle-internship-small.webp
-backgroundImgSrc: posts/circle-internship-big.webp
+coverImgSrc: /posts/circle-internship-big.webp
 lang: zh
 ---
 記錄一下第一週在 Circle 做 Software Engineering Intern 的心得。希望之後每週都有時間寫點東西，回頭看應該蠻有趣的 XD

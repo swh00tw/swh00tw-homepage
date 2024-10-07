@@ -5,8 +5,7 @@ publishedAt: 2024-06-04
 tags:
   - internship
 published: true
-coverImgSrc: posts/circle-internship-small.webp
-backgroundImgSrc: posts/circle-internship-big.webp
+coverImgSrc: /posts/circle-internship-big.webp
 lang: zh
 ---
 這週好像沒太多可以 update 的 lol
