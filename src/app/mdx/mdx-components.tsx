@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import { cn } from "@/utils/cn";
 import { Text } from "@radix-ui/themes";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 
 export const mdxComponents: MDXComponents = {
   h2: (props) => {
@@ -41,8 +42,35 @@ export const mdxComponents: MDXComponents = {
     <ol {...props} className="list-decimal pl-6 text-gray-11 my-2" />
   ),
   ul: (props) => <ul {...props} className="list-disc pl-6 text-gray-11 my-2" />,
+  code: (props) => (
+    <code {...props} className="bg-gray-6 text-gray-11 px-1 rounded-2" />
+  ),
+  pre: (props) => (
+    <pre
+      {...props}
+      className="p-4 my-4 rounded-4 overflow-x-auto *:bg-transparent"
+    />
+  ),
 };
 
-export function MDXCustom(props: MDXRemoteProps) {
-  return <MDXRemote {...props} components={mdxComponents} />;
+export async function MDXCustom(props: MDXRemoteProps) {
+  return (
+    <MDXRemote
+      {...props}
+      components={mdxComponents}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [],
+          rehypePlugins: [
+            [
+              rehypePrettyCode,
+              {
+                theme: "catppuccin-mocha",
+              },
+            ],
+          ],
+        },
+      }}
+    />
+  );
 }

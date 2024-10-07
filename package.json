@@ -30,8 +30,10 @@
     "next-view-transitions": "^0.2.0",
     "react": "^18",
     "react-dom": "^18",
+    "rehype-pretty-code": "^0.14.0",
     "remove": "^0.1.5",
     "server-only": "^0.0.1",
+    "shiki": "^1.21.1",
     "tailwind-merge": "^2.3.0",
     "zod": "^3.23.8",
     "zod-fetch": "^0.1.1"
