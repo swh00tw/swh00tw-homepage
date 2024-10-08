@@ -24,7 +24,7 @@ export function getPosts() {
     withFileTypes: true,
   });
   const markdowns = files
-    .filter((f) => f.isFile())
+    .filter((f) => f.isFile() && f.name[0] !== ".")
     .map((f) => f.name)
     .map((filename) => {
       const fileContent = fs.readFileSync(
@@ -40,7 +40,7 @@ export function getPosts() {
         slug,
       });
       if (!res.success) {
-        console.log(res.error);
+        console.log(`${slug} parse error: `, res.error);
         return null;
       }
       return {
