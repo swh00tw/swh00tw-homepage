@@ -62,12 +62,12 @@ export const mdxComponents: MDXComponents = {
     const icon = type ? iconMap[type.toLowerCase()] : "ℹ️";
 
     return (
-      <div className="my-4 border-[1px] border-solid p-4 rounded-4">
+      <div className="my-4 border-[1px] border-solid p-4 rounded-4 bg-offwhite bg-opacity-70">
         <div
           className={cn("flex", "flex-row", "gap-x-2", "text-[16px]", "mb-1")}
         >
           <div className="w-fit">{icon}</div>
-          <div className={cn("font-bold")}>{type}</div>
+          <div className={cn("font-bold")}>{type ?? "Info"}</div>
         </div>
         <div className="">{children}</div>
       </div>
