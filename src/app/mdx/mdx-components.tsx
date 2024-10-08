@@ -3,26 +3,60 @@ import { cn } from "@/utils/cn";
 import { Text } from "@radix-ui/themes";
 import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
 import rehypePrettyCode from "rehype-pretty-code";
+import { Link2Icon } from "@radix-ui/react-icons";
+import Link from "next/link";
+
+const getNodeText = (node: React.ReactNode): string | undefined => {
+  if (["string", "number"].includes(typeof node)) return `${node}`;
+  if (node instanceof Array) return node.map(getNodeText).join("");
+  if (typeof node === "object" && node && "props" in node)
+    return getNodeText(node?.props?.children);
+  return undefined;
+};
 
 export const mdxComponents: MDXComponents = {
   h2: (props) => {
     const { children, ...restProps } = props;
     return (
-      <h2 {...restProps} className="mb-1 mt-2">
-        <Text size="4" as="span" className={cn("text-gray-12 font-medium")}>
-          {children}
-        </Text>
-      </h2>
+      <div className="flex flex-row gap-x-2 items-center group">
+        <h2
+          {...restProps}
+          className="mb-1 mt-2"
+          id={`${getNodeText(children)}`}
+        >
+          <Text size="4" as="span" className={cn("text-gray-12 font-medium")}>
+            {children}
+          </Text>
+        </h2>
+        <Link
+          href={`#${getNodeText(children)}`}
+          className="hidden group-hover:block"
+        >
+          <Link2Icon className="text-gray-11 text-sm" />
+        </Link>
+      </div>
     );
   },
   h3: (props) => {
     const { children, ...restProps } = props;
     return (
-      <h3 {...restProps} className="mb-1 mt-2">
-        <Text size="3" as="span" className={cn("text-gray-11 font-medium")}>
-          {children}
-        </Text>
-      </h3>
+      <div className="flex flex-row gap-x-2 items-center group">
+        <h3
+          {...restProps}
+          className="mb-1 mt-2"
+          id={`${getNodeText(children)}`}
+        >
+          <Text size="3" as="span" className={cn("text-gray-11 font-medium")}>
+            {children}
+          </Text>
+        </h3>
+        <Link
+          href={`#${getNodeText(children)}`}
+          className="hidden group-hover:block"
+        >
+          <Link2Icon className="text-gray-11 text-sm" />
+        </Link>
+      </div>
     );
   },
   p: (props) => {
