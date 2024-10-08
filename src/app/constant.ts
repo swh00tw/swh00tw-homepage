@@ -5,3 +5,4 @@ export const externalLinks = {
 } as const;
 
 export const projectsMarkdownPath = "src/app/mdx/projects";
+export const postsMarkdownPath = "src/app/mdx/posts";

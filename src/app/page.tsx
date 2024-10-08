@@ -38,7 +38,7 @@ export default function Home() {
         <Text size="1">About Frank Hsu.</Text>
       </DirectionAwareHover>
       <DirectionAwareHover
-        href="/posts"
+        href="/log"
         imageUrl="/posts.webp"
         gridRowStart={{
           initial: "3",
@@ -57,7 +57,7 @@ export default function Home() {
         }}
       >
         <Text size="2" weight={"medium"}>
-          Posts
+          Log
         </Text>
         <Text size="1">Some random thoughts.</Text>
       </DirectionAwareHover>

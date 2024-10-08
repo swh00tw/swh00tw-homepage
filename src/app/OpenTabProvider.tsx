@@ -24,7 +24,7 @@ const fixedLinks: HeaderbarLink[] = [
   { label: "index", href: "/", allowClose: false },
   { label: "/about", href: "/about", allowClose: false },
   { label: "/projects", href: "/projects", allowClose: false },
-  { label: "/posts", href: "/posts", allowClose: false },
+  { label: "/log", href: "/log", allowClose: false },
 ];
 
 export function OpenTabsProvider({ children }: { children: React.ReactNode }) {

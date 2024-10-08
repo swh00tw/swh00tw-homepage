@@ -1,12 +1,12 @@
 import fs from "fs";
 import path from "path";
-import { getProject } from "./getProject";
-import { MDXCustom } from "@/app/mdx/mdx-components";
-import { projectsMarkdownPath as projectsDir } from "@/app/constant";
 import { NewTabWrapper } from "@/app/NewTabWrapper";
+import { postsMarkdownPath } from "@/app/constant";
+import { getPost } from "./getPost";
+import { MDXCustom } from "@/app/mdx/mdx-components";
 
 export async function generateStaticParams() {
-  const files = fs.readdirSync(path.join(projectsDir), {
+  const files = fs.readdirSync(path.join(postsMarkdownPath), {
     withFileTypes: true,
   });
 
@@ -27,18 +27,18 @@ export async function generateMetadata({
 }: {
   params: { slug: string };
 }) {
-  const blog = getProject({
+  const blog = getPost({
     slug: params.slug,
   });
 
   return {
-    title: blog.frontMatter.displayName,
-    description: blog.frontMatter.desc || "Frank Hsu - Projects",
+    title: blog.frontMatter.title,
+    description: blog.frontMatter.description,
   };
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const data = getProject({
+export default function Page({ params }: { params: { slug: string } }) {
+  const data = getPost({
     slug: params.slug,
   });
 
