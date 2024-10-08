@@ -120,7 +120,7 @@ export default function GridBackground({
   return (
     <div
       ref={(c) => setRef(c)}
-      className="relative flex min-h-[95svh] h-full w-full items-center justify-center overflow-hidden rounded-lg md:shadow-xl"
+      className="relative flex min-h-[99svh] h-full w-full items-center justify-center overflow-hidden rounded-lg md:shadow-xl"
     >
       <GridPattern
         width={gridBoxWidth}
