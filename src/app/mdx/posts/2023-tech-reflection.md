@@ -7,10 +7,7 @@ published: true
 coverImgSrc: /posts/2023-reflection-big.webp
 lang: zh
 ---
-<script>
-	import Callout from "../lib/mdsvex/custom/Callout.svelte";
-	import Youtube from "../lib/mdsvex/custom/Youtube.svelte";
-</script>
+
 ## Another reflection
 
 開學前再擠出一篇，主要想紀錄在 2023 年學/玩了什麼，以及自己在學習事物上的想法。然後最後再寫寫 2024 想往哪走、想學什麼。

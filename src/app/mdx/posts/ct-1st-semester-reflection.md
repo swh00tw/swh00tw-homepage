@@ -10,10 +10,6 @@ coverImgSrc: /posts/ct-1-semester-big.webp
 lang: zh
 ---
 
-<script>
-	import Callout from "../lib/mdsvex/custom/Callout.svelte";
-</script>
-
 ## Preface
 
 在紐約第一個學期咻一下就過了。

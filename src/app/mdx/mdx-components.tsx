@@ -70,6 +70,8 @@ export const mdxComponents: MDXComponents = {
           return "🚨";
         case "deprecated":
           return "🚨";
+        case "award":
+          return "🏆";
         default:
           return "ℹ️";
       }
