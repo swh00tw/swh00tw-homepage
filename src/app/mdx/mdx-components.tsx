@@ -71,7 +71,17 @@ export const mdxComponents: MDXComponents = {
       </div>
     );
   },
-  a: (props) => <a {...props} className={cn("text-blue-11")} target="_blank" />,
+  a: (props) => {
+    const sameDomain = !!props.href?.startsWith("/");
+    return (
+      <Link
+        {...props}
+        href={props.href || "/404"}
+        className={cn("text-blue-11")}
+        target={sameDomain ? undefined : "_blank"}
+      />
+    );
+  },
   ol: (props) => (
     <ol {...props} className="list-decimal pl-6 text-gray-11 my-2" />
   ),
