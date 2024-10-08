@@ -12,10 +12,6 @@ coverImgSrc: /posts/reactivity-big.webp
 lang: en
 ---
 
-<script>
-	import Callout from "../lib/mdsvex/custom/Callout.svelte";
-</script>
-
 ## What's Reactivity
 
 It's ~~magic~~. I mean a black box that takes change of the states in you app and updates the UI accordingly.

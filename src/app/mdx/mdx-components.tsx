@@ -51,15 +51,30 @@ export const mdxComponents: MDXComponents = {
       className="p-4 my-4 rounded-4 overflow-x-auto *:bg-transparent"
     />
   ),
+  blockquote: (props) => (
+    <blockquote
+      {...props}
+      className="border-l-4 border-gray-11 pl-4 my-4 bg-gray-4 bg-opacity-20"
+    />
+  ),
   Callout: (props: { type?: string; children: React.ReactNode }) => {
     const { type, children } = props;
-    const iconMap = {
-      info: "ℹ️",
-      warning: "⚠️",
-      danger: "🚨",
-      deprecated: "🚨",
-    } as Record<string, string>;
-    const icon = type ? iconMap[type.toLowerCase()] : "ℹ️";
+
+    const getIcon = (type: string) => {
+      switch (type) {
+        case "info":
+          return "ℹ️";
+        case "warning":
+          return "⚠️";
+        case "danger":
+          return "🚨";
+        case "deprecated":
+          return "🚨";
+        default:
+          return "ℹ️";
+      }
+    };
+    const icon = getIcon(type ? type.toLowerCase() : "info");
 
     return (
       <div className="my-4 border-[1px] border-solid p-4 rounded-4 bg-offwhite bg-opacity-70">
