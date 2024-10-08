@@ -2,6 +2,7 @@ import { getPost } from "./getPost";
 import { cn } from "@/utils/cn";
 import { Text } from "@radix-ui/themes";
 import Image from "next/image";
+import Link from "next/link";
 import { CSSProperties } from "react";
 
 export default function Layout({
@@ -53,6 +54,14 @@ export default function Layout({
         ) : null}
       </div>
       <div>{children}</div>
+      <div className="flex flex-row gap-x-4 text-blue-11">
+        <Link href="/about" className="hover:underline">
+          About author
+        </Link>
+        <Link href="/log" className="hover:underline">
+          Read other log
+        </Link>
+      </div>
     </div>
   );
 }
