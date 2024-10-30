@@ -13,7 +13,7 @@ export const postFrontmatterSchema = z.object({
   publishedAt: z.date(),
   tags: z.array(z.string()).nullish().default([]),
   published: z.boolean().default(false),
-  coverImgSrc: z.string().optional(),
+  coverImgSrc: z.string().nullish(),
   lang: z.union([z.literal("en"), z.literal("zh")]),
 });
 export type PostFrontmatter = z.infer<typeof postFrontmatterSchema>;

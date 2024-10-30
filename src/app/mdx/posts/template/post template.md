@@ -4,6 +4,6 @@ description:
 publishedAt: "{{date}}"
 tags: 
 published: false
-coverImgSrc: posts/
+coverImgSrc: 
 lang:
 ---
