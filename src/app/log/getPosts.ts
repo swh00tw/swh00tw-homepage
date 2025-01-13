@@ -40,7 +40,7 @@ export function getPosts() {
         slug,
       });
       if (!res.success) {
-        console.log(`${slug} parse error: `, res.error);
+        console.log(`${slug} parse error: `);
         return null;
       }
       // special check for production environment

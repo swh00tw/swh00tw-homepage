@@ -4,9 +4,9 @@ import { MDXCustom } from "@/app/mdx/mdx-components";
 import { getPosts } from "../getPosts";
 
 export async function generateStaticParams() {
-  return getPosts().map((p) => {
-    return p.meta.slug;
-  });
+  return getPosts().map((p) => ({
+    slug: p.meta.slug,
+  }));
 }
 
 export async function generateMetadata({
