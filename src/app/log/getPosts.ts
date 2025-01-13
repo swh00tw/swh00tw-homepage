@@ -43,6 +43,12 @@ export function getPosts() {
         console.log(`${slug} parse error: `, res.error);
         return null;
       }
+      // special check for production environment
+      if (process.env["VERCEL_ENV"] === "production") {
+        if (!res.data.published) {
+          return null;
+        }
+      }
       return {
         meta: res.data,
       };

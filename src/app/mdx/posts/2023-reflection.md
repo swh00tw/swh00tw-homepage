@@ -1,8 +1,8 @@
 ---
-title: 2023 年度回顧（上）
+title: 2023 Year-end Recap
 description: Hello, 2024
 publishedAt: 2023-12-27
-tags:
+tags: 
 published: true
 coverImgSrc: /posts/2023-reflection-big.webp
 lang: zh

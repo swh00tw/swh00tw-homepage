@@ -1,8 +1,8 @@
 ---
-title: 2023 年度回顧（下）
+title: 2023 Year-end Recap (1)
 description: 這篇聊聊 Web dev/Career 上的
 publishedAt: 2024-01-20
-tags:
+tags: 
 published: true
 coverImgSrc: /posts/2023-reflection-big.webp
 lang: zh
