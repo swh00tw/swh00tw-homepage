@@ -10,12 +10,12 @@ import {
   Cross2Icon,
   GitHubLogoIcon,
   LinkedInLogoIcon,
-  TwitterLogoIcon,
 } from "@radix-ui/react-icons";
 import { useRef, useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { externalLinks } from "./constant";
 import { useOpenTabs, type HeaderbarLink } from "./OpenTabProvider";
+import BlueskyIcon from "./BlueskyIcon";
 
 function HeaderbarLink({
   label,
@@ -133,7 +133,7 @@ export function Headerbar() {
             </Flex>
           </div>
         </Flex>
-        <Flex gap="3" className="items-center min-w-min">
+        <Flex gap="3" className="items-center min-w-min md:px-4">
           <Link
             href={externalLinks.github}
             className={iconClasses}
@@ -148,8 +148,12 @@ export function Headerbar() {
           >
             <LinkedInLogoIcon width={20} height={20} />
           </Link>
-          <Link href={externalLinks.x} className={iconClasses} target="_blank">
-            <TwitterLogoIcon width={20} height={20} />
+          <Link
+            href={externalLinks.bsky}
+            className={iconClasses}
+            target="_blank"
+          >
+            <BlueskyIcon width={20} height={20} />
           </Link>
         </Flex>
       </Flex>

@@ -6,12 +6,12 @@ import {
   EnvelopeClosedIcon,
   GitHubLogoIcon,
   LinkedInLogoIcon,
-  TwitterLogoIcon,
 } from "@radix-ui/react-icons";
 import { Flex, Text } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
 import { externalLinks } from "../constant";
+import BlueskyIcon from "../BlueskyIcon";
 
 const intro = [
   "A full stack web developer from Taiwan. Currently, I am based in New York and studying master at Cornell Tech. I like Web development, Design Engineering, and Blockchain Technology.",
@@ -185,8 +185,8 @@ export default function Page() {
           <Link href={externalLinks.github} target="_blank">
             <GitHubLogoIcon width={16} height={16} />
           </Link>
-          <Link href={externalLinks.x} target="_blank">
-            <TwitterLogoIcon width={16} height={16} />
+          <Link href={externalLinks.bsky} target="_blank">
+            <BlueskyIcon width={16} height={16} />
           </Link>
         </Flex>
       </div>
