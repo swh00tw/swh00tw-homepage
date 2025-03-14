@@ -5,38 +5,39 @@ publishedAt: 2024-10-29
 tags:
   - frontend
   - javascript
-published: false
-coverImgSrc: 
+published: true
+coverImgSrc:
 lang: en
 ---
+
 ```js
-function func1(){
-	console.log("func1")
+function func1() {
+  console.log("func1");
 }
-function func2(){
-	console.log("func2")
+function func2() {
+  console.log("func2");
 }
-console.log("script start")
-setTimeout(()=>{
-	console.log("timeout")
-}, 0)
-async function func3(){
-	await func4()
-	console.log("func3")
+console.log("script start");
+setTimeout(() => {
+  console.log("timeout");
+}, 0);
+async function func3() {
+  await func4();
+  console.log("func3");
 }
-async function func4(){
-	console.log("func4")
+async function func4() {
+  console.log("func4");
 }
-func1()
-func2()
-func3()
+func1();
+func2();
+func3();
 new Promise((resolve) => {
-	console.log("promise 1")
-	resolve("promise 2")
+  console.log("promise 1");
+  resolve("promise 2");
 }).then((data) => {
-	console.log(data)
-})
-console.log("script end")
+  console.log(data);
+});
+console.log("script end");
 ```
 
 ## Preface
@@ -46,6 +47,7 @@ This was actually one of the interview question I was asked in an interview for 
 I feel like event loop is the concept that people will always forget if we don't regularly refresh (at least for me, it is). Anyway, after the interview, I decided to refresh the concept again and write an article to strengthen my memory. I will explain event loop in a simplified way (I might skip some details).
 
 Btw, the answer for this question above is at the very end.
+
 ## Key Components
 
 ### JavaScript engine
@@ -53,6 +55,7 @@ Btw, the answer for this question above is at the very end.
 It's responsible for parsing, interpreting, and executing JS code in browser or other environment. It translates JS to machine code that can be executed by computer.
 
 Not really important here actually.
+
 ### Call stack
 
 Obviously, it's a stack, which has "first-in, last-out" property. It's used to keep track of which functions are called and the order of function calls. When each function is called, it's pushed to the top of the call stack (precisely, a "frame" is pushed and it contains local variables, parameters, and other info about the function).
@@ -60,16 +63,16 @@ Obviously, it's a stack, which has "first-in, last-out" property. It's used to k
 Example:
 
 ```js
-function fn1(){
-	console.log(1)
-	fn2()
-	console.log(2)
+function fn1() {
+  console.log(1);
+  fn2();
+  console.log(2);
 }
-function fn2(){
-	console.log(3)
+function fn2() {
+  console.log(3);
 }
 
-fn1()
+fn1();
 // first, when we call fn1(), the call stack might look like this
 // --> [fn1]
 // next, we execute fn1, log 1 here
@@ -90,6 +93,7 @@ Event loop basically schedules tasks from task queue and microtask queue if the 
 ### Task queue
 
 Callback-based Web API such as `setTimeout(callback, delay)` will push the callback to the task queue after the browser finishes the execution.
+
 ### Microtask queue
 
 Microtask is a specialized task queue which handles the callback in `.then(callback)`, `.catch(callback)`, `.finally(callback)`, function body below `await`(This is actually equivalent to `.then(callback)`), and other microtasks(ignore now).
@@ -106,16 +110,17 @@ The callback will be pushed onto microtask queue once the promise is fulfilled (
 		// ignore...
 	}
 
-	// use Promise.then() ...
-	asyncFn().then((data: TData) => { 
-		nextTask(data)
-	})
-	// use await ...
-	const data = await asyncFn()
-	nextTask(data)
+    // use Promise.then() ...
+    asyncFn().then((data: TData) => {
+    	nextTask(data)
+    })
+    // use await ...
+    const data = await asyncFn()
+    nextTask(data)
 
-	// these two are actually the same
-	```
+    // these two are actually the same
+    ```
+
 </Callout>
 
 ## Breakdown
@@ -123,60 +128,60 @@ The callback will be pushed onto microtask queue once the promise is fulfilled (
 Alright. We've already got the minimal knowledge about the event loop to solve this problem. Let's breakdown what will happen when we run this:
 
 ```js
-function func1(){
-	console.log("func1")
+function func1() {
+  console.log("func1");
 }
-function func2(){
-	console.log("func2")
+function func2() {
+  console.log("func2");
 }
-console.log("script start")
-setTimeout(()=>{
-	console.log("timeout")
-}, 0)
-async function func3(){
-	await func4()
-	console.log("func3")
+console.log("script start");
+setTimeout(() => {
+  console.log("timeout");
+}, 0);
+async function func3() {
+  await func4();
+  console.log("func3");
 }
-async function func4(){
-	console.log("func4")
+async function func4() {
+  console.log("func4");
 }
-func1()
-func2()
-func3()
+func1();
+func2();
+func3();
 new Promise((resolve) => {
-	console.log("promise 1")
-	resolve("promise 2")
+  console.log("promise 1");
+  resolve("promise 2");
 }).then((data) => {
-	console.log(data)
-})
-console.log("script end")
+  console.log(data);
+});
+console.log("script end");
 ```
 
-- First, we initialized two functions `func1` and `func2` (haven't been called yet). 
+- First, we initialized two functions `func1` and `func2` (haven't been called yet).
 - Next, we log `script start` 1️⃣
 - Next, we call a `setTimeout` which has delay equals to 0 ms. This means, after 0 ms, the callback will be pushed onto task queue.
-	- So now, task queue be like `[ console.log("timeout") ]`
+  - So now, task queue be like `[ console.log("timeout") ]`
 - Then, initialized `func3` and `func4`.
 - Then, we call `func1` and `func2`, which are easy cases since it runs synchronously.
-	- They are pushed onto call stack and pop after finishing.
-	- We log `func1` 2️⃣ and `func2` 3️⃣
+  - They are pushed onto call stack and pop after finishing.
+  - We log `func1` 2️⃣ and `func2` 3️⃣
 - Next, we push `func3` onto call stack
-	- And it pushes `func4` onto call stack, which return a `Promise<void>` since it's an async function.
-	- The promise is immediately resolved. Therefore, log `func4` 4️⃣
-	- The rest of function body is pushed to the microtask queue.
-	- Microtask queue: `[ console.log("func3") ]`
+  - And it pushes `func4` onto call stack, which return a `Promise<void>` since it's an async function.
+  - The promise is immediately resolved. Therefore, log `func4` 4️⃣
+  - The rest of function body is pushed to the microtask queue.
+  - Microtask queue: `[ console.log("func3") ]`
 - Next, we initialize a promise by its constructor `new Promise()`.
-	- Again, push this constructor function onto call stack and execute
-	- The promise is immediately resolved and log `promise 1` 5️⃣
-	- And push the part in `.then()` onto microtask queue.
-	- Microtask queue: `[ console.log("func3"), console.log("promise 2") ]`
+  - Again, push this constructor function onto call stack and execute
+  - The promise is immediately resolved and log `promise 1` 5️⃣
+  - And push the part in `.then()` onto microtask queue.
+  - Microtask queue: `[ console.log("func3"), console.log("promise 2") ]`
 - Finally, we execute the last line and log `script end` 6️⃣
 - Okay, the call stack is finally empty now. It's time for our event loop to start working and scheduling the callbacks.
-	- Remember. Microtask queue has higher priority.
-	- Therefore, we start popping the first item in microtask queue until it's empty.
-		- We log `func 3` 7️⃣ and `promise 2` 8️⃣
-	- Lastly, after the microtask queue is empty. We finally can pop the item in task queue.
-		- We log `timeout` 9️⃣
+  - Remember. Microtask queue has higher priority.
+  - Therefore, we start popping the first item in microtask queue until it's empty.
+    - We log `func 3` 7️⃣ and `promise 2` 8️⃣
+  - Lastly, after the microtask queue is empty. We finally can pop the item in task queue.
+    - We log `timeout` 9️⃣
 
 So the answer is:
 
@@ -193,7 +198,7 @@ timeout
 ```
 
 ## Takeaway
+
 - Event loop runs when nothing in call stack.
 - Microtask queue has higher priority than task queue.
 - The part under the `await` in `async` function will be pushed into the microtask queue when the Promise we are currently waiting is fulfilled. (Just like how `.then()` works.)
-
